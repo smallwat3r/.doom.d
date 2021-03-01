@@ -1,0 +1,3 @@
+#+TITLE: .doom.d
+
+This is my personal Doom Emacs config.
