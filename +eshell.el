@@ -58,17 +58,7 @@
    "....." "cd ../../../.."
    "k" "kubectl $*"
    "kt" "kubetail $*"
-   "kgn" "kubectl get namespaces")
-
-  (defun eshell/sl (&rest args)
-    "same as ls."
-    (eshell/ls args))
-
-  (defun eshell/cr ()
-    "cd into the repository root."
-    (require 'magit)
-    (eshell/cd (magit-toplevel)))
-  )
+   "kgn" "kubectl get namespaces"))
 
 (use-package! esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode))
@@ -87,6 +77,11 @@
   (if env
       (pyvenv-activate env)
     (pyvenv-activate "env")))
+
+;;;###autoload
+(defun eshell/sl (&rest args)
+  "same as ls."
+  (eshell/ls args))
 
 ;;;###autoload
 (defun eshell/deactivate ()
