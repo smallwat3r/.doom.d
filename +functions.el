@@ -1,10 +1,12 @@
 ;;; $DOOMDIR/+functions.el -*- lexical-binding: t; -*-
 
+;;;###autoload
 (defun zz/scroll-up ()
   "Scroll up by 3 lines."
   (interactive)
   (evil-scroll-line-up 3))
 
+;;;###autoload
 (defun zz/scroll-down ()
   "Scroll down by 3 lines."
   (interactive)
