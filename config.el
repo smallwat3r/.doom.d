@@ -179,10 +179,11 @@
 ;;
 ;;; magit
 
-;; Use zen-mode the center the buffer
+;; Use zen-mode to the center the buffer
 (setq-hook! 'magit-status-mode-hook
   +zen-text-scale 0
   writeroom-width 80)
+
 (add-hook 'magit-status-mode-hook #'writeroom-mode 'append)
 
 ;;
