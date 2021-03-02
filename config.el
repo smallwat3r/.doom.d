@@ -177,6 +177,15 @@
       (delete-trailing-whitespace))))
 
 ;;
+;;; magit
+
+;; Use zen-mode the center the buffer
+(setq-hook! 'magit-status-mode-hook
+  +zen-text-scale 0
+  writeroom-width 80)
+(add-hook 'magit-status-mode-hook #'writeroom-mode 'append)
+
+;;
 ;;; Kubernetes
 
 (use-package! kubernetes

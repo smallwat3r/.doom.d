@@ -170,7 +170,7 @@
 
 ;; git-gutter-fringe
 (after! git-gutter-fringe
-  (setq fringe-mode 2))
+  (fringe-mode 2))
 
 ;; Show indicator for empty lines (eg. the tildes in vim after eof)
 ;; (setq-default indicate-empty-lines t)
