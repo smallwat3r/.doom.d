@@ -1,132 +1,142 @@
 ;;; $DOOMDIR/+bindings.el -*- lexical-binding: t; -*-
 
+;; Make sure M-3 prints a hash symbol
+(map! (:map key-translation-map "M-3" "#"))
+
+;;
+;;; evil-mode
+
 (map!
-
- ;; Hack for hash key support, on UK macOS keyboard, M-3 wouldn't print a hash (#)
- (:map key-translation-map "M-3" "#")
-
- ;; Normal mode bindings
  (:map evil-normal-state-map
   ;; Scrollin
-  "C-2"      #'zz/scroll-up
-  "C-1"      #'zz/scroll-down
-  "C-y"      #'zz/scroll-up
-  "C-e"      #'zz/scroll-down
+  "C-2"   #'zz/scroll-up
+  "C-1"   #'zz/scroll-down
+  "C-y"   #'zz/scroll-up
+  "C-e"   #'zz/scroll-down
 
   ;; Shrink and enlarge windows
-  "S-C-h"    #'shrink-window-horizontally
-  "S-C-l"    #'enlarge-window-horizontally
-  "S-C-k"    #'enlarge-window
-  "S-C-j"    #'shrink-window
+  "S-C-h" #'shrink-window-horizontally
+  "S-C-l" #'enlarge-window-horizontally
+  "S-C-k" #'enlarge-window
+  "S-C-j" #'shrink-window
 
   ;; Toggle spacing options
-  "M-SPC"    #'cycle-spacing
+  "M-SPC" #'cycle-spacing
 
   ;; Delete blank lines below cursor position
-  "M-o"      #'delete-blank-lines
+  "M-o"   #'delete-blank-lines
 
   ;; Cycle through frames
-  "M-`"      #'other-frame
-
-  ;; NOTE: Using semicolon (;) as a sort of leader to perform
-  ;; general actions in normal mode (as I used to do in vim)
+  "M-`"   #'other-frame
 
   ;; Auto-format
-  ";f"       #'format-all-buffer
+  ";f"    #'format-all-buffer
 
   ;; General actions (write, save, close etc)
-  ";w"       #'evil-write
-  ";x"       #'evil-save
-  ";q"       #'evil-save-and-close
+  ";w"    #'evil-write
+  ";x"    #'evil-save
+  ";q"    #'evil-save-and-close
 
   ;; Splitting current buffer
-  ";vs"      #'evil-window-vsplit ; vertical
-  ";sp"      #'evil-window-split  ; horizontal
+  ";vs"   #'evil-window-vsplit ; vertical
+  ";sp"   #'evil-window-split  ; horizontal
 
   ;; Create new window (split screen)
-  ";vw"      #'evil-window-vnew   ; vertical
-  ";sw"      #'evil-window-new    ; horizontal
+  ";vw"   #'evil-window-vnew   ; vertical
+  ";sw"   #'evil-window-new    ; horizontal
 
   ;; Clear search highlights
-  ";,"       #'evil-ex-nohighlight)
+  ";,"    #'evil-ex-nohighlight)
 
- ;; Insert and Normal mode bindings
+ ;; Join lines instead of deleting region
  (:map (evil-insert-state-map evil-normal-state-map)
-  ;; Join lines instead of deleting region
-  "M-k"      #'evil-join)
+  "M-k"   #'evil-join))
 
- ;; localleader
- (:leader
-  (:prefix "m"
-   :desc "Makefile run"             "r" #'+make/run))
+;;
+;;; Buffers
 
- ;; Buffers
+(map!
  (:leader
   (:prefix "b"
-   :desc "Kill buffer"              "d" #'evil-delete-buffer
-   :desc "Pop up scratch buffer"    "x" #'scratch))
+   :desc "Kill buffer"           "d" #'evil-delete-buffer
+   :desc "Pop up scratch buffer" "x" #'scratch))
 
  ;; Pop up scratch buffer with current mode
  (:leader
-  :desc "Pop up scratch buffer"     "x" #'scratch)
+  :desc "Pop up scratch buffer"  "x" #'scratch))
 
- ;; Open
+;;
+;;; Open stuff
+
+(map!
  (:leader
   (:prefix "o"
    :desc "Emails"                   "m" #'notmuch
    :desc "Reveal in Finder"         "o" #'+macos/reveal-in-finder
-   :desc "Reveal project in Finder" "O" #'+macos/reveal-project-in-finder))
+   :desc "Reveal project in Finder" "O" #'+macos/reveal-project-in-finder)))
 
- ;; Toggles
+;;
+;;; Toggle stuff
+
+(map!
  (:leader
   (:prefix "t"
-   :desc "Rainbow mode"             "c" #'rainbow-mode))
+   :desc "Rainbow mode" "c" #'rainbow-mode)))
 
- ;; Errors
- (:leader
-  (:prefix ("e" . "errors")
-   :desc "Flycheck list errors"     "l" #'flycheck-list-errors
-   :desc "Flycheck next error"      "n" #'flycheck-next-error
-   :desc "Flycheck previous error"  "p" #'flycheck-previous-error
-   :desc "Flycheck explain error"   "e" #'flycheck-explain-error-at-point
-   :desc "Flycheck verify setup"    "v" #'flycheck-verify-setup))
+;;
+;;; Docker
 
- ;; Kubernetes
- (:leader
-  (:prefix ("k" . "kubernetes")
-   :desc "Overview"                 "o" #'kubernetes-overview
-   :desc "Set context"              "c" #'kubernetes-use-context
-   :desc "Set namespace"            "n" #'kubernetes-set-namespace
-   :desc "Display logs"             "l" #'kubernetes-logs-fetch-all
-   :desc "Display service"          "s" #'kubernetes-display-service
-   :desc "Display deployment"       "d" #'kubernetes-display-deployment
-   :desc "Describe"                 "D" #'kubernetes-describe-pod
-   :desc "Exec into"                "e" #'kubernetes-exec-into))
-
- ;; Docker
+(map!
  (:leader
   (:prefix ("d" . "docker")
-   :desc "List images"              "i" #'docker-images
-   :desc "List containers"          "c" #'docker-containers
-   :desc "Exec into"                "e" #'docker-container-shell))
+   :desc "List images"     "i" #'docker-images
+   :desc "List containers" "c" #'docker-containers
+   :desc "Exec into"       "e" #'docker-container-shell)))
 
- ;; Search
- (:leader
-  (:prefix "s"
-   :desc "Ripgrep"                  "g" #'ripgrep-regexp))
+;;
+;;; Python
 
- ;; Notes
- (:leader
-  (:prefix "n"
-   :desc "Deft open"                "D" #'deft
-   :desc "Deft new"                 "d" #'deft-new-file))
-
- ;; Python
+(map!
  (:map python-mode-map
   :after python
   :localleader
   (:prefix ("v" . "venv")  ; virtual env
-   :desc "Workon"                   "w" #'pyvenv-workon
-   :desc "Activate pyvenv"          "a" #'pyvenv-activate
-   :desc "Deactivate pyvenv"        "d" #'pyvenv-deactivate))
- )
+   :desc "Workon"            "w" #'pyvenv-workon
+   :desc "Activate pyvenv"   "a" #'pyvenv-activate
+   :desc "Deactivate pyvenv" "d" #'pyvenv-deactivate)))
+
+;;
+;;; deft
+
+(map!
+ (:leader
+  (:prefix "n"
+   :desc "Deft open" "D" #'deft
+   :desc "Deft new"  "d" #'deft-new-file)))
+
+;;
+;;; kubernetes
+
+(map!
+ (:leader
+  (:prefix ("k" . "kubernetes")
+   :desc "Overview"           "o" #'kubernetes-overview
+   :desc "Set context"        "c" #'kubernetes-use-context
+   :desc "Set namespace"      "n" #'kubernetes-set-namespace
+   :desc "Display logs"       "l" #'kubernetes-logs-fetch-all
+   :desc "Display service"    "s" #'kubernetes-display-service
+   :desc "Display deployment" "d" #'kubernetes-display-deployment
+   :desc "Describe"           "D" #'kubernetes-describe-pod
+   :desc "Exec into"          "e" #'kubernetes-exec-into)))
+
+;;
+;;; flycheck
+
+(map!
+ (:leader
+  (:prefix ("e" . "errors")
+   :desc "Flycheck list errors"    "l" #'flycheck-list-errors
+   :desc "Flycheck next error"     "n" #'flycheck-next-error
+   :desc "Flycheck previous error" "p" #'flycheck-previous-error
+   :desc "Flycheck explain error"  "e" #'flycheck-explain-error-at-point
+   :desc "Flycheck verify setup"   "v" #'flycheck-verify-setup)))
