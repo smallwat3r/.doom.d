@@ -43,15 +43,6 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;; Adds binaries to PATH, so we can use them from Emacs as it works from the shell
-(use-package! exec-path-from-shell
-  :if (memq window-system '(mac ns x))
-  :init
-  (setq exec-path-from-shell-arguments '("-l"))  ; disable annoying warning
-  (setq exec-path-from-shell-variables '("PATH" "GOPATH"))
-  :config
-  (exec-path-from-shell-initialize))
-
 ;;
 ;;; Projectile
 
@@ -91,19 +82,7 @@
 
 (use-package! dired-narrow
   :after dired
-  :config
-  (map! :map dired-mode-map :n "/" #'dired-narrow-fuzzy))
-
-;;
-;;; Vterm
-
-(after! vterm
-  (setq vterm-max-scrollback 6000)
-  (map!
-   :map vterm-mode-map :n "B" #'vterm-beginning-of-line
-   :map vterm-mode-map :n "<return>" #'evil-insert-resume
-   :map vterm-mode-map "<C-backspace>" (lambda ()
-                                         (interactive) (vterm-send-key (kbd "C-w")))))
+  :config (map! :map dired-mode-map :n "/" #'dired-narrow-fuzzy))
 
 ;;
 ;;; Company
@@ -119,21 +98,21 @@
         company-minimum-prefix-length 2)  ; Needs >2 chars before showing
   )
 
-;; Go company backend
-(after! go-mode
-  (set-company-backend! 'go-mode 'company-yasnippet))
+(after! go-mode (set-company-backend! 'go-mode 'company-yasnippet))
+(after! python-mode (set-company-backend! 'python-mode 'company-yasnippet))
+(after! js2-mode (set-company-backend! 'js2-mode 'company-yasnippet))
+(after! sh-script (set-company-backend! 'sh-mode))
 
-;; Python company backend
-(after! python-mode
-  (set-company-backend! 'python-mode 'company-yasnippet))
+;;
+;;; Vterm
 
-;; Javascript company backend
-(after! js2-mode
-  (set-company-backend! 'js2-mode 'company-yasnippet))
-
-;; Bash company backend
-(after! sh-script
-  (set-company-backend! 'sh-mode))
+(after! vterm
+  (setq vterm-max-scrollback 6000)
+  (map!
+   :map vterm-mode-map :n "B" #'vterm-beginning-of-line
+   :map vterm-mode-map :n "<return>" #'evil-insert-resume
+   :map vterm-mode-map "<C-backspace>" (lambda ()
+                                         (interactive) (vterm-send-key (kbd "C-w")))))
 
 ;;
 ;;; Linters, checkers and programming language specifics
@@ -228,18 +207,43 @@
 (defvar my-notes-directory "~/org"
   "Where I'm storing my notes.")
 
-;; Deft (notes)
+;; deft
 (after! deft
   (setq deft-directory my-notes-directory
         deft-recursive t))
 
-;; Org settings
+;; org
 (after! org
   (setq org-directory my-notes-directory
         org-hide-emphasis-markers nil))
 
-;; Org-journal
+;; org-journal
 (after! org-journal
   (setq org-journal-dir (expand-file-name "journal/" my-notes-directory)
         org-journal-date-format "%A, %d %B %Y"
         org-journal-file-format "journal-%Y%m%d.org"))
+
+;;
+;;; Misc
+
+;; Use binaries from Emacs as it works from the shell
+(use-package! exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :init
+  (setq exec-path-from-shell-arguments '("-l")  ; disable annoying warning
+        exec-path-from-shell-variables '("PATH" "GOPATH"))
+  :config (exec-path-from-shell-initialize))
+
+;; google-translate
+(use-package! google-translate
+  :custom (google-translate-backend-method 'curl)
+  :config
+  ;; Fix - https://github.com/atykhonov/google-translate/issues/137#issuecomment-723938431
+  (defun google-translate--search-tkk () (list 430675 2721866130))
+
+  (map!
+   (:leader
+    (:prefix ("T" . "translate")
+     :desc "Translate query"    "q" #'google-translate-query-translate
+     :desc "Translate at point" "t" #'google-translate-at-point
+     :desc "Translate buffer"   "b" #'google-translate-buffer))))

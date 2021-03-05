@@ -10,6 +10,7 @@
 (package! ripgrep)
 (package! scratch)
 (package! esh-autosuggest)
+(package! google-translate)
 
 ;;
 ;;; Themes

@@ -26,7 +26,7 @@
      (propertize (cdr base/dir) 'face 'default)
                                         ; git branch
      (if base/branch
-         (propertize (format " \ue0a0 %s" base/branch) 'face 'default))
+         (propertize (format " (%s)" base/branch) 'face 'default))
                                         ; user / super user
      (propertize (if (= (user-uid) 0) " # " " → ") 'face 'default))))
 
@@ -66,40 +66,37 @@
 ;;
 ;;; Custom Eshell functions
 
-;;;###autoload
 (defun eshell/cr ()
-  "Go to git repository root directory."
+  "Go to git repository root."
   (eshell/cd (locate-dominating-file default-directory ".git")))
 
-;;;###autoload
-(defun eshell/venv (&optional env)
-  "Activate a python venv."
-  (if env
-      (pyvenv-activate env)
-    (pyvenv-activate "env")))
-
-;;;###autoload
-(defun eshell/sl (&rest args)
-  "same as ls."
-  (eshell/ls args))
-
-;;;###autoload
-(defun eshell/deactivate ()
-  "Deactivate a python venv."
-  (pyvenv-deactivate))
-
-;;;###autoload
 (defun eshell/md (dir)
   "mkdir and cd into directory."
   (eshell/mkdir dir)
   (eshell/cd dir))
 
-;;;###autoload
 (defun eshell/dots ()
   "cd into my dotfiles directory."
   (eshell/cd "~/dotfiles"))
 
-;;;###autoload
+(defun eshell/sl (&rest args)
+  "same as ls."
+  (eshell/ls args))
+
+(defun eshell/o (&rest args)
+  "Open in finder."
+  (+macos/reveal-in-finder))
+
+(defun eshell/deactivate ()
+  "Deactivate a python venv."
+  (pyvenv-deactivate))
+
+(defun eshell/activate (&optional env)
+  "Activate a python venv."
+  (if env
+      (pyvenv-activate env)
+    (pyvenv-activate "env")))
+
 (defun eshell/e (&rest args)
   "Invoke `find-file' on the file.
 \"e +42 foo\" also goes to line 42 in the buffer."
@@ -111,21 +108,21 @@
           (goto-line line))
       (find-file (pop args)))))
 
-;;;###autoload
 (defun eshell/extract (file)
   "Extract archive file."
-  (let ((command (some (lambda (x)
-                         (if (string-match-p (car x) file)
-                             (cadr x)))
-                       '((".*\.tar.bz2" "tar xjf")
-                         (".*\.tar.gz" "tar xzf")
-                         (".*\.bz2" "bunzip2")
-                         (".*\.rar" "unrar x")
-                         (".*\.gz" "gunzip")
-                         (".*\.tar" "tar xf")
-                         (".*\.tbz2" "tar xjf")
-                         (".*\.tgz" "tar xzf")
-                         (".*\.zip" "unzip")
-                         (".*\.Z" "uncompress")
-                         (".*" "echo 'Could not extract the file:'")))))
+  (let ((command
+         (some (lambda (x)
+                 (if (string-match-p (car x) file)
+                     (cadr x)))
+               '((".*\.tar.bz2" "tar xjf")
+                 (".*\.tar.gz" "tar xzf")
+                 (".*\.bz2" "bunzip2")
+                 (".*\.rar" "unrar x")
+                 (".*\.gz" "gunzip")
+                 (".*\.tar" "tar xf")
+                 (".*\.tbz2" "tar xjf")
+                 (".*\.tgz" "tar xzf")
+                 (".*\.zip" "unzip")
+                 (".*\.Z" "uncompress")
+                 (".*" "echo 'Could not extract the file:'")))))
     (eshell-command-result (concat command " " file))))
