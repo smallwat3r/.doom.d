@@ -19,7 +19,8 @@
 
 ;; Personal info
 (setq user-full-name "Matthieu Petiteau"
-      user-mail-address "mpetiteau.pro@gmail.com")
+      user-mail-address "mpetiteau.pro@gmail.com"
+      user-mail-address-2 "matthieu@smallwatersolutions.com")
 
 ;; Some general settings
 (setq
@@ -209,8 +210,8 @@
 
   ;; Set default tags on replies
   (setq notmuch-fcc-dirs
-        '(("mpetiteau.pro@gmail.com" . "personal/sent -inbox +sent -unread")
-          ("matthieu@smallwatersolutions.com" . "sws/sent -inbox +sent -unread"))))
+        '((user-mail-address . "personal/sent -inbox +sent -unread")
+          (user-mail-address-2 . "sws/sent -inbox +sent -unread"))))
 
 ;;
 ;;; Org

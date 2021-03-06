@@ -29,9 +29,9 @@
     ("ura" "→" )
 
     ;; Personal stuff
-    ("zma" "Matthieu Petiteau")
-    ("zme" "mpetiteau.pro@gmail.com")
-    ("zco" "Copyright 2020 Matthieu Petiteau, all rights reserved.")
+    ("zna" "Matthieu Petiteau")
+    ("zem" "<mpetiteau.pro@gmail.com>")
+    ("zme" "Matthieu Petiteau <mpetiteau.pro@gmail.com>")
     ))
 
 ;;
