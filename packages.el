@@ -12,6 +12,7 @@
 (package! esh-autosuggest)
 (package! google-translate)
 (package! golden-ratio)
+(package! lorem-ipsum)
 
 ;;
 ;;; Themes

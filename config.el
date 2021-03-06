@@ -247,3 +247,13 @@
      :desc "Translate query"    "q" #'google-translate-query-translate
      :desc "Translate at point" "t" #'google-translate-at-point
      :desc "Translate buffer"   "b" #'google-translate-buffer))))
+
+;; lorem-ipsum
+(use-package! lorem-ipsum
+  :config
+  (map!
+   (:leader
+    (:prefix ("l" . "lorem ipsum")
+     :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
+     :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
+     :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
