@@ -186,6 +186,15 @@
 
 ;; We use Notmuch to manage emails in Emacs
 (after! notmuch
+  ;; notmuch-hello buffer
+  (setq notmuch-show-log nil
+        notmuch-hello-sections `(notmuch-hello-insert-saved-searches
+                                 notmuch-hello-insert-alltags))
+
+  ;; Remove popup rule, it caused to override the current buffer
+  ;; content for some reason...
+  (set-popup-rule! "^\\*notmuch-hello" :ignore t)
+
   ;; Email list formats
   (setq notmuch-search-result-format
         '(("date" . "%12s ")
@@ -193,9 +202,11 @@
           ("authors" . "%-15s ")
           ("tags" . "(%s) ")
           ("subject" . "%-72s")))
-  ;; Command to fetch for new emails
-  (setq +notmuch-sync-backend 'custom)  ; so we can run our custom command
-  (setq +notmuch-sync-command "mbsync -a && notmuch new")
+
+  ;; Use a custom command to fetch for new emails
+  (setq +notmuch-sync-backend 'custom
+        +notmuch-sync-command "mbsync -a && notmuch new")
+
   ;; Set default tags on replies
   (setq notmuch-fcc-dirs
         '(("mpetiteau.pro@gmail.com" . "personal/sent -inbox +sent -unread")
