@@ -195,6 +195,17 @@
 ;; ;; Auto-activate writeroom on text-mode
 ;; (add-hook! 'text-mode-hook writeroom-mode)
 
+;; Split windows automatically resize based on selection
+(use-package! golden-ratio
+  :config
+  (setq golden-ratio-extra-commands
+        (append golden-ratio-extra-commands
+                '(evil-window-left
+                  evil-window-right
+                  evil-window-up
+                  evil-window-down)))
+  (golden-ratio-mode 1))
+
 ;;
 ;;; Doom-dashboard
 

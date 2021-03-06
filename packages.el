@@ -11,6 +11,7 @@
 (package! scratch)
 (package! esh-autosuggest)
 (package! google-translate)
+(package! golden-ratio)
 
 ;;
 ;;; Themes
