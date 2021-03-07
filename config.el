@@ -34,7 +34,7 @@
  which-key-idle-delay 0.5          ; delay to show key bindings menu
  )
 
-;; My abbreviations. These are stored in a file named abbrev.el
+;; My abbreviations. These are stored in abbrev.el
 (setq abbrev-file-name (expand-file-name "abbrev.el" doom-private-dir))
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
@@ -83,8 +83,9 @@
 
 (use-package! dired-narrow
   :after dired
-  :config (map! :map dired-mode-map
-                :n "/" #'dired-narrow-fuzzy))
+  :config
+  (map! :map dired-mode-map
+        :n "/" #'dired-narrow-fuzzy))
 
 (use-package! dired-subtree
   :after dired
