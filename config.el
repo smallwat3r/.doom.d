@@ -83,7 +83,15 @@
 
 (use-package! dired-narrow
   :after dired
-  :config (map! :map dired-mode-map :n "/" #'dired-narrow-fuzzy))
+  :config (map! :map dired-mode-map
+                :n "/" #'dired-narrow-fuzzy))
+
+(use-package! dired-subtree
+  :after dired
+  :config
+  (map! :map dired-mode-map
+        "<tab>" #'dired-subtree-toggle
+        "<backtab>" #'dired-subtree-cycle))
 
 ;;
 ;;; Company
@@ -123,18 +131,16 @@
         "/usr/local/opt/python@3.9/bin/python3.9"))
 
 (after! flycheck
-  ;; Pylint configs
+  ;; Pylint
   (setq flycheck-python-pylint-executable "/usr/local/bin/pylint"
         flycheck-pylintrc "~/.config/pylintrc")
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (setq flycheck-checker 'python-pylint)))
-  ;; Shellcheck configs
+  (setq-hook! 'python-mode-hook
+    flycheck-checker 'python-pylint)
+
+  ;; Shellcheck
   (setq flycheck-shellcheck-excluded-warnings '("SC1091"))
-  (add-hook 'sh-mode-hook
-            (lambda ()
-              (setq flycheck-checker 'sh-shellcheck)))
-  )
+  (setq-hook! 'sh-mode-hook
+    flycheck-checker 'sh-shellcheck))
 
 ;; Spell checker
 (after! spell-fu
