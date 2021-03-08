@@ -19,6 +19,11 @@
       (newline 2))
     (end-of-buffer)))
 
+(defun zz/scratch-rest-mode ()
+  "Start a scratch buffer in restclient-mode"
+  (interactive)
+  (scratch 'restclient-mode))
+
 (defun zz/echo-command-name ()
   "Echo the command names in minibuffer as they are being used.
 Some obvious commands are hidden to remove any fluff."
@@ -58,3 +63,9 @@ With prefix argument \\[universal-argument] insert the 48-bit value."
           (split-string (buffer-substring start end)) ", ")))
     (delete-region start end)
     (insert insertion)))
+
+;; https://github.com/MatthewZMD/.emacs.d#where-am-i
+(defun zz/where-am-i ()
+  "An interactive function showing function `buffer-file-name' or `buffer-name'."
+  (interactive)
+  (message (kill-new (if (buffer-file-name) (buffer-file-name) (buffer-name)))))

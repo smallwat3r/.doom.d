@@ -153,15 +153,30 @@
 ;; Bash formatter settings (shfmt)
 (set-formatter! 'shfmt "shfmt -i 2 -ci")
 
-;; Auto add headers on scratch buffers in specific modes
-(add-hook! 'org-mode-hook (zz/add-scratch-buffer-header "#+TITLE: Scratch file"))
-(add-hook! 'sh-mode-hook (zz/add-scratch-buffer-header "#!/usr/bin/env bash"))
-
 ;; Delete all whitespace on save, except on markdown-mode
 (add-hook! 'before-save-hook
   (lambda ()
     (unless (eq major-mode 'markdown-mode)
       (delete-trailing-whitespace))))
+
+;; scratch (buffers)
+(use-package! scratch
+  :config
+  (map!
+   (:leader
+    (:prefix "o"
+     :desc "scratch buffer current mode" "x" #'scratch
+     :desc "scratch buffer restclient"   "h" #'zz/scratch-rest-mode)))
+
+  ;; Auto add headers on scratch buffers in specific modes
+  (add-hook! 'org-mode-hook (zz/add-scratch-buffer-header "#+TITLE: Scratch file"))
+  (add-hook! 'sh-mode-hook (zz/add-scratch-buffer-header "#!/usr/bin/env bash"))
+  (add-hook! 'restclient-mode-hook
+    (zz/add-scratch-buffer-header
+     "#
+# restclient-mode
+# Examples: https://raw.githubusercontent.com/pashky/restclient.el/master/examples/httpbin
+#")))
 
 ;;
 ;;; magit

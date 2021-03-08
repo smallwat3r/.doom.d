@@ -58,12 +58,7 @@
 (map!
  (:leader
   (:prefix "b"
-   :desc "Kill buffer"           "d" #'evil-delete-buffer
-   :desc "Pop up scratch buffer" "x" #'scratch))
-
- ;; Pop up scratch buffer with current mode
- (:leader
-  :desc "Pop up scratch buffer"  "x" #'scratch))
+   :desc "Kill buffer" "d" #'evil-delete-buffer)))
 
 ;;
 ;;; Open stuff
@@ -72,6 +67,7 @@
  (:leader
   (:prefix "o"
    :desc "Emails"                   "m" #'notmuch
+   :desc "Browse URL"               "u" #'browse-url-at-point
    :desc "Reveal in Finder"         "o" #'+macos/reveal-in-finder
    :desc "Reveal project in Finder" "O" #'+macos/reveal-project-in-finder)))
 

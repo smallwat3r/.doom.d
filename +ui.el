@@ -23,14 +23,15 @@
 
 ;; Set up frame title. It shows the title of the current file and an
 ;; indicator if the file has been modified eg. (+)
-(setq frame-title-format
-      '((:eval
-         (if (buffer-file-name)
-             (replace-regexp-in-string
-              ".*/[0-9]*-?" " "
-              (subst-char-in-string ?_ ? buffer-file-name)) "%b"))
-        (:eval
-         (if (buffer-modified-p) " (+)"))))
+(setq-default frame-title-format
+              '("Emacs - " user-login-name "@" system-name " - "
+                (:eval
+                 (if (buffer-file-name)
+                     (replace-regexp-in-string
+                      ".*/[0-9]*-?" " "
+                      (subst-char-in-string ?_ ? buffer-file-name)) "%b"))
+                (:eval
+                 (if (buffer-modified-p) " (+)"))))
 
 ;;
 ;;; Fonts
@@ -111,9 +112,6 @@
 
 ;; Set up our default theme
 (setq doom-theme 'simplicity)
-
-;; Disable hl-line-mode
-(add-hook! (prog-mode text-mode conf-mode special-mode) (hl-line-mode -1))
 
 ;; NOTE: Not needed as hl-line-mode is disabled by default (see above)
 ;; Do not override the color of rainbow-mode with hl-line-mode.
@@ -205,6 +203,12 @@
                   evil-window-up
                   evil-window-down)))
   (golden-ratio-mode 1))
+
+;; Disable hl-line-mode on most of the major modes
+(add-hook! (prog-mode text-mode conf-mode special-mode) (hl-line-mode -1))
+
+;; Activate goto-address mode on some major modes
+(add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))
 
 ;;
 ;;; Doom-dashboard
