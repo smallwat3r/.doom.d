@@ -118,7 +118,7 @@
 (use-package! perfect-margin
   :custom (perfect-margin-visible-width 100)
   :config
-  (perfect-margin-mode 1)
+  (perfect-margin-mode -1)  ; do not turn on by default
 
   ;; scroll on margin areas
   (dolist (margin '("<left-margin> " "<right-margin> "))
