@@ -14,6 +14,9 @@
 (package! google-translate)
 (package! golden-ratio)
 (package! lorem-ipsum)
+(package! perfect-margin)
+(package! git-gutter)
+(package! git-gutter-fringe :disable t)
 
 ;;
 ;;; Themes

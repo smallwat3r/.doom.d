@@ -43,55 +43,40 @@
   "Default Serif font")
 
 (setq doom-font (font-spec :family default-monospace-font :size 14)
-      doom-variable-pitch-font (font-spec :family default-serif-font))
-
-;; Steps used to increment fonts (default is 2)
-(setq doom-font-increment 1)
-
-;; Increment of 3 points in big-font-mode (default is 4)
-(setq doom-big-font-increment 3)
-
-;; Use default emacs font for treemacs
-(setq doom-themes-treemacs-enable-variable-pitch nil)
+      doom-variable-pitch-font (font-spec :family default-serif-font)
+      doom-font-increment 1      ; Steps used to increment fonts
+      doom-big-font-increment 3  ; Inc of 3 points in big-font-mode
+      doom-themes-treemacs-enable-variable-pitch nil)
 
 ;;
 ;;; Themes config
 
 (use-package! modus-vivendi-theme  ; dark theme
-  :init
-  (setq
-   modus-vivendi-theme-slanted-constructs nil
-   modus-vivendi-theme-bold-constructs nil
-   modus-vivendi-theme-intense-hl-line nil
-   modus-vivendi-theme-subtle-diffs t
-   modus-vivendi-theme-intense-paren-match t
-   modus-vivendi-theme-org-blocks 'rainbow
-   modus-vivendi-theme-completions 'opinionated
-   modus-vivendi-theme-faint-syntax t)
-  :config
-  (modus-vivendi-theme-with-color-variables
-    (custom-theme-set-faces! 'modus-vivendi
-      `(default :background "grey3" :foreground "grey90")
-      ))
-  )
+  :init (setq
+         modus-vivendi-theme-slanted-constructs nil
+         modus-vivendi-theme-bold-constructs nil
+         modus-vivendi-theme-intense-hl-line nil
+         modus-vivendi-theme-subtle-diffs t
+         modus-vivendi-theme-intense-paren-match t
+         modus-vivendi-theme-org-blocks 'rainbow
+         modus-vivendi-theme-completions 'opinionated
+         modus-vivendi-theme-faint-syntax t)
+  :config (modus-vivendi-theme-with-color-variables
+            (custom-theme-set-faces! 'modus-vivendi
+              `(default :background "grey3" :foreground "grey90"))))
 
 (use-package! modus-operandi-theme  ; light theme
-  :init
-  (setq
-   modus-operandi-theme-slanted-constructs nil
-   modus-operandi-theme-bold-constructs nil
-   modus-operandi-theme-intense-hl-line nil
-   modus-operandi-theme-subtle-diffs t
-   modus-operandi-theme-intense-paren-match t
-   modus-operandi-theme-org-blocks 'rainbow
-   modus-operandi-theme-completions 'opinionated)
-  :config
-  (modus-operandi-theme-with-color-variables
-    (custom-theme-set-faces! 'modus-operandi
-      `(default :background "papaya whip")
-      `(term :background "papaya whip")
-      ))
-  )
+  :init (setq
+         modus-operandi-theme-slanted-constructs nil
+         modus-operandi-theme-bold-constructs nil
+         modus-operandi-theme-intense-hl-line nil
+         modus-operandi-theme-intense-paren-match t
+         modus-operandi-theme-org-blocks 'rainbow
+         modus-operandi-theme-completions 'opinionated)
+  :config (modus-operandi-theme-with-color-variables
+            (custom-theme-set-faces! 'modus-operandi
+              `(default :background "papaya whip")
+              `(term :background "papaya whip"))))
 
 ;; HACK: Change default background color when using vterm within modus-operandi.
 ;; Changing it by setting vterm-color-default above doesn't seems to work anymore.
@@ -113,36 +98,43 @@
 ;; Set up our default theme
 (setq doom-theme 'simplicity)
 
-;; NOTE: Not needed as hl-line-mode is disabled by default (see above)
-;; Do not override the color of rainbow-mode with hl-line-mode.
-;; (add-hook! 'rainbow-mode-hook
-;;   (hl-line-mode (if rainbow-mode -1 +1)))
-
 ;; Overwrite some global theme stuff
 (custom-set-faces!
   ;; We use mini-modeline (merge modeline in minibuffer) so we want to keep
   ;; our modeline as invisible and clean as possible.
   '(mode-line :background nil :box nil :overline nil :underline nil)
 
-  ;; Line numbers (when on)
+  ;; Line numbers
   '(line-number :background nil :foreground "#3b3b3b" :height 100)
   '(line-number-current-line :background nil :height 100)
 
   ;; Whitespace newline symbol
-  '(whitespace-newline :background nil :inherit font-lock-comment-face)
-
-  ;; Git gutter fringe colors
-  ;; '(git-gutter-fr:added :background "SeaGreen3")
-  ;; '(git-gutter-fr:modified :background "goldenrod2")
-  ;; '(git-gutter-fr:deleted :background "IndianRed3")
-
-  ;; Comments and docstrings font face
-  ;; '(font-lock-comment-face :inherit variable-pitch)
-  ;; '(font-lock-doc-face :inherit variable-pitch)
-  )
+  '(whitespace-newline :background nil :inherit font-lock-comment-face))
 
 ;;
 ;;; Editor
+
+;; Automatically center windows
+(use-package! perfect-margin
+  :custom (perfect-margin-visible-width 100)
+  :config
+  (perfect-margin-mode 1)
+
+  ;; scroll on margin areas
+  (dolist (margin '("<left-margin> " "<right-margin> "))
+    (global-set-key (kbd (concat margin "<mouse-1>")) 'ignore)
+    (global-set-key (kbd (concat margin "<mouse-3>")) 'ignore)
+    (dolist (multiple '("" "double-" "triple-"))
+      (global-set-key (kbd (concat margin "<" multiple "wheel-up>")) 'mwheel-scroll)
+      (global-set-key (kbd (concat margin "<" multiple "wheel-down>")) 'mwheel-scroll))))
+
+;; git-gutter
+(after! git-gutter
+  (setq git-gutter:window-width 1
+        git-gutter:hide-gutter t
+        git-gutter:modified-sign "|"
+        git-gutter:added-sign "|"
+        git-gutter:deleted-sign "|"))
 
 ;; Hide file icon from frame window
 (setq ns-use-proxy-icon nil)
@@ -166,10 +158,6 @@
 ;; No extra line spacing
 (setq-default line-spacing 1)
 
-;; git-gutter-fringe
-(after! git-gutter-fringe
-  (fringe-mode 2))
-
 ;; Show indicator for empty lines (eg. the tildes in vim after eof)
 ;; (setq-default indicate-empty-lines t)
 
@@ -190,6 +178,10 @@
 (setq whitespace-display-mappings
       '((newline-mark 10 [?◦ 10])))  ; eol character
 
+;; Do not override the color of rainbow-mode with hl-line-mode
+(add-hook! 'rainbow-mode-hook
+  (hl-line-mode (if rainbow-mode -1 +1)))
+
 ;; ;; Auto-activate writeroom on text-mode
 ;; (add-hook! 'text-mode-hook writeroom-mode)
 
@@ -209,6 +201,10 @@
 
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))
+
+;; treemacs
+(after! treemacs
+  (treemacs-resize-icons 15))
 
 ;;
 ;;; Doom-dashboard

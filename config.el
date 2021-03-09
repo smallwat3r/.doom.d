@@ -11,6 +11,9 @@
 ;;
 ;;; General
 
+;; Disable warning for deprecated cl packages
+(setq byte-compile-warnings '(cl-functions))
+
 ;; Disable confirmation when exiting Emacs
 (setq confirm-kill-emacs nil)
 
