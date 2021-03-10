@@ -12,7 +12,6 @@
 (package! scratch)
 (package! esh-autosuggest)
 (package! google-translate)
-(package! golden-ratio)
 (package! lorem-ipsum)
 (package! perfect-margin)
 (package! git-gutter)

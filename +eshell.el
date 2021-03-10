@@ -36,10 +36,14 @@
 (add-hook! 'pyvenv-post-deactivate-hooks (lambda () (setenv "VIRTUAL_ENV" nil)))
 
 (after! eshell
-  (setq eshell-history-size 10000
+  ;; General
+  (setq eshell-history-size 1000000
         eshell-buffer-maximum-lines 5000
         eshell-modify-global-environment t
-        eshell-prompt-regexp "^.* [#→] "
+        eshell-destroy-buffer-when-process-dies t)
+
+  ;; Prompt settings
+  (setq eshell-prompt-regexp "^.* [#→] "
         eshell-prompt-function #'zz/eshell-prompt)
 
   ;; List of eshell aliases

@@ -217,8 +217,7 @@
         notmuch-hello-sections `(notmuch-hello-insert-saved-searches
                                  notmuch-hello-insert-alltags))
 
-  ;; Remove popup rule, it caused to override the current buffer
-  ;; content for some reason...
+  ;; Remove popup rule
   (set-popup-rule! "^\\*notmuch-hello" :ignore t)
 
   ;; Email list formats
