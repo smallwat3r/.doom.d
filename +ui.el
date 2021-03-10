@@ -100,15 +100,8 @@
 
 ;; Overwrite some global theme stuff
 (custom-set-faces!
-  ;; We use mini-modeline (merge modeline in minibuffer) so we want to keep
-  ;; our modeline as invisible and clean as possible.
-  '(mode-line :background nil :box nil :overline nil :underline nil)
-
-  ;; Line numbers
   '(line-number :background nil :foreground "#3b3b3b" :height 100)
   '(line-number-current-line :background nil :height 100)
-
-  ;; Whitespace newline symbol
   '(whitespace-newline :background nil :inherit font-lock-comment-face))
 
 ;;
