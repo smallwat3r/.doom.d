@@ -11,16 +11,19 @@
 ;;
 ;;; General
 
-;; Disable warning for deprecated cl packages
+;; Some packages still use the "cl" package (replaced by "cl-lib") as a dependency
+;; and Emacs triggers a warning on start-up. The below line is a temporary solution
+;; to disable this warning. It's recommended to add it to the early-init.el file but
+;; this seems to do the trick here also.
 (setq byte-compile-warnings '(cl-functions))
 
-;; Disable confirmation when exiting Emacs
+;; Disable confirmation prompt when exiting Emacs.
 (setq confirm-kill-emacs nil)
 
 ;; Echo the command names in minibuffer as they are being used
 ;; (add-hook! 'post-command-hook 'zz/echo-command-name)
 
-;; Personal info
+;; Personal information
 (setq user-full-name "Matthieu Petiteau"
       user-mail-address "mpetiteau.pro@gmail.com"
       user-mail-address-2 "matthieu@smallwatersolutions.com")
@@ -52,25 +55,24 @@
 
 (after! projectile
   (setq projectile-sort-order 'recentf)
-  (setq projectile-ignored-projects
-        '("~/" "/tmp" "~/Downloads"))
-  (setq projectile-project-search-path
-        '("~/dotfiles/" "~/Projects/" "~/Code/" "~/Github/")))
+  (setq projectile-ignored-projects '("~/" "/tmp" "~/Downloads"))
+  (setq projectile-project-search-path '("~/dotfiles/" "~/Projects/" "~/Code/" "~/Github/")))
 
 ;;
 ;;; Ivy
 
 (after! ivy
-  ;; Choose buffer when splitting the window
-  (defadvice! prompt-for-buffer (&rest _)
-    :after '(evil-window-split evil-window-vsplit)
-    (+ivy/switch-buffer))
-
-  ;; Default ivy settings
   (setq ivy-use-virtual-buffers t
         ivy-count-format "(%d/%d) "
-        +ivy-buffer-preview t))
+        +ivy-buffer-preview t)
 
+  ;; Ask to pick an existing buffer when splitting the window
+  (defadvice! prompt-for-buffer (&rest _)
+    :after '(evil-window-split evil-window-vsplit)
+    (+ivy/switch-buffer)))
+
+
+;; Let Ivy use posframe to show its candidate menu
 (after! ivy-posframe
   (setq ivy-posframe-border-width 2))
 
@@ -82,12 +84,14 @@
         dired-listing-switches "-lat"  ; sort by date
         ))
 
+;; Narrowing searchs in dired
 (use-package! dired-narrow
   :after dired
   :config
   (map! :map dired-mode-map
         :n "/" #'dired-narrow-fuzzy))
 
+;; Toggle directories with TAB in dired
 (use-package! dired-subtree
   :after dired
   :config
@@ -109,6 +113,7 @@
         company-minimum-prefix-length 2)  ; Needs >2 chars before showing
   )
 
+;; Language specifics
 (after! go-mode (set-company-backend! 'go-mode 'company-yasnippet))
 (after! python-mode (set-company-backend! 'python-mode 'company-yasnippet))
 (after! js2-mode (set-company-backend! 'js2-mode 'company-yasnippet))
@@ -133,25 +138,27 @@
         "/usr/local/opt/python@3.9/bin/python3.9"))
 
 (after! flycheck
-  ;; Pylint
+  ;; Pylint (python)
   (setq flycheck-python-pylint-executable "/usr/local/bin/pylint"
         flycheck-pylintrc "~/.config/pylintrc")
   (setq-hook! 'python-mode-hook
     flycheck-checker 'python-pylint)
 
-  ;; Shellcheck
+  ;; Shellcheck (bash)
   (setq flycheck-shellcheck-excluded-warnings '("SC1091"))
   (setq-hook! 'sh-mode-hook
     flycheck-checker 'sh-shellcheck))
 
-;; Spell checker
+;; Grammar spell checker
 (after! spell-fu
   (setq spell-fu-idle-delay 0.5))
 
-;; Make spell-fu to be turn on manually
+;; Force grammar spell checking to be turn on manually
 (remove-hook! (text-mode) #'spell-fu-mode)
 
 ;; Bash formatter settings (shfmt)
+;; -i:  2 space identation
+;; -ci: Indent switch cases
 (set-formatter! 'shfmt "shfmt -i 2 -ci")
 
 ;; Delete all whitespace on save, except on markdown-mode
@@ -160,7 +167,7 @@
     (unless (eq major-mode 'markdown-mode)
       (delete-trailing-whitespace))))
 
-;; scratch (buffers)
+;; Scratch buffers
 (use-package! scratch
   :config
   (map!
@@ -201,21 +208,21 @@
 ;;
 ;;; Emails
 
-;; It's using msmtp to send emails
+;; Emails are sent using msmtp
+(setq sendmail-program "/usr/local/bin/msmtp")
+
 (setq mail-user-agent 'message-user-agent
-      sendmail-program "/usr/local/bin/msmtp"
       mail-specify-envelope-from t
       mail-envelope-from 'header
       message-sendmail-envelope-from 'header)
 
-;; We use Notmuch to manage emails in Emacs
 (after! notmuch
-  ;; notmuch-hello buffer
+  ;; Main buffer sections
   (setq notmuch-show-log nil
         notmuch-hello-sections `(notmuch-hello-insert-saved-searches
                                  notmuch-hello-insert-alltags))
 
-  ;; Remove popup rule
+  ;; Remove pop-up rule, so it opens in its own buffer
   (set-popup-rule! "^\\*notmuch-hello" :ignore t)
 
   ;; Email list formats
@@ -226,7 +233,7 @@
           ("tags" . "(%s) ")
           ("subject" . "%-72s")))
 
-  ;; Use a custom command to fetch for new emails
+  ;; Use a custom command to fetch for new emails with mbsync
   (setq +notmuch-sync-backend 'custom
         +notmuch-sync-command "mbsync -a && notmuch new")
 
@@ -260,7 +267,7 @@
 ;;
 ;;; Misc
 
-;; Use binaries from Emacs as it works from the shell
+;; Executable paths in Emacs as it works from the shell
 (use-package! exec-path-from-shell
   :if (memq window-system '(mac ns x))
   :init

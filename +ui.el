@@ -152,11 +152,10 @@
 (set-display-table-slot standard-display-table 'truncation ?›)
 (set-display-table-slot standard-display-table 'wrap ?↵)
 
-;; Whitespace mode
+;; whitespace-mode
 ;; (global-whitespace-mode +1)  ; turns on whitespace mode globally
 (setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
-(setq whitespace-display-mappings
-      '((newline-mark 10 [?◦ 10])))  ; eol character
+(setq whitespace-display-mappings '((newline-mark 10 [?◦ 10])))  ; eol character
 
 ;; ;; Auto-activate writeroom on text-mode
 ;; (add-hook! 'text-mode-hook writeroom-mode)
