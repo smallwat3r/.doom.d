@@ -104,20 +104,6 @@
 ;;
 ;;; Editor
 
-;; Automatically center windows
-(use-package! perfect-margin
-  :custom (perfect-margin-visible-width 100)
-  :config
-  (perfect-margin-mode -1)  ; do not turn on by default
-
-  ;; scroll on margin areas
-  (dolist (margin '("<left-margin> " "<right-margin> "))
-    (global-set-key (kbd (concat margin "<mouse-1>")) 'ignore)
-    (global-set-key (kbd (concat margin "<mouse-3>")) 'ignore)
-    (dolist (multiple '("" "double-" "triple-"))
-      (global-set-key (kbd (concat margin "<" multiple "wheel-up>")) 'mwheel-scroll)
-      (global-set-key (kbd (concat margin "<" multiple "wheel-down>")) 'mwheel-scroll))))
-
 ;; git-gutter
 (after! git-gutter
   (setq git-gutter:window-width 1
@@ -131,6 +117,10 @@
 
 ;; Disable hl-line
 (remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
+
+;; When hl-line is available, do not override the color of rainbow-mode
+(add-hook! 'rainbow-mode-hook
+  (hl-line-mode (if rainbow-mode -1 +1)))
 
 ;; Set window dividers width
 (defvar global-window-divider-width 2
@@ -167,10 +157,6 @@
 (setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
 (setq whitespace-display-mappings
       '((newline-mark 10 [?◦ 10])))  ; eol character
-
-;; Do not override the color of rainbow-mode with hl-line-mode
-(add-hook! 'rainbow-mode-hook
-  (hl-line-mode (if rainbow-mode -1 +1)))
 
 ;; ;; Auto-activate writeroom on text-mode
 ;; (add-hook! 'text-mode-hook writeroom-mode)
