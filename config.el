@@ -61,7 +61,7 @@
 ;;; Ivy
 
 (after! ivy
-  ;; Popup to choose buffer when splitting the window
+  ;; Choose buffer when splitting the window
   (defadvice! prompt-for-buffer (&rest _)
     :after '(evil-window-split evil-window-vsplit)
     (+ivy/switch-buffer))
@@ -71,10 +71,10 @@
         ivy-count-format "(%d/%d) "
         +ivy-buffer-preview t))
 
-;; (after! ivy-posframe
-;;   (setq ivy-posframe-border-width 5)
-;;   (setq ivy-posframe-display-functions-alist
-;;         '((t . ivy-posframe-display-at-frame-center))))
+(after! ivy-posframe
+  (setq ivy-posframe-border-width 5)
+  (setq ivy-posframe-display-functions-alist
+        '((t . ivy-posframe-display-at-frame-top-center))))
 
 ;;
 ;;; Dired
@@ -138,6 +138,7 @@
   ;; Pylint
   (setq flycheck-python-pylint-executable "/usr/local/bin/pylint"
         flycheck-pylintrc "~/.config/pylintrc")
+
   (setq-hook! 'python-mode-hook
     flycheck-checker 'python-pylint)
 
