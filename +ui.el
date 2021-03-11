@@ -44,9 +44,8 @@
 
 (setq doom-font (font-spec :family default-monospace-font :size 14)
       doom-variable-pitch-font (font-spec :family default-serif-font)
-      doom-font-increment 1      ; Steps used to increment fonts
-      doom-big-font-increment 3  ; Inc of 3 points in big-font-mode
-      doom-themes-treemacs-enable-variable-pitch nil)
+      doom-font-increment 1
+      doom-big-font-increment 3)
 
 ;;
 ;;; Themes config
@@ -183,10 +182,6 @@
 
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))
-
-;; treemacs
-(after! treemacs
-  (treemacs-resize-icons 15))
 
 ;;
 ;;; Doom-dashboard

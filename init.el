@@ -2,7 +2,7 @@
 
 (doom! :completion company
        (ivy +fuzzy +prescient +childframe)
-       :ui deft doom-dashboard hl-todo ophints treemacs vc-gutter workspaces zen
+       :ui deft doom-dashboard hl-todo ophints vc-gutter workspaces zen
        (emoji +unicode)
        (popup +defaults)
        :editor file-templates format snippets word-wrap
