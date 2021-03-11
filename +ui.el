@@ -16,6 +16,9 @@
 (set-frame-parameter (selected-frame) 'alpha '(97 97))
 (add-to-list 'default-frame-alist '(alpha 97 97))
 
+;; Hide file icon from frame window
+(setq ns-use-proxy-icon nil)
+
 ;; Disable UI fluff
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
@@ -59,7 +62,7 @@
          modus-vivendi-theme-intense-paren-match t
          modus-vivendi-theme-org-blocks 'rainbow
          modus-vivendi-theme-completions 'opinionated
-         modus-vivendi-theme-faint-syntax t)
+         modus-vivendi-theme-faint-syntax nil)
   :config (modus-vivendi-theme-with-color-variables
             (custom-theme-set-faces! 'modus-vivendi
               `(default :background "grey3" :foreground "grey90"))))
@@ -88,11 +91,6 @@
 
 ;; Do not show unwanted themes
 (delq! t custom-theme-load-path)
-
-;; High contrast override
-(setq simplicity-override-colors-alist
-      '(("simplicity-background" . "#000000")
-        ("simplicity-foreground" . "#eeeeee")))
 
 ;; Set up our default theme
 (setq doom-theme 'simplicity)
@@ -128,11 +126,11 @@
         git-gutter:added-sign "|"
         git-gutter:deleted-sign "|"))
 
-;; Hide file icon from frame window
-(setq ns-use-proxy-icon nil)
-
 ;; Disable line numbers by default
 (setq display-line-numbers-type nil)
+
+;; Disable hl-line
+(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
 
 ;; Set window dividers width
 (defvar global-window-divider-width 2
@@ -176,9 +174,6 @@
 
 ;; ;; Auto-activate writeroom on text-mode
 ;; (add-hook! 'text-mode-hook writeroom-mode)
-
-;; Disable hl-line-mode on most of the major modes
-(add-hook! (prog-mode text-mode conf-mode special-mode) (hl-line-mode -1))
 
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))

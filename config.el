@@ -136,7 +136,6 @@
   ;; Pylint
   (setq flycheck-python-pylint-executable "/usr/local/bin/pylint"
         flycheck-pylintrc "~/.config/pylintrc")
-
   (setq-hook! 'python-mode-hook
     flycheck-checker 'python-pylint)
 

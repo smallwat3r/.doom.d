@@ -11,8 +11,6 @@
   ;; Scrollin
   "C-2"   #'zz/scroll-up
   "C-1"   #'zz/scroll-down
-  "C-y"   #'zz/scroll-up
-  "C-e"   #'zz/scroll-down
 
   ;; Shrink and enlarge windows
   "S-C-h" #'shrink-window-horizontally
@@ -25,9 +23,6 @@
 
   ;; Delete blank lines below cursor position
   "M-o"   #'delete-blank-lines
-
-  ;; Cycle through frames
-  "M-`"   #'other-frame
 
   ;; Auto-format
   ";f"    #'format-all-buffer
@@ -59,6 +54,14 @@
  (:leader
   (:prefix "b"
    :desc "Kill buffer" "d" #'evil-delete-buffer)))
+
+;;
+;;; Frames
+
+(map!
+ (:leader
+  (:prefix "f"
+   :desc "Cycle through frame" "j" #'other-frame)))
 
 ;;
 ;;; Open stuff
