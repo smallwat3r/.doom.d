@@ -72,9 +72,7 @@
         +ivy-buffer-preview t))
 
 (after! ivy-posframe
-  (setq ivy-posframe-border-width 2)
-  (setq ivy-posframe-display-functions-alist
-        '((t . ivy-posframe-display-at-frame-top-center))))
+  (setq ivy-posframe-border-width 2))
 
 ;;
 ;;; Dired
