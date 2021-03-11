@@ -135,7 +135,7 @@
 ;; Writeroom font scaling
 (setq +zen-text-scale 1)
 
-;; No extra line spacing
+;; Line spacing
 (setq-default line-spacing 1)
 
 ;; Show indicator for empty lines (eg. the tildes in vim after eof)
@@ -192,15 +192,17 @@
 ;;
 ;;; Mini-modeline
 
-;; Evil vim modes faces text representation and colors
+;; Evil uses the term state for what is called a "mode" in regular vi usage,
+;; because modes are understood in Emacs terms to mean something else.
+;; Set-up the different states faces, we can then display these on the modeline.
 (setq
- evil-normal-state-tag   (propertize "N" 'face '((:foreground "DarkGoldenrod2")))
- evil-emacs-state-tag    (propertize "E" 'face '((:foreground "SkyBlue2")))
- evil-insert-state-tag   (propertize "I" 'face '((:foreground "medium sea green")))
- evil-replace-state-tag  (propertize "R" 'face '((:foreground "chocolate")))
- evil-motion-state-tag   (propertize "M" 'face '((:foreground "plum3")))
- evil-visual-state-tag   (propertize "V" 'face '((:foreground "red")))
- evil-operator-state-tag (propertize "O" 'face '((:foreground "sandy brown"))))
+ evil-normal-state-tag   (propertize "N" 'face '((:weight bold)))
+ evil-insert-state-tag   (propertize "I" 'face '((:weight bold :foreground "LimeGreen")))
+ evil-replace-state-tag  (propertize "R" 'face '((:weight bold :foreground "DarkGoldenrod")))
+ evil-visual-state-tag   (propertize "V" 'face '((:weight bold :foreground "DarkOrange")))
+ evil-emacs-state-tag    (propertize "E" 'face '((:weight bold)))
+ evil-motion-state-tag   (propertize "M" 'face '((:weight bold)))
+ evil-operator-state-tag (propertize "O" 'face '((:weight bold))))
 
 (use-package! mini-modeline
   :init
