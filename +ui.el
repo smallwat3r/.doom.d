@@ -99,7 +99,8 @@
 (custom-set-faces!
   '(line-number :background nil :foreground "#3b3b3b" :height 100)
   '(line-number-current-line :background nil :height 100)
-  '(whitespace-newline :background nil :inherit font-lock-comment-face))
+  '(whitespace-newline :background nil :inherit font-lock-comment-face)
+  '(+workspace-tab-selected-face :background nil :box (:line-width 2 :color "cyan")))
 
 ;;
 ;;; Editor

@@ -1,7 +1,7 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
 (doom! :completion company
-       (ivy +fuzzy +prescient +childframe)
+       (ivy +fuzzy +prescient)
        :ui deft doom-dashboard hl-todo ophints vc-gutter workspaces zen
        (emoji +unicode)
        (popup +defaults)

@@ -71,11 +71,6 @@
     :after '(evil-window-split evil-window-vsplit)
     (+ivy/switch-buffer)))
 
-
-;; Let Ivy use posframe to show its candidate menu
-(after! ivy-posframe
-  (setq ivy-posframe-border-width 2))
-
 ;;
 ;;; Dired
 
