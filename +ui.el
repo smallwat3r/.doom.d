@@ -92,6 +92,11 @@
 ;; Do not show unwanted themes
 (delq! t custom-theme-load-path)
 
+;; High contrast override
+(setq simplicity-override-colors-alist
+      '(("simplicity-background" . "#000000")
+        ("simplicity-foreground" . "#eeeeee")))
+
 ;; Set up our default theme
 (setq doom-theme 'simplicity)
 
