@@ -1,3 +1,17 @@
 #+TITLE: .doom.d
 
 This is my personal Doom Emacs config.
+
+Install Emacs, I'm personally using the emacs-mac port for macOS:
+#+begin_src shell
+brew tap railwaycat/emacsmacport
+brew install emacs-mac --with-no-title-bars
+#+end_src
+
+Install Doom:
+#+begin_src shell
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+#+end_src
+
+Link these configs to your ~~/.doom.d~ folder.

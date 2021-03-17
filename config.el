@@ -156,6 +156,13 @@
 ;; -ci: Indent switch cases
 (set-formatter! 'shfmt "shfmt -i 2 -ci")
 
+;; Python formatter settings (black)
+(after! python
+  (set-formatter! 'black
+    '("black" "-q" "-l" "100" "-"
+      ("--pyi" (string= (file-name-extension buffer-file-name) "pyi")))
+    :modes '(python-mode)))
+
 ;; Delete all whitespace on save, except on markdown-mode
 (add-hook! 'before-save-hook
   (lambda ()
