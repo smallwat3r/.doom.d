@@ -13,13 +13,6 @@
 (package! esh-autosuggest)
 (package! google-translate)
 (package! lorem-ipsum)
-
-;;
-;;; Themes
-
-(package! modus-vivendi-theme)
-(package! modus-operandi-theme)
-
 (package! simplicity-theme :recipe
   (:host github
    :repo "smallwat3r/emacs-simplicity-theme"))

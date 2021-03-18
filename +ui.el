@@ -4,8 +4,8 @@
 ;;; Frame
 
 ;; Default frame size on start-up
-(add-to-list 'default-frame-alist '(width . 109))
-(add-to-list 'default-frame-alist '(height . 65))
+(add-to-list 'default-frame-alist '(width . 100))
+(add-to-list 'default-frame-alist '(height . 55))
 
 ;; No titlebar and borders, keep it super simple
 (add-to-list 'default-frame-alist '(drag-internal-border . 1))
@@ -38,55 +38,19 @@
 ;;
 ;;; Fonts
 
-(defvar default-monospace-font "Fira Code"
+(defvar default-monospace-font "Sometype Mono"
   "Default Monospace font")
 
 (defvar default-serif-font "Verdana"
   "Default Serif font")
 
-(setq doom-font (font-spec :family default-monospace-font :size 14)
+(setq doom-font (font-spec :family default-monospace-font :size 15)
       doom-variable-pitch-font (font-spec :family default-serif-font)
       doom-font-increment 1
-      doom-big-font-increment 3)
+      doom-big-font-increment 2)
 
 ;;
 ;;; Themes config
-
-(use-package! modus-vivendi-theme  ; dark theme
-  :init (setq
-         modus-vivendi-theme-slanted-constructs nil
-         modus-vivendi-theme-bold-constructs nil
-         modus-vivendi-theme-intense-hl-line nil
-         modus-vivendi-theme-subtle-diffs t
-         modus-vivendi-theme-intense-paren-match t
-         modus-vivendi-theme-org-blocks 'rainbow
-         modus-vivendi-theme-completions 'opinionated
-         modus-vivendi-theme-faint-syntax nil)
-  :config (modus-vivendi-theme-with-color-variables
-            (custom-theme-set-faces! 'modus-vivendi
-              `(default :background "grey3" :foreground "grey90"))))
-
-(use-package! modus-operandi-theme  ; light theme
-  :init (setq
-         modus-operandi-theme-slanted-constructs nil
-         modus-operandi-theme-bold-constructs nil
-         modus-operandi-theme-intense-hl-line nil
-         modus-operandi-theme-intense-paren-match t
-         modus-operandi-theme-org-blocks 'rainbow
-         modus-operandi-theme-completions 'opinionated)
-  :config (modus-operandi-theme-with-color-variables
-            (custom-theme-set-faces! 'modus-operandi
-              `(default :background "papaya whip")
-              `(term :background "papaya whip"))))
-
-;; HACK: Change default background color when using vterm within modus-operandi.
-;; Changing it by setting vterm-color-default above doesn't seems to work anymore.
-(add-hook 'vterm-mode-hook
-          (lambda()
-            (when (string= doom-theme "modus-operandi")
-              (set (make-local-variable 'buffer-face-mode-face)
-                   '(:background "bisque"))
-              (buffer-face-mode t))))
 
 ;; Do not show standard themes
 (delq! t custom-theme-load-path)
@@ -104,7 +68,7 @@
   '(line-number :background nil :foreground "#3b3b3b" :height 100)
   '(line-number-current-line :background nil :height 100)
   '(whitespace-newline :background nil :inherit font-lock-comment-face)
-  '(+workspace-tab-selected-face :background nil :foreground "PeachPuff" :weight bold))
+  '(+workspace-tab-selected-face :background nil :foreground "yellow" :weight bold))
 
 ;;
 ;;; Editor
@@ -137,7 +101,7 @@
 (setq +zen-text-scale 1)
 
 ;; Line spacing
-(setq-default line-spacing 1)
+(setq-default line-spacing 0)
 
 ;; Show indicator for empty lines (eg. the tildes in vim after eof)
 ;; (setq-default indicate-empty-lines t)
