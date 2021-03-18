@@ -3,29 +3,28 @@
 ;;
 ;;; Frame
 
-(setq default-frame-alist
-      '((ns-transparent-titlebar . t)
-        (ns-appearance . dark)
-        (vertical-scroll-bars . nil)
-        (left-fringe 2)
-        (right-fringe 2)
-        (width . 100)
-        (height . 60)))
+;; Default frame size on start-up
+(add-to-list 'default-frame-alist '(width . 109))
+(add-to-list 'default-frame-alist '(height . 65))
+
+;; No titlebar and borders, keep it super simple
+(add-to-list 'default-frame-alist '(drag-internal-border . 1))
+(add-to-list 'default-frame-alist '(internal-border-width . 0))
 
 ;; Frame transparency
-(set-frame-parameter (selected-frame) 'alpha '(97 97))
-(add-to-list 'default-frame-alist '(alpha 97 97))
+(set-frame-parameter (selected-frame) 'alpha '(98 98))
+(add-to-list 'default-frame-alist '(alpha 98 98))
 
 ;; Hide file icon from frame window
 (setq ns-use-proxy-icon nil)
 
 ;; Disable UI fluff
-(menu-bar-mode -1)
 (toggle-scroll-bar -1)
+(menu-bar-mode -1)
 (tool-bar-mode -1)
 
-;; Set up frame title. It shows the title of the current file and an
-;; indicator if the file has been modified eg. (+)
+;; In case I want a titlebar, this shows the title of the current file and a
+;; flag if the file has been modified eg. (+)
 (setq-default frame-title-format
               '("Emacs - " user-login-name "@" system-name " - "
                 (:eval
@@ -100,23 +99,19 @@
 ;; Set up our default theme
 (setq doom-theme 'simplicity)
 
-;; Overwrite some global theme stuff
+;; Overwrite global theme faces
 (custom-set-faces!
   '(line-number :background nil :foreground "#3b3b3b" :height 100)
   '(line-number-current-line :background nil :height 100)
   '(whitespace-newline :background nil :inherit font-lock-comment-face)
-  '(+workspace-tab-selected-face :background nil :box (:line-width 2 :color "cyan")))
+  '(+workspace-tab-selected-face :background nil :foreground "PeachPuff" :weight bold))
 
 ;;
 ;;; Editor
 
-;; git-gutter
-(after! git-gutter
-  (setq git-gutter:window-width 1
-        git-gutter:hide-gutter t
-        git-gutter:modified-sign "|"
-        git-gutter:added-sign "|"
-        git-gutter:deleted-sign "|"))
+;; Git fringe
+(after! git-gutter-fringe
+  (fringe-mode 2))
 
 ;; Disable line numbers by default
 (setq display-line-numbers-type nil)

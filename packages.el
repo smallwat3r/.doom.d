@@ -13,8 +13,6 @@
 (package! esh-autosuggest)
 (package! google-translate)
 (package! lorem-ipsum)
-(package! git-gutter)
-(package! git-gutter-fringe :disable t)
 
 ;;
 ;;; Themes
