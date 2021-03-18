@@ -55,16 +55,13 @@
 ;; Do not show standard themes
 (delq! t custom-theme-load-path)
 
-;; High contrast override
-;; (setq simplicity-override-colors-alist
-;;       '(("simplicity-background" . "#000000")
-;;         ("simplicity-foreground" . "#eeeeee")))
-
 ;; Set up our default theme
-(setq doom-theme 'simplicity)
+(setq doom-solarized-dark-brighter-text t)
+(setq doom-theme 'doom-solarized-dark)
 
 ;; Overwrite global theme faces
 (custom-set-faces!
+  '(default :background "#00212B")  ; darker bg for solarized-dark
   '(line-number :background nil :foreground "#3b3b3b" :height 100)
   '(line-number-current-line :background nil :height 100)
   '(whitespace-newline :background nil :inherit font-lock-comment-face)
