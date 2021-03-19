@@ -29,16 +29,14 @@
       user-mail-address-2 "matthieu@smallwatersolutions.com")
 
 ;; Some general settings
-(setq
- evil-vsplit-window-right t
- evil-split-window-below t
- default-directory "~/"
- undo-limit 80000000
- evil-want-fine-undo t             ; fine grained undo history
- inhibit-compacting-font-caches t  ; improve general perfs
- scroll-margin 7                   ; top and bottom margins to trigger scroll
- which-key-idle-delay 0.5          ; delay to show key bindings menu
- )
+(setq evil-vsplit-window-right t
+      evil-split-window-below t
+      default-directory "~/"
+      undo-limit 80000000
+      evil-want-fine-undo t             ; fine grained undo history
+      inhibit-compacting-font-caches t  ; improve general perfs
+      scroll-margin 7                   ; top and bottom margins to trigger scroll
+      which-key-idle-delay 0.2)         ; delay to show key bindings menu
 
 ;; My abbreviations. These are stored in abbrev.el
 (setq abbrev-file-name (expand-file-name "abbrev.el" doom-private-dir))
@@ -76,23 +74,20 @@
 
 (after! dired
   (setq delete-by-moving-to-trash t
-        dired-listing-switches "-lat"  ; sort by date
-        ))
+        dired-listing-switches "-lat"))  ; sort by date
 
 ;; Narrowing searchs in dired
 (use-package! dired-narrow
   :after dired
-  :config
-  (map! :map dired-mode-map
-        :n "/" #'dired-narrow-fuzzy))
+  :config (map! :map dired-mode-map
+                :n "/" #'dired-narrow-fuzzy))
 
 ;; Toggle directories with TAB in dired
 (use-package! dired-subtree
   :after dired
-  :config
-  (map! :map dired-mode-map
-        "<tab>" #'dired-subtree-toggle
-        "<backtab>" #'dired-subtree-cycle))
+  :config (map! :map dired-mode-map
+                "<tab>" #'dired-subtree-toggle
+                "<backtab>" #'dired-subtree-cycle))
 
 ;;
 ;;; Company
@@ -103,10 +98,9 @@
   (setq +lsp-company-backends
         '(:separate company-yasnippet company-capf))
 
-  (setq company-idle-delay 0.1            ; Add minimal delay
-        company-tooltip-limit 10          ; Dropdown of 10 lines long
-        company-minimum-prefix-length 2)  ; Needs >2 chars before showing
-  )
+  (setq company-idle-delay 0.1             ; Add minimal delay
+        company-tooltip-limit 10           ; Dropdown of 10 lines long
+        company-minimum-prefix-length 2))  ; Needs >2 chars before showing
 
 ;; Language specifics
 (after! go-mode (set-company-backend! 'go-mode 'company-yasnippet))
@@ -129,8 +123,7 @@
 ;;; Linters, checkers and programming language specifics
 
 (add-hook! python-mode
-  (setq python-shell-interpreter
-        "/usr/local/opt/python@3.9/bin/python3.9"))
+  (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9"))
 
 (after! flycheck
   ;; Pylint (python)
@@ -272,9 +265,8 @@
 ;; Executable paths in Emacs as it works from the shell
 (use-package! exec-path-from-shell
   :if (memq window-system '(mac ns x))
-  :init
-  (setq exec-path-from-shell-arguments '("-l")  ; disable annoying warning
-        exec-path-from-shell-variables '("PATH" "GOPATH"))
+  :init (setq exec-path-from-shell-arguments '("-l")  ; disable annoying warning
+              exec-path-from-shell-variables '("PATH" "GOPATH"))
   :config (exec-path-from-shell-initialize))
 
 ;; google-translate
@@ -293,10 +285,9 @@
 
 ;; lorem-ipsum
 (use-package! lorem-ipsum
-  :config
-  (map!
-   (:leader
-    (:prefix ("l" . "lorem ipsum")
-     :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
-     :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
-     :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
+  :config (map!
+           (:leader
+            (:prefix ("l" . "lorem ipsum")
+             :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
+             :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
+             :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
