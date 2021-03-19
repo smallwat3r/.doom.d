@@ -60,21 +60,33 @@
 
 ;; Overwrite global theme faces
 (custom-set-faces!
-  '(default :background "#000000")  ; darkest background
+  ;; Darkest background possible
+  '(default :background "#000000")
+
+  ;; Comments and docstrings should always be green
   '(font-lock-comment-face :foreground "#329400")
   '(font-lock-doc-face :foreground "#329400")
+
+  ;; Remove some additional syntax highlighting, keep it simple
   '(font-lock-function-name-face :foreground nil)
   '(font-lock-variable-name-face :foreground nil)
   '(font-lock-constant-face :foreground nil)
   '(font-lock-type-face :foreground nil)
+
+  ;; Line numbers
   '(line-number :background nil :foreground "#3b3b3b" :height 100)
   '(line-number-current-line :background nil :height 100)
+
+  ;; Miscellaneous
   '(whitespace-newline :background nil :inherit font-lock-comment-face)
   '(+workspace-tab-selected-face :background nil :foreground "#329400" :weight bold)
   '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold)
+
+  ;; git-gutter-fringe
   '(git-gutter-fr:added :foreground "#329400")
   '(git-gutter-fr:modified :foreground "#f0da00")
-  '(git-gutter-fr:deleted :foreground "#d11141"))
+  '(git-gutter-fr:deleted :foreground "#d11141")
+  )
 
 ;;
 ;;; Editor
