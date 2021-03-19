@@ -56,16 +56,25 @@
 (delq! t custom-theme-load-path)
 
 ;; Set up our default theme
-(setq doom-solarized-dark-brighter-text t)
-(setq doom-theme 'doom-solarized-dark)
+(setq doom-theme 'doom-dark+)
 
 ;; Overwrite global theme faces
 (custom-set-faces!
-  '(default :background "#00212B")  ; darker bg for solarized-dark
+  '(default :background "#000000")  ; darkest background
+  '(font-lock-comment-face :foreground "#329400")
+  '(font-lock-doc-face :foreground "#329400")
+  '(font-lock-function-name-face :foreground nil)
+  '(font-lock-variable-name-face :foreground nil)
+  '(font-lock-constant-face :foreground nil)
+  '(font-lock-type-face :foreground nil)
   '(line-number :background nil :foreground "#3b3b3b" :height 100)
   '(line-number-current-line :background nil :height 100)
   '(whitespace-newline :background nil :inherit font-lock-comment-face)
-  '(+workspace-tab-selected-face :background nil :foreground "yellow" :weight bold))
+  '(+workspace-tab-selected-face :background nil :foreground "#329400" :weight bold)
+  '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold)
+  '(git-gutter-fr:added :foreground "#329400")
+  '(git-gutter-fr:modified :foreground "#f0da00")
+  '(git-gutter-fr:deleted :foreground "#d11141"))
 
 ;;
 ;;; Editor
