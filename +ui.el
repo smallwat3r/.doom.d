@@ -7,7 +7,7 @@
 (add-to-list 'default-frame-alist '(width . 100))
 (add-to-list 'default-frame-alist '(height . 55))
 
-;; No titlebar and borders, keep it super simple
+;; Keep titlebar and borders super simple
 (add-to-list 'default-frame-alist '(drag-internal-border . 1))
 (add-to-list 'default-frame-alist '(internal-border-width . 0))
 
@@ -23,7 +23,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-;; In case I want a titlebar, this shows the title of the current file and a
+;; In case there is a titlebar, this shows the title of the current file and a
 ;; flag if the file has been modified eg. (+)
 (setq-default frame-title-format
               '("Emacs - " user-login-name "@" system-name " - "
@@ -38,7 +38,7 @@
 ;;
 ;;; Fonts
 
-(defvar default-monospace-font "Sometype Mono"
+(defvar default-monospace-font "Inconsolata"
   "Default Monospace font")
 
 (defvar default-serif-font "Verdana"
@@ -56,7 +56,7 @@
 (delq! t custom-theme-load-path)
 
 ;; Set up our default theme
-(setq doom-theme 'doom-dark+)
+(setq doom-theme 'doom-laserwave)
 
 ;; Overwrite global theme faces
 (custom-set-faces!
@@ -180,34 +180,16 @@
   ;; keep the modeline information on the right side of the mini-buffer so it still
   ;; has enough space to display useful information on the left side (eg. commands
   ;; information, echos, documentation etc).
-  (setq
-   mini-modeline-enhance-visual nil
-   mini-modeline-display-gui-line nil
-   mini-modeline-r-format
-   (list
-    '(:eval (propertize                ; Current filename
-             " %b"
-             'help-echo (buffer-file-name)))
-    '(vc-mode vc-mode)                 ; Current git branch
-    " "
-    (propertize "%02l,%02c "           ; Current line and column
-                'help-echo "Line and column index")
-    '(:eval (propertize                ; Major Mode
-             "%m"
-             'help-echo "Buffer major mode"))
-    '(:eval (when (buffer-modified-p)  ; Modified?
-              (propertize
-               " [Mod]"
-               'help-echo "Buffer has been modified"
-               'face 'font-lock-warning-face)))
-    '(:eval (when buffer-read-only     ; Read only?
-              (propertize
-               " [RO]"
-               'help-echo "Buffer is read-only"
-               'face 'font-lock-type-face)))
-    '(:eval (propertize                ; Time
-             (format-time-string " %a %b %d %H:%M ")
-             'help-echo (concat (format-time-string "%c; week %V; ")
-                                (emacs-uptime "Uptime: %hh"))))
-    '(:eval evil-mode-line-tag)))      ; Evil mode
+  (setq mini-modeline-enhance-visual nil
+        mini-modeline-display-gui-line nil)
+  ;; Modeline format
+  (setq mini-modeline-r-format
+        '("%e"
+          evil-mode-line-tag
+          mode-line-modified
+          (:eval (propertize "%b" 'face '((t (:weight bold)))))
+          " %l:%c "
+          (:eval (propertize "%m" 'face '((t (:weight bold)))))
+          vc-mode
+          (:eval (format-time-string " %a.%b.%d %H:%M"))))
   :config (mini-modeline-mode t))
