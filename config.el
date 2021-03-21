@@ -258,18 +258,18 @@
 ;;; Kubernetes
 
 (use-package! kubernetes
-  :config (map!
-           (:leader
-            (:prefix ("k" . "kubernetes")
-             :desc "Overview"           "o" #'kubernetes-overview
-             :desc "Set context"        "c" #'kubernetes-use-context
-             :desc "Set namespace"      "n" #'kubernetes-set-namespace
-             :desc "Display logs"       "l" #'kubernetes-logs-fetch-all
-             :desc "Display service"    "s" #'kubernetes-display-service
-             :desc "Display deployment" "d" #'kubernetes-display-deployment
-             :desc "Describe"           "D" #'kubernetes-describe-pod
-             :desc "Exec into"          "e" #'kubernetes-exec-into))))
-
+  :config
+  (map!
+   (:leader
+    (:prefix ("k" . "kubernetes")
+     :desc "Overview"           "o" #'kubernetes-overview
+     :desc "Set context"        "c" #'kubernetes-use-context
+     :desc "Set namespace"      "n" #'kubernetes-set-namespace
+     :desc "Display logs"       "l" #'kubernetes-logs-fetch-all
+     :desc "Display service"    "s" #'kubernetes-display-service
+     :desc "Display deployment" "d" #'kubernetes-display-deployment
+     :desc "Describe"           "D" #'kubernetes-describe-pod
+     :desc "Exec into"          "e" #'kubernetes-exec-into))))
 
 (use-package! kubernetes-evil
   :after kubernetes)
