@@ -43,7 +43,7 @@
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
 
-;; Custom file. File used by Emacs to cache some data relative to the config
+;; Custom File. File used by Emacs to cache some data relative to the config
 (setq-default custom-file (expand-file-name ".custom.el" doom-private-dir))
 (when (file-exists-p custom-file)
   (load custom-file))

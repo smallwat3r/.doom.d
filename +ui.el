@@ -200,7 +200,7 @@
           evil-mode-line-tag
           mode-line-modified
           (:eval (propertize "%b" 'face '((t (:weight bold)))))
-          " %l:%c "
+          " %l:%c %p "
           (:eval (propertize "%m" 'face '((t (:weight bold)))))
           vc-mode
           (:eval (format-time-string " %a.%b.%d %H:%M"))))
