@@ -4,7 +4,6 @@
 ;;; Load configs
 
 (load! "+ui")
-(load! "+bindings")
 (load! "+functions")
 (load! "+eshell")
 
@@ -47,6 +46,60 @@
 (setq-default custom-file (expand-file-name ".custom.el" doom-private-dir))
 (when (file-exists-p custom-file)
   (load custom-file))
+
+;;
+;;; Bindings
+
+;; Make sure M-3 prints a hash symbol
+(map! (:map key-translation-map "M-3" "#"))
+
+;; Leader specific mappings
+(map!
+ (:leader
+  (:prefix "f" :desc "Cycle through frame" "j" #'other-frame)
+  (:prefix "b" :desc "Kill buffer" "d" #'evil-delete-buffer)
+  (:prefix "o" :desc "Browse URL" "u" #'browse-url-at-point)))
+
+(map!
+ (:map evil-normal-state-map
+  ;; Scrolling
+  "C-2"   #'zz/scroll-up
+  "C-1"   #'zz/scroll-down
+
+  ;; Shrink and enlarge windows
+  "S-C-h" #'shrink-window-horizontally
+  "S-C-l" #'enlarge-window-horizontally
+  "S-C-k" #'enlarge-window
+  "S-C-j" #'shrink-window
+
+  ;; Toggle spacing options
+  "M-SPC" #'cycle-spacing
+
+  ;; Delete blank lines below cursor position
+  "M-o"   #'delete-blank-lines
+
+  ;; Auto-format
+  ";f"    #'format-all-buffer
+
+  ;; General actions (write, save, close etc)
+  ";w"    #'evil-write
+  ";x"    #'evil-save
+  ";q"    #'evil-save-and-close
+
+  ;; Splitting current buffer
+  ";vs"   #'evil-window-vsplit ; vertical
+  ";sp"   #'evil-window-split  ; horizontal
+
+  ;; Create new window (split screen)
+  ";vw"   #'evil-window-vnew   ; vertical
+  ";sw"   #'evil-window-new    ; horizontal
+
+  ;; Clear search highlights
+  ";,"    #'evil-ex-nohighlight)
+
+ ;; Join lines instead of deleting region
+ (:map (evil-insert-state-map evil-normal-state-map)
+  "M-k"   #'evil-join))
 
 ;;
 ;;; Projectile
@@ -192,10 +245,31 @@
 ;; (add-hook 'magit-status-mode-hook #'writeroom-mode 'append)
 
 ;;
+;;; Docker
+
+(map!
+ (:leader
+  (:prefix ("d" . "docker")
+   :desc "List images"     "i" #'docker-images
+   :desc "List containers" "c" #'docker-containers
+   :desc "Exec into"       "e" #'docker-container-shell)))
+
+;;
 ;;; Kubernetes
 
 (use-package! kubernetes
-  :commands (kubernetes-overview))
+  :config (map!
+           (:leader
+            (:prefix ("k" . "kubernetes")
+             :desc "Overview"           "o" #'kubernetes-overview
+             :desc "Set context"        "c" #'kubernetes-use-context
+             :desc "Set namespace"      "n" #'kubernetes-set-namespace
+             :desc "Display logs"       "l" #'kubernetes-logs-fetch-all
+             :desc "Display service"    "s" #'kubernetes-display-service
+             :desc "Display deployment" "d" #'kubernetes-display-deployment
+             :desc "Describe"           "D" #'kubernetes-describe-pod
+             :desc "Exec into"          "e" #'kubernetes-exec-into))))
+
 
 (use-package! kubernetes-evil
   :after kubernetes)
@@ -248,6 +322,12 @@
   (setq deft-directory my-notes-directory
         deft-recursive t))
 
+(map!
+ (:leader
+  (:prefix "n"
+   :desc "Deft open" "D" #'deft
+   :desc "Deft new"  "d" #'deft-new-file)))
+
 ;; org
 (after! org
   (setq org-directory my-notes-directory
@@ -282,6 +362,15 @@
      :desc "Translate query"    "q" #'google-translate-query-translate
      :desc "Translate at point" "t" #'google-translate-at-point
      :desc "Translate buffer"   "b" #'google-translate-buffer))))
+
+;; google-this
+(use-package! google-this
+  :config (map!
+           (:leader
+            (:prefix ("G" . "google")
+             :desc "Query google"     "q" #'google-this
+             :desc "Google this word" "w" #'google-this-word
+             :desc "Google this line" "l" #'google-this-line))))
 
 ;; lorem-ipsum
 (use-package! lorem-ipsum

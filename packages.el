@@ -8,10 +8,11 @@
 (package! jinja2-mode)
 (package! dired-narrow)
 (package! dired-subtree)
-(package! ripgrep)
+(package! deadgrep)
 (package! scratch)
 (package! esh-autosuggest)
 (package! google-translate)
+(package! google-this)
 (package! lorem-ipsum)
 (package! simplicity-theme :recipe
   (:host github
