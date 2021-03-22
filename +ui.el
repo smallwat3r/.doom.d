@@ -47,13 +47,17 @@
 (setq doom-font (font-spec :family default-monospace-font :size 15)
       doom-variable-pitch-font (font-spec :family default-serif-font)
       doom-font-increment 1
-      doom-big-font-increment 2)
+      doom-big-font-increment 2
+      doom-themes-treemacs-enable-variable-pitch nil)
 
 ;;
 ;;; Themes config
 
 ;; Do not show standard themes
 (delq! t custom-theme-load-path)
+
+(after! doom-themes
+  (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
 
 ;; Set up our default theme
 (setq doom-theme 'doom-laserwave)
@@ -94,6 +98,10 @@
 ;; Git fringe
 (after! git-gutter-fringe
   (fringe-mode 2))
+
+;; Treemacs
+(after! treemacs
+  (treemacs-resize-icons 12))
 
 ;; Disable line numbers by default
 (setq display-line-numbers-type nil)
