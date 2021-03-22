@@ -184,15 +184,15 @@
 
 ;; Evil uses the term state for what is called a "mode" in regular vi usage,
 ;; because modes are understood in Emacs terms to mean something else.
-;; Set-up the different states faces, we can then display these on the modeline.
+;; Set-up the different states faces so we can display these on the modeline.
 (setq
- evil-normal-state-tag   (propertize "N" 'face '((:weight bold)))
- evil-insert-state-tag   (propertize "I" 'face '((:weight bold :foreground "LimeGreen")))
- evil-replace-state-tag  (propertize "R" 'face '((:weight bold :foreground "DarkGoldenrod")))
- evil-visual-state-tag   (propertize "V" 'face '((:weight bold :foreground "DarkOrange")))
- evil-emacs-state-tag    (propertize "E" 'face '((:weight bold)))
- evil-motion-state-tag   (propertize "M" 'face '((:weight bold)))
- evil-operator-state-tag (propertize "O" 'face '((:weight bold))))
+ evil-normal-state-tag   (propertize "●" 'face '((:weight bold :foreground "LimeGreen")))
+ evil-insert-state-tag   (propertize "●" 'face '((:weight bold :foreground "red")))
+ evil-replace-state-tag  (propertize "●" 'face '((:weight bold :foreground "DarkGoldenrod")))
+ evil-visual-state-tag   (propertize "●" 'face '((:weight bold :foreground "yellow")))
+ evil-emacs-state-tag    (propertize "●")
+ evil-motion-state-tag   (propertize "●")
+ evil-operator-state-tag (propertize "●"))
 
 (use-package! mini-modeline
   :init
