@@ -10,12 +10,6 @@
 ;;
 ;;; General
 
-;; Some packages still use the "cl" package (replaced by "cl-lib") as a dependency
-;; and Emacs triggers a warning on start-up. The below line is a temporary solution
-;; to disable this warning. It's recommended to add it to the early-init.el file but
-;; this seems to do the trick here also.
-(setq byte-compile-warnings '(cl-functions))
-
 ;; Disable confirmation prompt when exiting Emacs.
 (setq confirm-kill-emacs nil)
 
@@ -53,7 +47,6 @@
 ;; Make sure M-3 prints a hash symbol
 (map! (:map key-translation-map "M-3" "#"))
 
-;; Leader specific mappings
 (map!
  (:leader
   (:prefix "f" :desc "Cycle through frame" "j" #'other-frame)
@@ -62,44 +55,17 @@
 
 (map!
  (:map evil-normal-state-map
-  ;; Scrolling
   "C-2"   #'zz/scroll-up
   "C-1"   #'zz/scroll-down
-
-  ;; Shrink and enlarge windows
   "S-C-h" #'shrink-window-horizontally
   "S-C-l" #'enlarge-window-horizontally
   "S-C-k" #'enlarge-window
   "S-C-j" #'shrink-window
-
-  ;; Toggle spacing options
   "M-SPC" #'cycle-spacing
-
-  ;; Delete blank lines below cursor position
   "M-o"   #'delete-blank-lines
-
-  ;; Auto-format
   ";f"    #'format-all-buffer
-
-  ;; General actions (write, save, close etc)
-  ";w"    #'evil-write
-  ";x"    #'evil-save
   ";q"    #'evil-save-and-close
-
-  ;; Splitting current buffer
-  ";vs"   #'evil-window-vsplit ; vertical
-  ";sp"   #'evil-window-split  ; horizontal
-
-  ;; Create new window (split screen)
-  ";vw"   #'evil-window-vnew   ; vertical
-  ";sw"   #'evil-window-new    ; horizontal
-
-  ;; Clear search highlights
-  ";,"    #'evil-ex-nohighlight)
-
- ;; Join lines instead of deleting region
- (:map (evil-insert-state-map evil-normal-state-map)
-  "M-k"   #'evil-join))
+  ";w"    #'evil-write))
 
 ;;
 ;;; Projectile
