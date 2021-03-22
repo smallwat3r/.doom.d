@@ -155,12 +155,6 @@
         company-tooltip-limit 10           ; Dropdown of 10 lines long
         company-minimum-prefix-length 2))  ; Needs >2 chars before showing
 
-;; Language specifics
-(after! go-mode (set-company-backend! 'go-mode 'company-yasnippet))
-(after! python-mode (set-company-backend! 'python-mode 'company-yasnippet))
-(after! js2-mode (set-company-backend! 'js2-mode 'company-yasnippet))
-(after! sh-script (set-company-backend! 'sh-mode))
-
 ;;
 ;;; Vterm
 
@@ -175,20 +169,15 @@
 ;;
 ;;; Linters, checkers and programming language specifics
 
-(add-hook! python-mode
-  (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9"))
-
 (after! flycheck
   ;; Pylint (python)
   (setq flycheck-python-pylint-executable "/usr/local/bin/pylint"
         flycheck-pylintrc "~/.config/pylintrc")
-  (setq-hook! 'python-mode-hook
-    flycheck-checker 'python-pylint)
+  (setq-hook! 'python-mode-hook flycheck-checker 'python-pylint)
 
   ;; Shellcheck (bash)
   (setq flycheck-shellcheck-excluded-warnings '("SC1091"))
-  (setq-hook! 'sh-mode-hook
-    flycheck-checker 'sh-shellcheck))
+  (setq-hook! 'sh-mode-hook flycheck-checker 'sh-shellcheck))
 
 ;; Grammar spell checker
 (after! spell-fu
@@ -197,13 +186,19 @@
 ;; Force grammar spell checking to be turn on manually
 (remove-hook! (text-mode) #'spell-fu-mode)
 
-;; Bash formatter settings (shfmt)
-;; -i:  2 space identation
-;; -ci: Indent switch cases
-(set-formatter! 'shfmt "shfmt -i 2 -ci")
+;; Bash
+(after! sh-script
+  (set-company-backend! 'sh-mode nil)  ; disable backend because of slowliness
+  ;; shfmt formatter settings
+  ;; -i:  2 space identation
+  ;; -ci: Indent switch cases
+  (set-formatter! 'shfmt "shfmt -i 2 -ci"
+    :modes '(sh-mode)))
 
-;; Python formatter settings (black)
+;; Python
 (after! python
+  (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
+  ;; Black formatter settings
   (set-formatter! 'black
     '("black" "-q" "-l" "100" "-"
       ("--pyi" (string= (file-name-extension buffer-file-name) "pyi")))
