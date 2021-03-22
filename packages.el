@@ -1,5 +1,12 @@
-; -*- no-byte-compile: t; -*-
+;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
+
+(disable-packages!
+ solaire-mode
+ evil-snipe
+ anaconda-mode
+ company-anaconda
+ better-jumper)
 
 (package! exec-path-from-shell)
 (package! mini-modeline)

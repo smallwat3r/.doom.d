@@ -196,19 +196,14 @@
     :modes '(sh-mode)))
 
 ;; Python
+(add-hook! 'python-mode
+  (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9"))
+
 (after! python
-  (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
-  ;; Black formatter settings
   (set-formatter! 'black
     '("black" "-q" "-l" "100" "-"
       ("--pyi" (string= (file-name-extension buffer-file-name) "pyi")))
     :modes '(python-mode)))
-
-;; Delete all whitespace on save, except on markdown-mode
-(add-hook! 'before-save-hook
-  (lambda ()
-    (unless (eq major-mode 'markdown-mode)
-      (delete-trailing-whitespace))))
 
 ;; Scratch buffers
 (use-package! scratch
