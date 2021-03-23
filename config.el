@@ -308,18 +308,20 @@
 
 ;; google-this
 (use-package! google-this
-  :config (map!
-           (:leader
-            (:prefix ("G" . "google")
-             :desc "Query google"     "q" #'google-this
-             :desc "Google this word" "w" #'google-this-word
-             :desc "Google this line" "l" #'google-this-line))))
+  :config
+  (map!
+   (:leader
+    (:prefix ("G" . "google")
+     :desc "Query google"     "q" #'google-this
+     :desc "Google this word" "w" #'google-this-word
+     :desc "Google this line" "l" #'google-this-line))))
 
 ;; lorem-ipsum
 (use-package! lorem-ipsum
-  :config (map!
-           (:leader
-            (:prefix ("l" . "lorem ipsum")
-             :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
-             :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
-             :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
+  :config
+  (map!
+   (:leader
+    (:prefix ("l" . "lorem ipsum")
+     :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
+     :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
+     :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
