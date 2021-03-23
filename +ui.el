@@ -127,9 +127,6 @@
 ;; Line spacing
 (setq-default line-spacing 0)
 
-;; Wrap lines
-(global-visual-line-mode 1)
-
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))
 
