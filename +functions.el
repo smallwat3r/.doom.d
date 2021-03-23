@@ -11,22 +11,22 @@
   (evil-scroll-line-down 3))
 
 (defun zz/enlarge-window-horizontally ()
-  "Enlarge windown horizontally by 5 chars."
+  "Enlarge window horizontally by 5 chars."
   (interactive)
   (enlarge-window-horizontally 5))
 
 (defun zz/shrink-window-horizontally ()
-  "Shrink windown horizontally by 5 chars."
+  "Shrink window horizontally by 5 chars."
   (interactive)
   (shrink-window-horizontally 5))
 
 (defun zz/enlarge-window ()
-  "Enlarge windown by 5 chars."
+  "Enlarge window by 5 chars."
   (interactive)
   (enlarge-window 5))
 
 (defun zz/shrink-window ()
-  "Shrink windown by 5 chars."
+  "Shrink window by 5 chars."
   (interactive)
   (shrink-window 5))
 
