@@ -78,19 +78,17 @@
   '(font-lock-type-face :foreground nil)
 
   ;; Line numbers
-  '(line-number :background nil :foreground "#3b3b3b" :height 100)
-  '(line-number-current-line :background nil :height 100)
+  '(line-number :background nil :foreground "#3b3b3b" :height 120)
+  '(line-number-current-line :background nil :height 120)
 
   ;; Miscellaneous
-  '(whitespace-newline :background nil :inherit font-lock-comment-face)
   '(+workspace-tab-selected-face :background nil :foreground "#329400" :weight bold)
   '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold)
 
   ;; git-gutter-fringe
   '(git-gutter-fr:added :foreground "#329400")
   '(git-gutter-fr:modified :foreground "#f0da00")
-  '(git-gutter-fr:deleted :foreground "#d11141")
-  )
+  '(git-gutter-fr:deleted :foreground "#d11141"))
 
 ;;
 ;;; Editor
@@ -129,27 +127,8 @@
 ;; Line spacing
 (setq-default line-spacing 0)
 
-;; Show indicator for empty lines (eg. the tildes in vim after eof)
-;; (setq-default indicate-empty-lines t)
-
-;; Enable word-wrap (almost) everywhere
-(+global-word-wrap-mode +1)
-
-;; Disable global by default word-wrap in a few modes
-(add-to-list '+word-wrap-disabled-modes 'vterm-mode)
-(add-to-list '+word-wrap-disabled-modes 'notmuch-search-mode)
-
-;; Terminal line wrap symbols
-(set-display-table-slot standard-display-table 'truncation ?›)
-(set-display-table-slot standard-display-table 'wrap ?↵)
-
-;; whitespace-mode
-;; (global-whitespace-mode +1)  ; turns on whitespace mode globally
-(setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
-(setq whitespace-display-mappings '((newline-mark 10 [?◦ 10])))  ; eol character
-
-;; ;; Auto-activate writeroom on text-mode
-;; (add-hook! 'text-mode-hook writeroom-mode)
+;; Wrap lines
+(global-visual-line-mode 1)
 
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))

@@ -5,7 +5,7 @@
        :ui deft doom doom-dashboard hl-todo ophints treemacs vc-gutter workspaces zen
        (emoji +unicode)
        (popup +defaults)
-       :editor file-templates format snippets word-wrap
+       :editor file-templates format snippets
        (evil +everywhere)
        (fold +vimish-fold +evil-vimish-fold)
        :emacs dired electric undo vc

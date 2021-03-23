@@ -13,9 +13,6 @@
 ;; Disable confirmation prompt when exiting Emacs.
 (setq confirm-kill-emacs nil)
 
-;; Echo the command names in minibuffer as they are being used
-;; (add-hook! 'post-command-hook 'zz/echo-command-name)
-
 ;; Personal information
 (setq user-full-name "Matthieu Petiteau"
       user-mail-address "mpetiteau.pro@gmail.com"
@@ -57,10 +54,10 @@
  (:map evil-normal-state-map
   "C-2"   #'zz/scroll-up
   "C-1"   #'zz/scroll-down
-  "S-C-h" #'shrink-window-horizontally
-  "S-C-l" #'enlarge-window-horizontally
-  "S-C-k" #'enlarge-window
-  "S-C-j" #'shrink-window
+  "S-C-h" #'zz/enlarge-window-horizontally
+  "S-C-l" #'zz/shrink-window-horizontally
+  "S-C-k" #'zz/enlarge-window
+  "S-C-j" #'zz/shrink-window
   "M-SPC" #'cycle-spacing
   "M-o"   #'delete-blank-lines
   ";f"    #'format-all-buffer
@@ -189,16 +186,6 @@
 # restclient-mode
 # Examples: https://raw.githubusercontent.com/pashky/restclient.el/master/examples/httpbin
 #")))
-
-;;
-;;; magit
-
-;; ;; Use zen-mode to center the buffer
-;; (setq-hook! 'magit-status-mode-hook
-;;   +zen-text-scale 0
-;;   writeroom-width 80)
-
-;; (add-hook 'magit-status-mode-hook #'writeroom-mode 'append)
 
 ;;
 ;;; Docker

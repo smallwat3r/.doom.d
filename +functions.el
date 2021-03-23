@@ -10,6 +10,26 @@
   (interactive)
   (evil-scroll-line-down 3))
 
+(defun zz/enlarge-window-horizontally ()
+  "Enlarge windown horizontally by 5 chars."
+  (interactive)
+  (enlarge-window-horizontally 5))
+
+(defun zz/shrink-window-horizontally ()
+  "Shrink windown horizontally by 5 chars."
+  (interactive)
+  (shrink-window-horizontally 5))
+
+(defun zz/enlarge-window ()
+  "Enlarge windown by 5 chars."
+  (interactive)
+  (enlarge-window 5))
+
+(defun zz/shrink-window ()
+  "Shrink windown by 5 chars."
+  (interactive)
+  (shrink-window 5))
+
 (defun zz/add-scratch-buffer-header (text)
   "Add an automatic header to a scratch buffer."
   (when scratch-buffer
@@ -23,19 +43,6 @@
   "Start a scratch buffer in restclient-mode"
   (interactive)
   (scratch 'restclient-mode))
-
-(defun zz/echo-command-name ()
-  "Echo the command names in minibuffer as they are being used.
-Some obvious commands are hidden to remove any fluff."
-  (unless
-      (or (eq this-command 'self-insert-command)
-          (eq this-command 'evil-backward-char)
-          (eq this-command 'evil-forward-char)
-          (eq this-command 'scroll-up-line)
-          (eq this-command 'scroll-down-line)
-          (eq this-command 'previous-line)
-          (eq this-command 'next-line))
-    (message "%s" this-command)))
 
 ;; https://emacs.stackexchange.com/a/5583
 (defun zz/insert-color-hex (&optional arg)
