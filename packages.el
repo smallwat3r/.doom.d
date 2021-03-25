@@ -4,8 +4,8 @@
 (disable-packages!
  solaire-mode
  evil-snipe
- anaconda-mode
- company-anaconda
+ ;; anaconda-mode
+ ;; company-anaconda
  better-jumper)
 
 (package! exec-path-from-shell)

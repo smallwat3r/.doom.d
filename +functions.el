@@ -44,6 +44,18 @@
   (interactive)
   (scratch 'restclient-mode))
 
+(defun zz/locate-python-venv-path ()
+  "Look for python virtual environments in the workspace"
+  (interactive)
+  (-when-let (venv-base-directory (locate-dominating-file default-directory "env/"))
+    (concat venv-base-directory "env")))
+
+(defun zz/locate-python-venv-executable ()
+  "Look for python executable in virtual environment"
+  (interactive)
+  (or (executable-find (f-expand "bin/python" (zz/locate-python-venv-path)))
+      (with-no-warnings (python-shell-interpreter))))
+
 ;; https://emacs.stackexchange.com/a/5583
 (defun zz/insert-color-hex (&optional arg)
   "Select a color and insert its 24-bit hexadecimal RGB format.

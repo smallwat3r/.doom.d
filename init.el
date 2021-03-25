@@ -1,5 +1,7 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
+(setq comp-speed 2)
+
 (doom! :completion company
        (ivy +fuzzy +prescient)
        :ui deft doom doom-dashboard hl-todo ophints treemacs vc-gutter workspaces zen

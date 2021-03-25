@@ -5,7 +5,7 @@
 
 ;; Default frame size on start-up
 (add-to-list 'default-frame-alist '(width . 100))
-(add-to-list 'default-frame-alist '(height . 55))
+(add-to-list 'default-frame-alist '(height . 60))
 
 ;; Keep titlebar and borders super simple
 (add-to-list 'default-frame-alist '(drag-internal-border . 1))
@@ -26,7 +26,7 @@
 ;; In case there is a titlebar, this shows the title of the current file and a
 ;; flag if the file has been modified eg. (+)
 (setq-default frame-title-format
-              '("Emacs - " user-login-name "@" system-name " - "
+              '("Emacs - "
                 (:eval
                  (if (buffer-file-name)
                      (replace-regexp-in-string
@@ -66,6 +66,12 @@
 (custom-set-faces!
   ;; Darkest background possible
   '(default :background "#000000")
+  '(company-tooltip :background nil)
+
+  ;; org
+  '(org-block :background "#080808")
+  '(org-block-begin-line :background "#080808" :overline nil :underline nil)
+  '(org-block-end-line :background "#080808" :overline nil :underline nil)
 
   ;; Comments and docstrings should always be green
   '(font-lock-comment-face :foreground "#329400")

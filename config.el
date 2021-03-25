@@ -159,10 +159,8 @@
     :modes '(sh-mode)))
 
 ;; Python
-(add-hook! 'python-mode
-  (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9"))
-
 (after! python
+  (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
   (set-formatter! 'black
     '("black" "-q" "-l" "100" "-"
       ("--pyi" (string= (file-name-extension buffer-file-name) "pyi")))
