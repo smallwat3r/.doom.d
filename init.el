@@ -1,6 +1,6 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-(setq comp-speed 2)
+(setq comp-speed 2)  ; native compilation (gccemacs)
 
 (doom! :completion company
        (ivy +fuzzy +prescient)

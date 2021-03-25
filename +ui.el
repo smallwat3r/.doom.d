@@ -23,17 +23,18 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-;; In case there is a titlebar, this shows the title of the current file and a
-;; flag if the file has been modified eg. (+)
+;; In case there is a titlebar, this shows the current running Emacs version and
+;; the title of the current file and a flag (**) if the file has been modified
+;; (eg. **<filename>)
 (setq-default frame-title-format
-              '("Emacs - "
+              '("Emacs @ " emacs-version " - "
+                (:eval
+                 (if (buffer-modified-p) " **"))
                 (:eval
                  (if (buffer-file-name)
                      (replace-regexp-in-string
                       ".*/[0-9]*-?" " "
-                      (subst-char-in-string ?_ ? buffer-file-name)) "%b"))
-                (:eval
-                 (if (buffer-modified-p) " (+)"))))
+                      (subst-char-in-string ?_ ? buffer-file-name)) "%b"))))
 
 ;;
 ;;; Fonts

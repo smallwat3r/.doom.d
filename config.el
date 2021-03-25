@@ -67,6 +67,9 @@
 ;;
 ;;; Projectile
 
+;; Run `projectile-discover-projects-in-search-path' to autoload all the projects from the
+;; `projectile-project-search-path' list.
+
 (after! projectile
   (setq projectile-sort-order 'recentf)
   (setq projectile-ignored-projects '("~/" "/tmp" "~/Downloads"))
