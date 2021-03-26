@@ -88,6 +88,11 @@
     :after '(evil-window-split evil-window-vsplit)
     (+ivy/switch-buffer)))
 
+(use-package! all-the-icons-ivy-rich
+  :after ivy-rich
+  :init (all-the-icons-ivy-rich-mode 1)
+  :config (setq all-the-icons-ivy-rich-icon-size 0.5))
+
 ;;
 ;;; Dired
 
