@@ -194,5 +194,5 @@
           " %l:%c %p "
           (:eval (propertize "%m" 'face '((t (:weight bold)))))
           vc-mode
-          (:eval (format-time-string " %a.%b.%d %H:%M"))))
+          (:eval (format-time-string " %a %d %b %H:%M"))))
   :config (mini-modeline-mode t))
