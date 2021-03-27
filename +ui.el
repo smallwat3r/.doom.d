@@ -67,6 +67,7 @@
 (custom-set-faces!
   ;; Eye saver
   '(default :background "gray0")
+
   '(company-tooltip :background nil)
   '(magit-diff-context :background nil)
   '(magit-diff-context-highlight :background nil)
@@ -80,7 +81,7 @@
   '(font-lock-comment-face :foreground "#329400")
   '(font-lock-doc-face :foreground "#329400")
 
-  ;; ;; Remove some additional syntax highlighting, keep it simple
+  ;; Remove some additional syntax highlighting, keep it simple
   '(font-lock-function-name-face :foreground nil)
   '(font-lock-variable-name-face :foreground nil)
   '(font-lock-constant-face :foreground nil)
