@@ -39,13 +39,13 @@
 ;;
 ;;; Fonts
 
-(defvar default-monospace-font "Inconsolata"
+(defvar default-monospace-font "Menlo"
   "Default Monospace font")
 
 (defvar default-serif-font "Verdana"
   "Default Serif font")
 
-(setq doom-font (font-spec :family default-monospace-font :size 15)
+(setq doom-font (font-spec :family default-monospace-font :size 14)
       doom-variable-pitch-font (font-spec :family default-serif-font)
       doom-font-increment 1
       doom-big-font-increment 2
@@ -61,32 +61,30 @@
   (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
 
 ;; Set up our default theme
-(setq doom-theme 'doom-laserwave)
+(setq doom-theme 'doom-one)
 
 ;; Overwrite global theme faces
 (custom-set-faces!
-  ;; Darkest background possible
-  '(default :background "#000000")
+  ;; Eye saver
+  '(default :background "gray0")
   '(company-tooltip :background nil)
+  '(magit-diff-context :background nil)
+  '(magit-diff-context-highlight :background nil)
 
   ;; org
-  '(org-block :background "#080808")
-  '(org-block-begin-line :background "#080808" :overline nil :underline nil)
-  '(org-block-end-line :background "#080808" :overline nil :underline nil)
+  '(org-block :background "gray10")
+  '(org-block-begin-line :background "gray10" :overline nil :underline nil)
+  '(org-block-end-line :background "gray10" :overline nil :underline nil)
 
   ;; Comments and docstrings should always be green
   '(font-lock-comment-face :foreground "#329400")
   '(font-lock-doc-face :foreground "#329400")
 
-  ;; Remove some additional syntax highlighting, keep it simple
+  ;; ;; Remove some additional syntax highlighting, keep it simple
   '(font-lock-function-name-face :foreground nil)
   '(font-lock-variable-name-face :foreground nil)
   '(font-lock-constant-face :foreground nil)
   '(font-lock-type-face :foreground nil)
-
-  ;; Line numbers
-  '(line-number :background nil :foreground "#3b3b3b" :height 120)
-  '(line-number-current-line :background nil :height 120)
 
   ;; Miscellaneous
   '(+workspace-tab-selected-face :background nil :foreground "#329400" :weight bold)
