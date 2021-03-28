@@ -74,9 +74,12 @@
   '(magit-diff-context-highlight :background nil)
 
   ;; Make diff-refine less aggressive
-  '(diff-refine-added :inherit magit-diff-added-highlight :inverse-video nil :underline t)
-  '(diff-refine-removed :inherit magit-diff-removed-highlight :inverse-video nil :underline t)
-  '(diff-refine-changed :inverse-video nil :underline t)
+  '(magit-diff-added-highlight :weight regular)
+  '(magit-diff-removed-highlight :weight regular)
+  '(magit-diff-base-highlight :weight regular)
+  '(diff-refine-added :inherit magit-diff-added-highlight :inverse-video nil :weight bold)
+  '(diff-refine-removed :inherit magit-diff-removed-highlight :inverse-video nil :weight bold)
+  '(diff-refine-changed :inverse-video nil :weight bold)
 
   ;; ivy
   '(ivy-minibuffer-match-face-1 :background nil :foreground "gray27")
