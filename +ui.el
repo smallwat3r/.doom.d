@@ -61,7 +61,7 @@
   (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
 
 ;; Set up our default theme
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-tomorrow-night)
 
 ;; Overwrite global theme faces
 (custom-set-faces!
@@ -71,6 +71,12 @@
   '(company-tooltip :background nil)
   '(magit-diff-context :background nil)
   '(magit-diff-context-highlight :background nil)
+
+  ;; ivy
+  '(ivy-minibuffer-match-face-1 :background nil :foreground "gray27")
+  '(ivy-minibuffer-match-face-2 :background nil :foreground "orchid")
+  '(ivy-minibuffer-match-face-3 :background nil :foreground "turquoise")
+  '(ivy-minibuffer-match-face-4 :background nil :foreground "DarkGoldenrod1")
 
   ;; org
   '(org-block :background "gray10")
@@ -88,20 +94,22 @@
   '(font-lock-type-face :foreground nil)
 
   ;; Miscellaneous
-  '(+workspace-tab-selected-face :background nil :foreground "#329400" :weight bold)
+  '(+workspace-tab-selected-face :background nil :foreground "#b294bb" :weight bold)
   '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold)
+  '(link :background nil :foreground "PaleTurquoise2" :weight bold :underline t)
+  '(link-visited :background nil :foreground "maroon4" :weight bold :underline t)
 
   ;; git-gutter-fringe
-  '(git-gutter-fr:added :foreground "#329400")
-  '(git-gutter-fr:modified :foreground "#f0da00")
-  '(git-gutter-fr:deleted :foreground "#d11141"))
+  '(git-gutter-fr:added :foreground "green4")
+  '(git-gutter-fr:modified :foreground "burlywood2")
+  '(git-gutter-fr:deleted :foreground "firebrick3"))
 
 ;;
 ;;; Editor
 
 ;; Git fringe
 (after! git-gutter-fringe
-  (fringe-mode 2))
+  (fringe-mode 1))  ; thinest fringe possible
 
 ;; Treemacs
 (after! treemacs
