@@ -47,7 +47,6 @@
 (map!
  (:leader
   (:prefix "f" :desc "Cycle through frame" "j" #'other-frame)
-  (:prefix "b" :desc "Kill buffer" "d" #'evil-delete-buffer)
   (:prefix "o" :desc "Open link at point" "l" #'browse-url-at-point)))
 
 (map!
