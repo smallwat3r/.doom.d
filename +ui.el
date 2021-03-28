@@ -68,9 +68,15 @@
   ;; Eye saver
   '(default :background "gray0")
 
+  ;; turn off background on some elements
   '(company-tooltip :background nil)
   '(magit-diff-context :background nil)
   '(magit-diff-context-highlight :background nil)
+
+  ;; Make diff-refine less aggressive
+  '(diff-refine-added :inherit magit-diff-added-highlight :inverse-video nil :underline t)
+  '(diff-refine-removed :inherit magit-diff-removed-highlight :inverse-video nil :underline t)
+  '(diff-refine-changed :inverse-video nil :underline t)
 
   ;; ivy
   '(ivy-minibuffer-match-face-1 :background nil :foreground "gray27")
