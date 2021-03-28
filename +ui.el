@@ -98,6 +98,7 @@
   '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold)
   '(link :background nil :foreground "PaleTurquoise2" :weight bold :underline t)
   '(link-visited :background nil :foreground "maroon4" :weight bold :underline t)
+  '(minibuffer-prompt :background nil :foreground "gold" :weight bold)
 
   ;; git-gutter-fringe
   '(git-gutter-fr:added :foreground "green4")
