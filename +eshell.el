@@ -109,7 +109,7 @@
         (let* ((line (string-to-number (match-string 1 (pop args))))
                (file (pop args)))
           (find-file file)
-          (goto-line line))
+          (forward-line line))
       (find-file (pop args)))))
 
 (defun eshell/extract (file)
