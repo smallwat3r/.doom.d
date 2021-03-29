@@ -7,10 +7,6 @@
 (add-to-list 'default-frame-alist '(width . 100))
 (add-to-list 'default-frame-alist '(height . 60))
 
-;; Keep titlebar and borders super simple
-(add-to-list 'default-frame-alist '(drag-internal-border . 1))
-(add-to-list 'default-frame-alist '(internal-border-width . 0))
-
 ;; Hide file icon from frame window
 (setq ns-use-proxy-icon nil)
 
