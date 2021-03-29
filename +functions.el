@@ -37,7 +37,7 @@
       (goto-char (point-min))
       (insert text)
       (newline 2))
-    (end-of-buffer)))
+    (goto-char (point-max))))
 
 (defun zz/scratch-rest-mode ()
   "Start a scratch buffer in restclient-mode"
