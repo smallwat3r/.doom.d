@@ -11,10 +11,6 @@
 (add-to-list 'default-frame-alist '(drag-internal-border . 1))
 (add-to-list 'default-frame-alist '(internal-border-width . 0))
 
-;; Frame transparency
-(set-frame-parameter (selected-frame) 'alpha '(98 98))
-(add-to-list 'default-frame-alist '(alpha 98 98))
-
 ;; Hide file icon from frame window
 (setq ns-use-proxy-icon nil)
 
