@@ -39,14 +39,10 @@
 ;;
 ;;; Fonts
 
-(defvar default-monospace-font "Menlo"
-  "Default Monospace font")
+(setq ns-use-thin-smoothing t)
 
-(defvar default-serif-font "Verdana"
-  "Default Serif font")
-
-(setq doom-font (font-spec :family default-monospace-font :size 14)
-      doom-variable-pitch-font (font-spec :family default-serif-font)
+(setq doom-font (font-spec :family "Menlo" :size 14)
+      doom-variable-pitch-font (font-spec :family "Verdana")
       doom-font-increment 1
       doom-big-font-increment 2
       doom-themes-treemacs-enable-variable-pitch nil)
@@ -107,7 +103,7 @@
   '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold)
   '(link :background nil :foreground "PaleTurquoise2" :weight bold :underline t)
   '(link-visited :background nil :foreground "maroon4" :weight bold :underline t)
-  '(minibuffer-prompt :background nil :foreground "gold" :weight bold)
+  '(minibuffer-prompt :background nil :foreground "gold")
 
   ;; git-gutter-fringe
   '(git-gutter-fr:added :foreground "green4")
@@ -180,36 +176,33 @@
          :action doom/help)))
 
 ;;
-;;; Mini-modeline
+;;; Modeline
 
-;; Evil uses the term state for what is called a "mode" in regular vi usage,
-;; because modes are understood in Emacs terms to mean something else.
-;; Set-up the different states faces so we can display these on the modeline.
-(setq
- evil-normal-state-tag   (propertize "●" 'face '((:weight bold :foreground "LimeGreen")))
- evil-insert-state-tag   (propertize "●" 'face '((:weight bold :foreground "red")))
- evil-replace-state-tag  (propertize "●" 'face '((:weight bold :foreground "DarkGoldenrod")))
- evil-visual-state-tag   (propertize "●" 'face '((:weight bold :foreground "yellow")))
- evil-emacs-state-tag    (propertize "●")
- evil-motion-state-tag   (propertize "●")
- evil-operator-state-tag (propertize "●"))
+(use-package! anzu
+  :after-call isearch-mode)
 
-(use-package! mini-modeline
-  :init
-  ;; Turn off some default settings, like to keep it as clean as possible. Also
-  ;; keep the modeline information on the right side of the mini-buffer so it still
-  ;; has enough space to display useful information on the left side (eg. commands
-  ;; information, echos, documentation etc).
-  (setq mini-modeline-enhance-visual nil
-        mini-modeline-display-gui-line nil)
-  ;; Modeline format
-  (setq mini-modeline-r-format
-        '("%e"
-          evil-mode-line-tag
-          mode-line-modified
-          (:eval (propertize "%b" 'face '((t (:weight bold)))))
-          " %l:%c %p "
-          (:eval (propertize "%m" 'face '((t (:weight bold)))))
-          vc-mode
-          (:eval (format-time-string " %a %d %b %H:%M"))))
-  :config (mini-modeline-mode t))
+(use-package! evil-anzu
+  :after-call evil-ex-start-search evil-ex-start-word-search evil-ex-search-activate-highlight
+  :config (global-anzu-mode +1))
+
+(defun zz/simple-mode-line-render (left right)
+  "Allow rendering of mode-line with left and right parts"
+  (let ((available-width
+         (- (window-total-width)
+            (+ (length (format-mode-line left))
+               (length (format-mode-line right))))))
+    (append left
+            (list (format (format "%%%ds" available-width) ""))
+            right)))
+
+(setq-default mode-line-format
+              '((:eval
+                 (zz/simple-mode-line-render
+                  (quote ("%e"  ; out of mem flag
+                          evil-mode-line-tag
+                          mode-line-modified
+                          "%b"
+                          vc-mode))
+                  (quote ("%l:%c %p "
+                          "(" mode-name ")"
+                          (:eval (format-time-string " %a %d %b %H:%M "))))))))

@@ -8,8 +8,6 @@
 
 (package! exec-path-from-shell)
 
-(package! mini-modeline)
-
 (package! kubernetes)
 (package! kubernetes-evil)
 
@@ -30,6 +28,9 @@
 (package! lorem-ipsum)
 
 (package! all-the-icons-ivy-rich)
+
+(package! anzu)
+(package! evil-anzu)
 
 (package! simplicity-theme :recipe
   (:host github
