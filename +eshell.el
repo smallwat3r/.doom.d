@@ -87,7 +87,7 @@
   "same as ls."
   (eshell/ls args))
 
-(defun eshell/o (&rest args)
+(defun eshell/o ()
   "Open in finder."
   (+macos/reveal-in-finder))
 
