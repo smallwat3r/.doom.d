@@ -36,17 +36,13 @@
 (setq doom-font (font-spec :family "Menlo" :size 14)
       doom-variable-pitch-font (font-spec :family "Verdana")
       doom-font-increment 1
-      doom-big-font-increment 2
-      doom-themes-treemacs-enable-variable-pitch nil)
+      doom-big-font-increment 2)
 
 ;;
 ;;; Themes config
 
 ;; Do not show standard themes
 (delq! t custom-theme-load-path)
-
-(after! doom-themes
-  (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
 
 ;; Set up our default theme
 (setq doom-theme 'doom-tomorrow-night)
@@ -105,13 +101,17 @@
 ;;
 ;;; Editor
 
+;; Treemacs
+(after! doom-themes
+  (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
+
+(after! treemacs
+  (setq doom-themes-treemacs-enable-variable-pitch nil)
+  (treemacs-resize-icons 12))
+
 ;; Git fringe
 (after! git-gutter-fringe
   (fringe-mode 1))  ; thinest fringe possible
-
-;; Treemacs
-(after! treemacs
-  (treemacs-resize-icons 12))
 
 ;; Disable line numbers by default
 (setq display-line-numbers-type nil)
