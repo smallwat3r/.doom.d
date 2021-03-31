@@ -95,6 +95,8 @@
 ;;
 ;;; Dired
 
+(add-hook! 'dired-mode-hook 'dired-hide-details-mode)
+
 (after! dired
   (setq delete-by-moving-to-trash t
         dired-listing-switches "-lat"))  ; sort by date
