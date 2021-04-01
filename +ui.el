@@ -3,17 +3,12 @@
 ;;
 ;;; Frame
 
-;; Default frame size on start-up
-(add-to-list 'default-frame-alist '(width . 100))
-(add-to-list 'default-frame-alist '(height . 60))
-
-;; Hide file icon from frame window
-(setq ns-use-proxy-icon nil)
-
-;; Disable UI fluff
-(toggle-scroll-bar -1)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
+;; Inital frame settings
+(setq initial-frame-alist
+      '((width . 110)
+        (height . 60)
+        (drag-internal-border . 1)
+        (internal-border-width . 0)))
 
 ;; In case there is a titlebar, this shows the current running Emacs version and
 ;; the title of the current file and a flag (**) if the file has been modified
@@ -27,6 +22,9 @@
                      (replace-regexp-in-string
                       ".*/[0-9]*-?" " "
                       (subst-char-in-string ?_ ? buffer-file-name)) "%b"))))
+
+;; Hide file icon from titlebar
+(setq ns-use-proxy-icon nil)
 
 ;;
 ;;; Fonts
@@ -92,6 +90,7 @@
   '(link :background nil :foreground "PaleTurquoise2" :weight bold :underline t)
   '(link-visited :background nil :foreground "maroon4" :weight bold :underline t)
   '(minibuffer-prompt :background nil :foreground "gold")
+  '(nav-flash-face :background nil :weight regular :underline (:color "gold"))
 
   ;; git-gutter-fringe
   '(git-gutter-fr:added :foreground "green4")
@@ -100,6 +99,9 @@
 
 ;;
 ;;; Editor
+
+;; I do like a blinking cursor
+(blink-cursor-mode 1)
 
 ;; Treemacs
 (after! doom-themes

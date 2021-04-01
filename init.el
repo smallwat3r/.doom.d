@@ -13,6 +13,7 @@
  doom-dashboard
  (emoji +unicode)
  hl-todo
+ nav-flash
  ophints
  (popup +defaults)
  treemacs
