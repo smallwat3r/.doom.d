@@ -5,8 +5,8 @@
 
 ;; Inital frame settings
 (setq initial-frame-alist
-      '((width . 110)
-        (height . 60)
+      '((width . 105)
+        (height . 65)
         (drag-internal-border . 1)
         (internal-border-width . 0)))
 
@@ -31,10 +31,13 @@
 
 (setq ns-use-thin-smoothing t)
 
-(setq doom-font (font-spec :family "Menlo" :size 14)
+(setq doom-font (font-spec :family "Input" :size 13)
       doom-variable-pitch-font (font-spec :family "Verdana")
       doom-font-increment 1
       doom-big-font-increment 2)
+
+;; Line spacing
+(setq-default line-spacing 1)
 
 ;;
 ;;; Themes config
@@ -137,9 +140,6 @@
 
 ;; Writeroom font scaling
 (setq +zen-text-scale 1)
-
-;; Line spacing
-(setq-default line-spacing 0)
 
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))
