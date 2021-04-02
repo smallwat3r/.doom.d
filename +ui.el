@@ -31,13 +31,12 @@
 
 (setq ns-use-thin-smoothing t)
 
-(setq doom-font (font-spec :family "Input" :size 13)
+(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 13)
       doom-variable-pitch-font (font-spec :family "Verdana")
       doom-font-increment 1
       doom-big-font-increment 2)
 
-;; Line spacing
-(setq-default line-spacing 1)
+(setq-default line-spacing 0)
 
 ;;
 ;;; Themes config

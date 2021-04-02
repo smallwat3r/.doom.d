@@ -3,7 +3,6 @@
 
 (disable-packages!
  solaire-mode
- evil-snipe
  better-jumper)
 
 (package! exec-path-from-shell)
