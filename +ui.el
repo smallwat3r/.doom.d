@@ -29,8 +29,6 @@
 ;;
 ;;; Fonts
 
-(setq ns-use-thin-smoothing t)
-
 (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 13)
       doom-variable-pitch-font (font-spec :family "Verdana")
       doom-font-increment 1
@@ -47,7 +45,6 @@
 ;; Set up our default theme
 (setq doom-theme 'doom-tomorrow-night)
 
-;; Overwrite global theme faces
 (custom-set-faces!
   ;; Eye saver
   '(default :background "gray0")
@@ -57,6 +54,12 @@
   '(magit-diff-context :background nil)
   '(magit-diff-context-highlight :background nil)
 
+  ;; Remove some additional code syntax highlighting, keep it simple
+  '(font-lock-function-name-face :foreground nil)
+  '(font-lock-variable-name-face :foreground nil)
+  '(font-lock-constant-face :foreground nil)
+  '(font-lock-type-face :foreground nil)
+
   ;; Make diff-refine less aggressive
   '(magit-diff-added-highlight :weight regular)
   '(magit-diff-removed-highlight :weight regular)
@@ -65,34 +68,24 @@
   '(diff-refine-removed :inherit magit-diff-removed-highlight :inverse-video nil :weight bold)
   '(diff-refine-changed :inverse-video nil :weight bold)
 
-  ;; ivy
-  '(ivy-minibuffer-match-face-1 :background nil :foreground "gray27")
-  '(ivy-minibuffer-match-face-2 :background nil :foreground "orchid")
-  '(ivy-minibuffer-match-face-3 :background nil :foreground "turquoise")
-  '(ivy-minibuffer-match-face-4 :background nil :foreground "DarkGoldenrod1")
-
   ;; org
   '(org-block :background "gray10")
   '(org-block-begin-line :background "gray10" :overline nil :underline nil)
   '(org-block-end-line :background "gray10" :overline nil :underline nil)
 
-  ;; Comments and docstrings should always be green
+  ;; Comments and docstrings colors
   '(font-lock-comment-face :foreground "#329400")
+  '(font-lock-comment-delimiter-face :foreground "#0a4700")
   '(font-lock-doc-face :foreground "#329400")
-
-  ;; Remove some additional syntax highlighting, keep it simple
-  '(font-lock-function-name-face :foreground nil)
-  '(font-lock-variable-name-face :foreground nil)
-  '(font-lock-constant-face :foreground nil)
-  '(font-lock-type-face :foreground nil)
 
   ;; Miscellaneous
   '(+workspace-tab-selected-face :background nil :foreground "#b294bb" :weight bold)
-  '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold)
+  '(cursor :background "cyan")
+  '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold :slant italic)
   '(link :background nil :foreground "PaleTurquoise2" :weight bold :underline t)
   '(link-visited :background nil :foreground "maroon4" :weight bold :underline t)
-  '(minibuffer-prompt :background nil :foreground "gold")
-  '(nav-flash-face :background nil :weight regular :underline (:color "gold"))
+  '(minibuffer-prompt :background nil :foreground "#f6df92")
+  '(nav-flash-face :background nil :weight regular :underline (:color "#f6df92"))
 
   ;; git-gutter-fringe
   '(git-gutter-fr:added :foreground "green4")
@@ -171,6 +164,13 @@
 ;;
 ;;; Modeline
 
+(custom-set-faces!
+  '(mode-line :box nil :foreground "#eeeeee" :background "#331133")
+  '(mode-line-buffer-id :box nil :foreground "#f6df92")
+  '(mode-line-highlight :box nil)
+  '(mode-line-inactive :box nil :foreground "#674534" :background "#110011"))
+
+;; Show counter while in search modes
 (use-package! anzu
   :after-call isearch-mode)
 
@@ -194,7 +194,7 @@
                   (quote ("%e"  ; out of mem flag
                           evil-mode-line-tag
                           mode-line-modified
-                          "%b"
+                          (:eval (propertize "%b" 'face '((t (:foreground "#f6df92")))))
                           vc-mode))
                   (quote ("%l:%c %p "
                           "(" mode-name ")"

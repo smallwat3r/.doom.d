@@ -92,6 +92,12 @@
   :init (all-the-icons-ivy-rich-mode 1)
   :config (setq all-the-icons-ivy-rich-icon-size 0.7))
 
+(custom-set-faces!
+  '(ivy-minibuffer-match-face-1 :background nil :foreground "gray27")
+  '(ivy-minibuffer-match-face-2 :background nil :foreground "orchid")
+  '(ivy-minibuffer-match-face-3 :background nil :foreground "turquoise")
+  '(ivy-minibuffer-match-face-4 :background nil :foreground "DarkGoldenrod1"))
+
 ;;
 ;;; Dired
 
