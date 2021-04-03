@@ -3,12 +3,10 @@
 ;;
 ;;; Frame
 
-;; Inital frame settings
-(setq initial-frame-alist
-      '((width . 105)
-        (height . 65)
-        (drag-internal-border . 1)
-        (internal-border-width . 0)))
+(add-to-list 'default-frame-alist '(width . 105))
+(add-to-list 'default-frame-alist '(height . 65))
+(add-to-list 'default-frame-alist '(drag-internal-border . 1))
+(add-to-list 'default-frame-alist '(internal-border-width . 0))
 
 ;; In case there is a titlebar, this shows the current running Emacs version and
 ;; the title of the current file and a flag (**) if the file has been modified
