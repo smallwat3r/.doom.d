@@ -29,7 +29,7 @@
 ;;
 ;;; Fonts
 
-(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 13)
+(setq doom-font (font-spec :family "MonacoB2" :size 13)
       doom-variable-pitch-font (font-spec :family "Verdana")
       doom-font-increment 1
       doom-big-font-increment 2)
@@ -81,7 +81,7 @@
   ;; Miscellaneous
   '(+workspace-tab-selected-face :background nil :foreground "#b294bb" :weight bold)
   '(cursor :background "cyan")
-  '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold :slant italic)
+  '(show-paren-match :foreground "cyan" :background nil :underline "cyan" :weight bold :slant italic)
   '(link :background nil :foreground "PaleTurquoise2" :weight regular :underline t)
   '(link-visited :background nil :foreground "maroon4" :weight regular :underline t)
   '(minibuffer-prompt :background nil :foreground "#f6df92")
