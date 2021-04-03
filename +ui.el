@@ -205,6 +205,7 @@
      ;; hidden minor-modes from modeline
      (company-mode nil company)
      (ivy-mode nil ivy)
+     (evil-org-mode nil evil-org)
      (which-key-mode nil which-key)
      (gcmh-mode nil gcmh)
      (ws-butler-mode nil ws-butler)
