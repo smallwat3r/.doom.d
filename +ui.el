@@ -43,7 +43,7 @@
 (delq! t custom-theme-load-path)
 
 ;; Set up our default theme
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'sanityinc-tomorrow-night)
 
 (custom-set-faces!
   ;; Eye saver
@@ -74,9 +74,9 @@
   '(org-block-end-line :background "gray10" :overline nil :underline nil)
 
   ;; Comments and docstrings colors
-  '(font-lock-comment-face :foreground "#329400")
-  '(font-lock-comment-delimiter-face :foreground "#0a4700")
-  '(font-lock-doc-face :foreground "#329400")
+  '(font-lock-comment-face :foreground "#329400" :slant normal)
+  '(font-lock-comment-delimiter-face :foreground "#0a4700" :slant normal)
+  '(font-lock-doc-face :foreground "#329400" :slant normal)
 
   ;; Miscellaneous
   '(+workspace-tab-selected-face :background nil :foreground "#b294bb" :weight bold)
