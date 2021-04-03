@@ -82,8 +82,8 @@
   '(+workspace-tab-selected-face :background nil :foreground "#b294bb" :weight bold)
   '(cursor :background "cyan")
   '(show-paren-match :foreground "cyan" :underline "cyan" :weight bold :slant italic)
-  '(link :background nil :foreground "PaleTurquoise2" :weight bold :underline t)
-  '(link-visited :background nil :foreground "maroon4" :weight bold :underline t)
+  '(link :background nil :foreground "PaleTurquoise2" :weight regular :underline t)
+  '(link-visited :background nil :foreground "maroon4" :weight regular :underline t)
   '(minibuffer-prompt :background nil :foreground "#f6df92")
   '(nav-flash-face :background nil :weight regular :underline (:color "#f6df92"))
 
