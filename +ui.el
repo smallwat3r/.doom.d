@@ -51,6 +51,7 @@
   '(company-tooltip :background nil)
   '(magit-diff-context :background nil)
   '(magit-diff-context-highlight :background nil)
+  '(markdown-code-face :background nil)
 
   ;; Remove some additional code syntax highlighting, keep it simple
   '(font-lock-function-name-face :foreground nil)
@@ -66,6 +67,11 @@
   '(diff-refine-removed :inherit magit-diff-removed-highlight :inverse-video nil :weight bold)
   '(diff-refine-changed :inverse-video nil :weight bold)
 
+  ;; evil-goggles
+  '(evil-goggles-delete-face :background nil :foreground "#c9008e")
+  '(evil-goggles-paste-face :background nil :foreground "#00ce37")
+  '(evil-goggles-yank-face :background nil :foreground "#ffbf00")
+
   ;; org
   '(org-block :background "gray10")
   '(org-block-begin-line :background "gray10" :overline nil :underline nil)
@@ -78,12 +84,13 @@
 
   ;; Miscellaneous
   '(+workspace-tab-selected-face :background nil :foreground "#b294bb" :weight bold)
-  '(cursor :background "cyan")
-  '(show-paren-match :foreground "cyan" :background nil :underline "cyan" :weight bold :slant italic)
+  '(cursor :background "#d7ff00")
+  '(show-paren-match :foreground "#d7ff00" :background "#ff5f5f" :weight bold :slant normal :box nil)
   '(link :background nil :foreground "PaleTurquoise2" :weight regular :underline t)
   '(link-visited :background nil :foreground "maroon4" :weight regular :underline t)
   '(minibuffer-prompt :background nil :foreground "#f6df92")
-  '(nav-flash-face :background nil :weight regular :underline (:color "#f6df92"))
+  '(nav-flash-face :background nil :foreground "#ffffff" :weight bold)
+  '(persp-face-lighter-buffer-not-in-persp :background nil)
 
   ;; git-gutter-fringe
   '(git-gutter-fr:added :foreground "green4")
@@ -134,6 +141,9 @@
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))
 
+(after! evil-goggles
+  (setq evil-goggles-duration 0.250))
+
 ;;
 ;;; Doom-dashboard
 
@@ -164,7 +174,6 @@
 
 (custom-set-faces!
   '(mode-line :box nil :foreground "#eeeeee" :background "#331133")
-  '(mode-line-buffer-id :box nil :foreground "#f6df92")
   '(mode-line-highlight :box nil)
   '(mode-line-inactive :box nil :foreground "#674534" :background "#110011"))
 
@@ -176,24 +185,48 @@
   :after-call evil-ex-start-search evil-ex-start-word-search evil-ex-search-activate-highlight
   :config (global-anzu-mode +1))
 
-(defun zz/simple-mode-line-render (left right)
-  "Allow rendering of mode-line with left and right parts"
-  (let ((available-width
-         (- (window-total-width)
-            (+ (length (format-mode-line left))
-               (length (format-mode-line right))))))
-    (append left
-            (list (format (format "%%%ds" available-width) ""))
-            right)))
+;; Manage how modes are displayed
+(use-package! delight
+  :config
+  (delight
+   '((abbrev-mode " Abv" abbrev)
+     (smart-tab-mode " \\t" smart-tab)
+     (projectile-mode nil projectile)
+     (pipenv-mode " pip" pipenv)
+     (sh-mode " sh" :major)
+     (org-mode " org" :major)
+     (js2-mode " js" :major)
+     (yas-minor-mode " υ" yasnippet)
+     (git-gutter-mode " GG" git-gutter)
+     (dired-mode " δ" :major)
+     (emacs-lisp-mode " ξλ" :major)
+     (python-mode " π" :major)
+
+     ;; hidden minor-modes from modeline
+     (company-mode nil company)
+     (ivy-mode nil ivy)
+     (which-key-mode nil which-key)
+     (gcmh-mode nil gcmh)
+     (ws-butler-mode nil ws-butler)
+     (eldoc-mode nil eldoc)
+     (dtrt-indent-mode mil dtrt-indent)
+     (evil-escape-mode nil evil-escape)
+     (whitespace-mode nil whitespace)
+     (smartparens-mode nil smartparens)
+     (evil-goggles-mode nil evil-goggles)
+     (evil-snipe-local-mode nil evil-snipe))))
 
 (setq-default mode-line-format
-              '((:eval
-                 (zz/simple-mode-line-render
-                  (quote ("%e"  ; out of mem flag
-                          evil-mode-line-tag
-                          mode-line-modified
-                          (:eval (propertize "%b" 'face '((t (:foreground "#f6df92")))))
-                          vc-mode))
-                  (quote ("%l:%c %p "
-                          "(" mode-name ")"
-                          (:eval (format-time-string " %a %d %b %H:%M "))))))))
+              '("%e"
+                (:eval evil-mode-line-tag)
+                mode-line-modified
+                "%b"
+                "  "
+                mode-name
+                vc-mode
+                "    "
+                "%p (%l,%c)"
+                "  "
+                (:eval (format-time-string "%a %d %b %H:%M "))
+                "--"
+                minor-mode-alist))

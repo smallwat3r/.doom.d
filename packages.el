@@ -26,6 +26,8 @@
 
 (package! all-the-icons-ivy-rich)
 
+(package! delight)
+
 (package! anzu)
 (package! evil-anzu)
 
