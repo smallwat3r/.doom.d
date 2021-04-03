@@ -19,8 +19,6 @@
 
 (package! scratch)
 
-(package! esh-autosuggest)
-
 (package! google-translate)
 (package! google-this)
 

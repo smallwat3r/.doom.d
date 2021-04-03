@@ -1,6 +1,7 @@
 ;;; $DOOMDIR/+eshell.el -*- lexical-binding: t; -*-
 
 (use-package! shrink-path
+  :after eshell
   :commands shrink-path-prompt)
 
 (defun zz/eshell-current-git-branch ()
@@ -63,9 +64,6 @@
    "k" "kubectl $*"
    "kt" "kubetail $*"
    "kgn" "kubectl get namespaces"))
-
-(use-package! esh-autosuggest
-  :hook (eshell-mode . esh-autosuggest-mode))
 
 ;;
 ;;; Custom Eshell functions

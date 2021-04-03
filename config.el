@@ -61,7 +61,8 @@
   "M-o"   #'delete-blank-lines
   ";f"    #'format-all-buffer
   ";q"    #'evil-save-and-close
-  ";w"    #'evil-write))
+  ";w"    #'evil-write
+  "C-k"   #'join-line))
 
 ;;
 ;;; Projectile
