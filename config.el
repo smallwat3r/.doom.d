@@ -67,6 +67,7 @@
 ;;
 ;;; Projectile
 
+;; doc: https://github.com/bbatsov/projectile
 ;; Run `projectile-discover-projects-in-search-path' to autoload all the projects from the
 ;; `projectile-project-search-path' list.
 
@@ -78,6 +79,7 @@
 ;;
 ;;; Ivy
 
+;; doc: https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html#org121eea9
 (after! ivy
   (setq ivy-use-virtual-buffers t
         ivy-count-format "(%d/%d) "
@@ -88,6 +90,7 @@
     :after '(evil-window-split evil-window-vsplit)
     (+ivy/switch-buffer)))
 
+;; doc: https://github.com/asok/all-the-icons-ivy
 (use-package! all-the-icons-ivy-rich
   :after ivy-rich
   :init (all-the-icons-ivy-rich-mode 1)
@@ -101,6 +104,9 @@
 
 ;;
 ;;; Dired
+
+;; doc: https://www.emacswiki.org/emacs/DiredMode
+;;      https://github.com/Fuco1/dired-hacks
 
 (add-hook! 'dired-mode-hook 'dired-hide-details-mode)
 
@@ -124,6 +130,7 @@
 ;;
 ;;; Company
 
+;; doc: https://www.emacswiki.org/emacs/CompanyMode
 (after! company
   (setq company-idle-delay 0.1
         company-tooltip-limit 10
@@ -132,6 +139,7 @@
 ;;
 ;;; Vterm
 
+;; doc: https://github.com/akermu/emacs-libvterm
 (after! vterm
   (setq vterm-max-scrollback 6000)
   (map!
@@ -143,6 +151,7 @@
 ;;
 ;;; Linters, checkers and programming language specifics
 
+;; doc: https://www.flycheck.org/en/latest/
 (after! flycheck
   ;; Pylint (python)
   (setq flycheck-python-pylint-executable "/usr/local/bin/pylint"
@@ -154,6 +163,7 @@
   (setq-hook! 'sh-mode-hook flycheck-checker 'sh-shellcheck))
 
 ;; Grammar spell checker
+;; doc: https://gitlab.com/ideasman42/emacs-spell-fu
 (after! spell-fu
   (setq spell-fu-idle-delay 0.5))
 
@@ -178,6 +188,7 @@
     :modes '(python-mode)))
 
 ;; Scratch buffers
+;; doc: https://github.com/ieure/scratch-el
 (use-package! scratch
   :config
   (map!
@@ -209,6 +220,8 @@
 ;;
 ;;; Kubernetes
 
+;; doc: https://github.com/chrisbarrett/kubernetes-el
+
 (use-package! kubernetes
   :config
   (map!
@@ -237,6 +250,7 @@
       mail-envelope-from 'header
       message-sendmail-envelope-from 'header)
 
+;; doc: https://notmuchmail.org/emacstips/
 (after! notmuch
   ;; Main buffer sections
   (setq notmuch-show-log nil
@@ -270,6 +284,7 @@
   "Where I'm storing my notes.")
 
 ;; deft
+;; doc: https://github.com/jrblevin/deft
 (after! deft
   (setq deft-directory my-notes-directory
         deft-recursive t))
@@ -281,11 +296,18 @@
    :desc "Deft new"  "d" #'deft-new-file)))
 
 ;; org
+;; doc: https://orgmode.org/manual/
 (after! org
   (setq org-directory my-notes-directory
-        org-hide-emphasis-markers nil))
+        org-hide-emphasis-markers nil)
+
+  (custom-set-faces!
+    '(org-block :background "gray10")
+    '(org-block-begin-line :background "gray10" :overline nil :underline nil)
+    '(org-block-end-line :background "gray10" :overline nil :underline nil)))
 
 ;; org-journal
+;; doc: https://github.com/bastibe/org-journal
 (after! org-journal
   (setq org-journal-dir (expand-file-name "journal/" my-notes-directory)
         org-journal-date-format "%A, %d %B %Y"
@@ -295,6 +317,7 @@
 ;;; Misc
 
 ;; Executable paths in Emacs as it works from the shell
+;; doc: https://github.com/purcell/exec-path-from-shell
 (use-package! exec-path-from-shell
   :if (memq window-system '(mac ns x))
   :init (setq exec-path-from-shell-arguments '("-l")  ; disable annoying warning
@@ -302,6 +325,7 @@
   :config (exec-path-from-shell-initialize))
 
 ;; google-translate
+;; doc: https://github.com/atykhonov/google-translate
 (use-package! google-translate
   :custom (google-translate-backend-method 'curl)
   :config
@@ -316,6 +340,7 @@
      :desc "Translate buffer"   "b" #'google-translate-buffer))))
 
 ;; google-this
+;; doc: https://github.com/Malabarba/emacs-google-this
 (use-package! google-this
   :config
   (map!
@@ -326,6 +351,7 @@
      :desc "Google this line" "l" #'google-this-line))))
 
 ;; lorem-ipsum
+;; doc: https://github.com/jschaf/emacs-lorem-ipsum
 (use-package! lorem-ipsum
   :config
   (map!

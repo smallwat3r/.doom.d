@@ -67,16 +67,6 @@
   '(diff-refine-removed :inherit magit-diff-removed-highlight :inverse-video nil :weight bold)
   '(diff-refine-changed :inverse-video nil :weight bold)
 
-  ;; evil-goggles
-  '(evil-goggles-delete-face :background nil :foreground "#c9008e")
-  '(evil-goggles-paste-face :background nil :foreground "#00ce37")
-  '(evil-goggles-yank-face :background nil :foreground "#ffbf00")
-
-  ;; org
-  '(org-block :background "gray10")
-  '(org-block-begin-line :background "gray10" :overline nil :underline nil)
-  '(org-block-end-line :background "gray10" :overline nil :underline nil)
-
   ;; Comments and docstrings colors
   '(font-lock-comment-face :foreground "#329400" :slant normal)
   '(font-lock-comment-delimiter-face :foreground "#0a4700" :slant normal)
@@ -90,12 +80,7 @@
   '(link-visited :background nil :foreground "maroon4" :weight regular :underline t)
   '(minibuffer-prompt :background nil :foreground "#f6df92")
   '(nav-flash-face :background nil :foreground "#ffffff" :weight bold)
-  '(persp-face-lighter-buffer-not-in-persp :background nil)
-
-  ;; git-gutter-fringe
-  '(git-gutter-fr:added :foreground "green4")
-  '(git-gutter-fr:modified :foreground "burlywood2")
-  '(git-gutter-fr:deleted :foreground "firebrick3"))
+  '(persp-face-lighter-buffer-not-in-persp :background nil))
 
 ;;
 ;;; Editor
@@ -112,8 +97,14 @@
   (treemacs-resize-icons 12))
 
 ;; Git fringe
+;; doc: https://github.com/emacsorphanage/git-gutter-fringe
 (after! git-gutter-fringe
-  (fringe-mode 1))  ; thinest fringe possible
+  (fringe-mode 1) ; thinest possible
+
+  (custom-set-faces!
+    '(git-gutter-fr:added :foreground "green4")
+    '(git-gutter-fr:modified :foreground "burlywood2")
+    '(git-gutter-fr:deleted :foreground "firebrick3")))
 
 ;; Disable line numbers by default
 (setq display-line-numbers-type nil)
@@ -141,8 +132,15 @@
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))
 
+;; evil-goggles
+;; doc: https://github.com/edkolev/evil-goggles
 (after! evil-goggles
-  (setq evil-goggles-duration 0.250))
+  (setq evil-goggles-duration 0.250)
+
+  (custom-set-faces!
+    '(evil-goggles-delete-face :background nil :foreground "#c9008e")
+    '(evil-goggles-paste-face :background nil :foreground "#00ce37")
+    '(evil-goggles-yank-face :background nil :foreground "#ffbf00")))
 
 ;;
 ;;; Doom-dashboard
@@ -178,14 +176,17 @@
   '(mode-line-inactive :box nil :foreground "#674534" :background "#110011"))
 
 ;; Show counter while in search modes
+;; doc: https://github.com/emacsorphanage/anzu
 (use-package! anzu
   :after-call isearch-mode)
 
+;; doc: https://github.com/emacsorphanage/anzu
 (use-package! evil-anzu
   :after-call evil-ex-start-search evil-ex-start-word-search evil-ex-search-activate-highlight
   :config (global-anzu-mode +1))
 
 ;; Manage how modes are displayed
+;; doc: https://www.emacswiki.org/emacs/DelightedModes
 (use-package! delight
   :config
   (delight
@@ -193,13 +194,13 @@
      (smart-tab-mode " \\t" smart-tab)
      (projectile-mode nil projectile)
      (pipenv-mode " pip" pipenv)
-     (sh-mode " sh" :major)
-     (org-mode " org" :major)
-     (js2-mode " js" :major)
+     (sh-mode " Sh" :major)
+     (org-mode " Org" :major)
+     (js2-mode " Js" :major)
      (yas-minor-mode " υ" yasnippet)
-     (git-gutter-mode " GG" git-gutter)
+     (git-gutter-mode " Gg" git-gutter)
      (dired-mode " δ" :major)
-     (emacs-lisp-mode " ξλ" :major)
+     (emacs-lisp-mode " ξ" :major)
      (python-mode " π" :major)
 
      ;; hidden minor-modes from modeline

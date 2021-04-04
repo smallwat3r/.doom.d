@@ -1,5 +1,7 @@
 ;;; $DOOMDIR/+eshell.el -*- lexical-binding: t; -*-
 
+;; doc: https://www.gnu.org/software/emacs/manual/html_node/eshell/index.html
+
 (use-package! shrink-path
   :after eshell
   :commands shrink-path-prompt)
