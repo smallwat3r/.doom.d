@@ -227,6 +227,7 @@
                 vc-mode
                 "    "
                 "%p (%l,%c)"
-                "  "
-                (:eval (format-time-string "%a %d %b %H:%M "))
+                "--"
+                (:eval (format-time-string "%a %d %b %H:%M"))
+                "--"
                 mode-line-modes))
