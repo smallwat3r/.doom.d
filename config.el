@@ -67,14 +67,18 @@
 ;;
 ;;; Projectile
 
-;; doc: https://github.com/bbatsov/projectile
+;; doc: https://github.com/bbatsov/projctile
+;;      https://docs.projectile.mx/projectile/index.html
+;;
 ;; Run `projectile-discover-projects-in-search-path' to autoload all the projects from the
 ;; `projectile-project-search-path' list.
 
 (after! projectile
-  (setq projectile-sort-order 'recentf)
-  (setq projectile-ignored-projects '("~/" "/tmp" "~/Downloads"))
-  (setq projectile-project-search-path '("~/dotfiles/" "~/Projects/" "~/Code/" "~/Github/")))
+  (setq projectile-sort-order 'recentf
+        projectile-mode-line-prefix "PJ"
+        projectile-mode-line-function '(lambda () (format " PJ[%s]" (projectile-project-name)))
+        projectile-ignored-projects '("~/" "/tmp" "~/Downloads")
+        projectile-project-search-path '("~/dotfiles/" "~/Projects/" "~/Code/" "~/Github/")))
 
 ;;
 ;;; Ivy
