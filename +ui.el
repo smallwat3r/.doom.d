@@ -216,6 +216,7 @@
      (eldoc-mode nil eldoc)
      (dtrt-indent-mode nil dtrt-indent)
      (evil-escape-mode nil evil-escape)
+     (evil-traces-mode nil evil-traces)
      (outline-minor-mode nil outline)
      (whitespace-mode nil whitespace)
      (smartparens-mode nil smartparens)
