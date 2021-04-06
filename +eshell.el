@@ -38,8 +38,10 @@
 ;; so we need to remove it when not in use.
 (add-hook! 'pyvenv-post-deactivate-hooks (lambda () (setenv "VIRTUAL_ENV" nil)))
 
+;; Disable company in eshell
+(setq-hook! 'eshell-mode-hook company-idle-delay nil)
+
 (after! eshell
-  ;; General
   (setq eshell-history-size 1000000
         eshell-buffer-maximum-lines 5000
         eshell-modify-global-environment t
