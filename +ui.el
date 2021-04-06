@@ -27,8 +27,8 @@
 ;;
 ;;; Fonts
 
-(setq doom-font (font-spec :family "DejaVu Sans Mono" :size 13)
-      doom-variable-pitch-font (font-spec :family "Verdana")
+(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 15)
+      doom-variable-pitch-font (font-spec :family "Geneva")
       doom-font-increment 1
       doom-big-font-increment 2)
 
@@ -68,18 +68,19 @@
   '(diff-refine-changed :inverse-video nil :weight bold)
 
   ;; Comments and docstrings colors
-  '(font-lock-comment-face :foreground "#329400" :slant normal)
+  '(font-lock-comment-face :foreground "#329400" :slant italic)
   '(font-lock-comment-delimiter-face :foreground "#0a4700" :slant normal)
-  '(font-lock-doc-face :foreground "#329400" :slant normal)
+  '(font-lock-doc-face :foreground "#329400" :slant italic)
 
   ;; Miscellaneous
   '(+workspace-tab-selected-face :background nil :foreground "#b294bb" :weight bold)
   '(cursor :background "#d7ff00")
-  '(show-paren-match :foreground "#d7ff00" :background "#ff5f5f" :weight bold :slant normal :box nil)
+  '(show-paren-match :foreground "#d7ff00" :background "#ff5f5f" :slant normal :box nil)
+  '(show-paren-mismatch :foreground "#ffffff" :background "#db0000" :slant normal :box nil)
   '(link :background nil :foreground "PaleTurquoise2" :weight regular :underline t)
   '(link-visited :background nil :foreground "maroon4" :weight regular :underline t)
   '(minibuffer-prompt :background nil :foreground "#f6df92")
-  '(nav-flash-face :background nil :foreground "#ffffff" :weight bold)
+  '(nav-flash-face :background "#313131")
   '(persp-face-lighter-buffer-not-in-persp :background nil))
 
 ;;
@@ -138,9 +139,9 @@
   (setq evil-goggles-duration 0.250)
 
   (custom-set-faces!
-    '(evil-goggles-delete-face :background nil :foreground "#c9008e")
-    '(evil-goggles-paste-face :background nil :foreground "#00ce37")
-    '(evil-goggles-yank-face :background nil :foreground "#ffbf00")))
+    '(evil-goggles-delete-face :background "#2f001a")
+    '(evil-goggles-paste-face :background "#172f00")
+    '(evil-goggles-yank-face :background "#363636")))
 
 ;;
 ;;; Doom-dashboard
@@ -171,14 +172,16 @@
 ;;; Modeline
 
 (custom-set-faces!
-  '(mode-line :box nil :foreground "#eeeeee" :background "#331133")
+  '(mode-line :box nil :foreground "#000000" :background "#dfdfdf" :box "#222222")
   '(mode-line-highlight :box nil)
-  '(mode-line-inactive :box nil :foreground "#674534" :background "#110011"))
+  '(mode-line-inactive :box nil :foreground "#000000" :background "#5c5c5c" :box "#222222"))
 
 ;; Show counter while in search modes
 ;; doc: https://github.com/emacsorphanage/anzu
 (use-package! anzu
-  :after-call isearch-mode)
+  :after-call isearch-mode
+  :config (custom-set-faces!
+            '(anzu-mode-line :foreground "#870052" :weight bold)))
 
 ;; doc: https://github.com/emacsorphanage/evil-anzu
 (use-package! evil-anzu
