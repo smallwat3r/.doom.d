@@ -90,12 +90,11 @@
 (blink-cursor-mode 1)
 
 ;; Treemacs
-(after! doom-themes
-  (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
-
 (after! treemacs
-  (setq doom-themes-treemacs-enable-variable-pitch nil)
-  (treemacs-resize-icons 12))
+  (setq doom-themes-treemacs-enable-variable-pitch nil
+        doom-themes-treemacs-line-spacing 0)
+  (custom-set-faces!
+    '(doom-themes-treemacs-file-face :foreground "#dbdbdb")))
 
 ;; Git fringe
 ;; doc: https://github.com/emacsorphanage/git-gutter-fringe
