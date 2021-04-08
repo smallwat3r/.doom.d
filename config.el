@@ -196,6 +196,18 @@
       ("--pyi" (string= (file-name-extension buffer-file-name) "pyi")))
     :modes '(python-mode)))
 
+;; web-mode
+(after! web-mode
+  (setq web-mode-code-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-markup-indent-offset 2)
+
+  (custom-set-faces!
+    '(web-mode-html-attr-equal-face :foreground "gray60")
+    '(web-mode-html-attr-name-face :foreground "gray60")
+    '(web-mode-html-tag-face :foreground "gray60")
+    '(web-mode-html-tag-bracket-face :foreground "gray45")))
+
 ;; Scratch buffers
 ;; doc: https://github.com/ieure/scratch-el
 (use-package! scratch

@@ -10,8 +10,6 @@
 (package! kubernetes)
 (package! kubernetes-evil)
 
-(package! jinja2-mode)
-
 (package! dired-narrow)
 (package! dired-subtree)
 

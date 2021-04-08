@@ -69,6 +69,7 @@
  (python +lsp)
  rest
  (sh +lsp)
+ web
  yaml
 
  :email
