@@ -59,6 +59,7 @@
 
  :lang
  cc
+ (dart +lsp +flutter)
  emacs-lisp
  (go +lsp)
  (javascript +lsp)

@@ -47,6 +47,9 @@
         eshell-modify-global-environment t
         eshell-destroy-buffer-when-process-dies t)
 
+  ;; Keep mode-line
+  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
+
   ;; Prompt settings
   (setq eshell-prompt-regexp "^.* [#→] "
         eshell-prompt-function #'zz/eshell-prompt)

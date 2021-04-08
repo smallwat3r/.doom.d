@@ -146,6 +146,11 @@
 ;; doc: https://github.com/akermu/emacs-libvterm
 (after! vterm
   (setq vterm-max-scrollback 6000)
+
+  ;; Keep mode-line
+  (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
+
+  ;; Bindings
   (map!
    :map vterm-mode-map :n "B" #'vterm-beginning-of-line
    :map vterm-mode-map :n "<return>" #'evil-insert-resume
