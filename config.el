@@ -244,7 +244,8 @@
 ;; doc: https://github.com/chrisbarrett/kubernetes-el
 
 (use-package! kubernetes
-  :config
+  :commands (kubernetes-overview)
+  :init
   (map!
    (:leader
     (:prefix ("k" . "kubernetes")
