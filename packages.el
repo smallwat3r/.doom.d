@@ -17,6 +17,8 @@
 
 (package! scratch)
 
+(package! org-appear)
+
 (package! google-translate)
 (package! google-this)
 

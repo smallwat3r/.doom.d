@@ -321,12 +321,24 @@
 ;; doc: https://orgmode.org/manual/
 (after! org
   (setq org-directory my-notes-directory
-        org-hide-emphasis-markers nil)
+        org-hide-emphasis-markers t)
 
   (custom-set-faces!
+    '(org-column :background nil)
+    '(org-column-title :background nil)
+    '(org-hide :background nil)
+    '(org-indent :background nil)
     '(org-block :background "gray10")
     '(org-block-begin-line :background "gray10" :overline nil :underline nil)
     '(org-block-end-line :background "gray10" :overline nil :underline nil)))
+
+;; doc: https://github.com/awth13/org-appear
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode)
+  :init (setq org-appear-autoemphasis t
+              org-appear-autolinks t
+              org-appear-autosubmarkers t
+              org-appear-autoentities t))
 
 ;; org-journal
 ;; doc: https://github.com/bastibe/org-journal

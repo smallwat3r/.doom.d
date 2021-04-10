@@ -52,6 +52,11 @@
   '(magit-diff-context :background nil)
   '(magit-diff-context-highlight :background nil)
   '(markdown-code-face :background nil)
+  '(whitespace-tab :background nil)
+  '(whitespace-space :background nil)
+  '(whitespace-newline :background nil)
+  '(whitespace-hspace :background nil)
+  '(whitespace-indentation :background nil)
 
   ;; Remove some additional code syntax highlighting, keep it simple
   '(font-lock-function-name-face :foreground nil)
