@@ -92,19 +92,19 @@
   ;; Ask to pick an existing buffer when splitting the window
   (defadvice! prompt-for-buffer (&rest _)
     :after '(evil-window-split evil-window-vsplit)
-    (+ivy/switch-buffer)))
+    (+ivy/switch-buffer))
+
+  (custom-set-faces!
+    '(ivy-minibuffer-match-face-1 :background nil :foreground "gray27")
+    '(ivy-minibuffer-match-face-2 :background nil :foreground "orchid")
+    '(ivy-minibuffer-match-face-3 :background nil :foreground "turquoise")
+    '(ivy-minibuffer-match-face-4 :background nil :foreground "DarkGoldenrod1")))
 
 ;; doc: https://github.com/asok/all-the-icons-ivy
 (use-package! all-the-icons-ivy-rich
   :after ivy-rich
   :init (all-the-icons-ivy-rich-mode 1)
   :config (setq all-the-icons-ivy-rich-icon-size 0.7))
-
-(custom-set-faces!
-  '(ivy-minibuffer-match-face-1 :background nil :foreground "gray27")
-  '(ivy-minibuffer-match-face-2 :background nil :foreground "orchid")
-  '(ivy-minibuffer-match-face-3 :background nil :foreground "turquoise")
-  '(ivy-minibuffer-match-face-4 :background nil :foreground "DarkGoldenrod1"))
 
 ;;
 ;;; Dired
@@ -361,11 +361,18 @@
 ;; google-translate
 ;; doc: https://github.com/atykhonov/google-translate
 (use-package! google-translate
-  :custom (google-translate-backend-method 'curl)
-  :config
-  ;; Fix - https://github.com/atykhonov/google-translate/issues/137#issuecomment-723938431
-  (defun google-translate--search-tkk () (list 430675 2721866130))
+  :commands (google-translate-at-point
+             google-translate-query-translate
+             google-translate-buffer)
+  :init
+  (set-popup-rule! "*Google Translate*" :size 0.4 :side 'bottom :select t :modeline t)
 
+  (after! google-translate-backend
+    (setq google-translate-backend-method 'curl))
+
+  (after! google-translate-tk
+    (advice-add #'google-translate--search-tkk
+                :override (lambda () "Search TKK fix." (list 430675 2721866130))))
   (map!
    (:leader
     (:prefix ("T" . "translate")
@@ -376,21 +383,23 @@
 ;; google-this
 ;; doc: https://github.com/Malabarba/emacs-google-this
 (use-package! google-this
-  :config
-  (map!
-   (:leader
-    (:prefix ("G" . "google")
-     :desc "Query google"     "q" #'google-this
-     :desc "Google this word" "w" #'google-this-word
-     :desc "Google this line" "l" #'google-this-line))))
+  :commands (google-this google-this-word google-this-line)
+  :init (map!
+         (:leader
+          (:prefix ("G" . "google")
+           :desc "Query google"     "q" #'google-this
+           :desc "Google this word" "w" #'google-this-word
+           :desc "Google this line" "l" #'google-this-line))))
 
 ;; lorem-ipsum
 ;; doc: https://github.com/jschaf/emacs-lorem-ipsum
 (use-package! lorem-ipsum
-  :config
-  (map!
-   (:leader
-    (:prefix ("l" . "lorem ipsum")
-     :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
-     :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
-     :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
+  :commands (lorem-ipsum-insert-paragraphs
+             lorem-ipsum-insert-sentences
+             lorem-ipsum-insert-list)
+  :init (map!
+         (:leader
+          (:prefix ("l" . "lorem ipsum")
+           :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
+           :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
+           :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
