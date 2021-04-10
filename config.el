@@ -179,7 +179,6 @@
 ;; Force grammar spell checking to be turn on manually
 (remove-hook! (text-mode) #'spell-fu-mode)
 
-;; Bash
 (after! sh-script
   (set-company-backend! 'sh-mode nil)  ; disable backend because of slowliness
   ;; shfmt formatter settings
@@ -188,7 +187,6 @@
   (set-formatter! 'shfmt "shfmt -i 2 -ci"
     :modes '(sh-mode)))
 
-;; Python
 (after! python
   (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
   (set-formatter! 'black
@@ -196,7 +194,13 @@
       ("--pyi" (string= (file-name-extension buffer-file-name) "pyi")))
     :modes '(python-mode)))
 
-;; web-mode
+(after! (:any js-mode json-mode)
+  (setq js-indent-level 2))
+
+(after! js2-mode
+  (setq-default indent-tabs-mode nil)
+  (setq-default js2-basic-offset 2))
+
 (after! web-mode
   (setq web-mode-code-indent-offset 2
         web-mode-css-indent-offset 2
@@ -370,9 +374,11 @@
   (after! google-translate-backend
     (setq google-translate-backend-method 'curl))
 
+  ;; fix
   (after! google-translate-tk
     (advice-add #'google-translate--search-tkk
                 :override (lambda () "Search TKK fix." (list 430675 2721866130))))
+
   (map!
    (:leader
     (:prefix ("T" . "translate")

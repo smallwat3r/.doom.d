@@ -97,7 +97,9 @@
 ;; Treemacs
 (after! treemacs
   (setq doom-themes-treemacs-enable-variable-pitch nil
-        doom-themes-treemacs-line-spacing 0)
+        doom-themes-treemacs-line-spacing 0
+        treemacs-width 25)
+
   (custom-set-faces!
     '(doom-themes-treemacs-file-face :foreground "#dbdbdb")))
 
@@ -107,9 +109,9 @@
   (fringe-mode 1) ; thinest possible
 
   (custom-set-faces!
-    '(git-gutter-fr:added :foreground "green4")
-    '(git-gutter-fr:modified :foreground "burlywood2")
-    '(git-gutter-fr:deleted :foreground "firebrick3")))
+    '(git-gutter-fr:added :foreground "chartreuse3")
+    '(git-gutter-fr:modified :foreground "gold")
+    '(git-gutter-fr:deleted :foreground "red3")))
 
 ;; Disable line numbers by default
 (setq display-line-numbers-type nil)
