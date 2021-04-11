@@ -229,8 +229,8 @@
   (map!
    (:leader
     (:prefix "o"
-     :desc "scratch buffer current mode" "x" #'scratch
-     :desc "scratch buffer restclient"   "h" #'zz/scratch-rest-mode)))
+     :desc "Scratch buffer current mode" "x" #'scratch
+     :desc "Scratch buffer restclient"   "h" #'zz/scratch-rest-mode)))
 
   ;; Auto add headers on scratch buffers in specific modes
   (add-hook! 'org-mode-hook (zz/add-scratch-buffer-header "#+TITLE: Scratch file"))
