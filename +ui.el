@@ -37,9 +37,6 @@
 ;;
 ;;; Themes config
 
-;; Do not show standard themes
-(delq! t custom-theme-load-path)
-
 ;; Set up our default theme
 (setq doom-theme 'sanityinc-tomorrow-night)
 
