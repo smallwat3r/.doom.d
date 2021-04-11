@@ -131,11 +131,11 @@
 (setq window-divider-default-right-width global-window-divider-width
       window-divider-default-bottom-width global-window-divider-width)
 
-;; Do not change the divider border width when using writeroom
-(setq +zen-window-divider-size global-window-divider-width)
-
-;; Writeroom font scaling
-(setq +zen-text-scale 1)
+;; Writeroom
+(when (featurep! :ui zen)
+  (after! writeroom-mode
+    (setq +zen-window-divider-size global-window-divider-width
+          +zen-text-scale 0)))
 
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))
