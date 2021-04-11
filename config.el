@@ -46,7 +46,8 @@
 (map!
  (:leader
   (:prefix "f" :desc "Cycle through frame" "j" #'other-frame)
-  (:prefix "o" :desc "Open link at point" "l" #'browse-url-at-point)))
+  (:prefix "o" :desc "Open in Alacritty"   "a" #'zz/alacritty-here)
+  (:prefix "o" :desc "Open link at point"  "l" #'browse-url-at-point)))
 
 (map!
  (:map evil-normal-state-map
