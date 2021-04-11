@@ -98,7 +98,8 @@
 (after! treemacs
   (setq doom-themes-treemacs-enable-variable-pitch nil
         doom-themes-treemacs-line-spacing 0
-        treemacs-width 25)
+        doom-themes-treemacs-theme "doom-colors"
+        treemacs-width 35)
 
   (custom-set-faces!
     '(doom-themes-treemacs-file-face :foreground "#dbdbdb")))

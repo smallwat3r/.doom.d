@@ -121,15 +121,25 @@
 ;; Narrowing searchs in dired
 (use-package! dired-narrow
   :after dired
-  :config (map! :map dired-mode-map
-                :n "/" #'dired-narrow-fuzzy))
+  :commands (dired-narrow-fuzzy)
+  :init (map! :map dired-mode-map
+              :n "/" #'dired-narrow-fuzzy))
 
 ;; Toggle directories with TAB in dired
 (use-package! dired-subtree
   :after dired
-  :config (map! :map dired-mode-map
-                "<tab>" #'dired-subtree-toggle
-                "<backtab>" #'dired-subtree-cycle))
+  :commands (dired-subtree-toggle dired-subtree-cycle)
+  :init (map! :map dired-mode-map
+              "<tab>" #'dired-subtree-toggle
+              "<backtab>" #'dired-subtree-cycle)
+  :config
+  (custom-set-faces!
+    '(dired-subtree-depth-1-face :background nil)
+    '(dired-subtree-depth-2-face :background nil)
+    '(dired-subtree-depth-3-face :background nil)
+    '(dired-subtree-depth-4-face :background nil)
+    '(dired-subtree-depth-5-face :background nil)
+    '(dired-subtree-depth-6-face :background nil)))
 
 ;;
 ;;; Company

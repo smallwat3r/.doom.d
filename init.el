@@ -29,7 +29,7 @@
  snippets
 
  :emacs
- (dired +icons)
+ dired
  electric
  undo
  vc
