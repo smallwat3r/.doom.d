@@ -4,7 +4,6 @@
 ;;; Load configs
 
 (load! "+ui")
-(load! "+functions")
 (load! "+eshell")
 
 ;;
@@ -226,6 +225,20 @@
 ;; doc: https://github.com/ieure/scratch-el
 (use-package! scratch
   :config
+  (defun zz/add-scratch-buffer-header (text)
+    "Add an automatic header to a scratch buffer."
+    (when scratch-buffer
+      (save-excursion
+        (goto-char (point-min))
+        (insert text)
+        (newline 2))
+      (goto-char (point-max))))
+
+  (defun zz/scratch-rest-mode ()
+    "Start a scratch buffer in restclient-mode"
+    (interactive)
+    (scratch 'restclient-mode))
+
   (map!
    (:leader
     (:prefix "o"
@@ -235,12 +248,7 @@
   ;; Auto add headers on scratch buffers in specific modes
   (add-hook! 'org-mode-hook (zz/add-scratch-buffer-header "#+TITLE: Scratch file"))
   (add-hook! 'sh-mode-hook (zz/add-scratch-buffer-header "#!/usr/bin/env bash"))
-  (add-hook! 'restclient-mode-hook
-    (zz/add-scratch-buffer-header
-     "#
-# restclient-mode
-# Examples: https://raw.githubusercontent.com/pashky/restclient.el/master/examples/httpbin
-#")))
+  (add-hook! 'restclient-mode-hook (zz/add-scratch-buffer-header "#\n# restclient\n#")))
 
 ;;
 ;;; Docker
