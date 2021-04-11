@@ -328,8 +328,7 @@
 (map!
  (:leader
   (:prefix "n"
-   :desc "Deft open" "D" #'deft
-   :desc "Deft new"  "d" #'deft-new-file)))
+   :desc "Deft new file" "D" #'deft-new-file-named)))
 
 ;; org
 ;; doc: https://orgmode.org/manual/
