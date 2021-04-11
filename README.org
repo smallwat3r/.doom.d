@@ -5,7 +5,7 @@ This is my personal Doom Emacs config.
 Install Emacs, I'm using the emacs-mac port for macOS:
 #+begin_src shell
 brew tap railwaycat/emacsmacport
-brew install emacs-mac --with-no-title-bars
+brew install emacs-mac
 #+end_src
 
 Edit: I'm now trying Emacs 28 with native-comp (gccEmacs) from the emacs-plus port
