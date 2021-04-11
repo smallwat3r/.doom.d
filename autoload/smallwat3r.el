@@ -68,3 +68,11 @@
   "An interactive function showing function `buffer-file-name' or `buffer-name'."
   (interactive)
   (message (kill-new (if (buffer-file-name) (buffer-file-name) (buffer-name)))))
+
+;;;###autoload
+(defun zz/alacritty-here ()
+  "Open alacritty from the current directory."
+  (interactive "@")
+  (shell-command
+   (format "alacritty --working-directory %S >/dev/null 2>&1 & disown"
+           default-directory)))

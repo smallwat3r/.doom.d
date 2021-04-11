@@ -27,7 +27,7 @@
 ;;
 ;;; Fonts
 
-(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 15)
+(setq doom-font (font-spec :family "Monaco" :size 13)
       doom-variable-pitch-font (font-spec :family "Geneva")
       doom-font-increment 1
       doom-big-font-increment 2)
@@ -38,7 +38,7 @@
 ;;; Themes config
 
 ;; Set up our default theme
-(setq doom-theme 'sanityinc-tomorrow-night)
+(setq doom-theme 'sanityinc-tomorrow-bright)
 
 (custom-set-faces!
   ;; Eye saver
@@ -70,17 +70,17 @@
   '(diff-refine-changed :inverse-video nil :weight bold)
 
   ;; Comments and docstrings colors
-  '(font-lock-comment-face :foreground "#329400" :slant italic)
+  '(font-lock-comment-face :foreground "#329400" :slant normal)
   '(font-lock-comment-delimiter-face :foreground "#0a4700" :slant normal)
-  '(font-lock-doc-face :foreground "#329400" :slant italic)
+  '(font-lock-doc-face :foreground "#329400" :slant normal)
 
   ;; Miscellaneous
   '(+workspace-tab-selected-face :background nil :foreground "#b294bb" :weight bold)
   '(cursor :background "#d7ff00")
   '(show-paren-match :foreground "#d7ff00" :background "#ff5f5f" :slant normal :box nil)
   '(show-paren-mismatch :foreground "#ffffff" :background "#db0000" :slant normal :box nil)
-  '(link :background nil :foreground "PaleTurquoise2" :weight regular :underline t :slant italic)
-  '(link-visited :background nil :foreground "maroon4" :weight regular :underline t :slant italic)
+  '(link :background nil :foreground "PaleTurquoise2" :weight regular :underline t)
+  '(link-visited :background nil :foreground "maroon4" :weight regular :underline t)
   '(minibuffer-prompt :background nil :foreground "#f6df92")
   '(nav-flash-face :background "#313131")
   '(persp-face-lighter-buffer-not-in-persp :background nil))

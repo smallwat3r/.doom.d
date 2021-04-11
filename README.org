@@ -8,7 +8,11 @@ brew tap railwaycat/emacsmacport
 brew install emacs-mac --with-no-title-bars
 #+end_src
 
-(Edit: I'm now trying Emacs 28 with native comp)
+Edit: I'm now trying Emacs 28 with native-comp (gccEmacs) from the emacs-plus port
+#+begin_src shell
+brew tap d12frosted/emacs-plus
+brew install emacs-plus@28 --with-cacodemon-icon --with-native-comp
+#+end_src
 
 Install Doom:
 #+begin_src shell
