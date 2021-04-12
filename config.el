@@ -474,4 +474,4 @@
 ;; doc: https://github.com/jwiegley/alert
 (use-package alert
   :commands (alert)
-  :custom (aleter-default-style 'notifier))
+  :custom (alert-default-style 'notifier))
