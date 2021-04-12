@@ -427,3 +427,46 @@
            :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
            :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
            :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
+
+;; slack
+(use-package slack
+  :commands (slack-start)
+  :init
+  (setq slack-buffer-emojify t
+        slack-prefer-current-team t)
+  :config
+  (slack-register-team
+   :default t
+   :name (+pass-get-secret "slack/btl/name")
+   :token (+pass-get-secret "slack/btl/token")
+   :full-and-display-names t)
+
+  (slack-register-team
+   :name (+pass-get-secret "slack/sws/name")
+   :token (+pass-get-secret "slack/sws/token")
+   :full-and-display-names t)
+
+  (evil-define-key 'normal slack-mode-map
+    ",ra" 'slack-message-add-reaction
+    ",rr" 'slack-message-remove-reaction
+    ",rs" 'slack-message-show-reaction-users
+    ",me" 'slack-message-edit
+    ",md" 'slack-message-delete
+    ",mu" 'slack-message-embed-mention
+    ",mc" 'slack-message-embed-channel)
+
+  (evil-define-key 'normal slack-edit-message-mode-map
+    ",k" 'slack-message-cancel-edit
+    ",mu" 'slack-message-embed-mention
+    ",mc" 'slack-message-embed-channel)
+
+  (custom-set-faces!
+    '(slack-message-mention-face :background nil :foreground "aquamarine2" :weight bold)
+    '(slack-message-mention-keyword-face :background nil :foreground "purple1" :weight bold)
+    '(slack-message-mention-me-face :background nil :foreground "gold" :weight bold)
+    '(slack-mrkdwn-code-face :background nil :foreground "green3")
+    '(slack-mrkdwn-code-block-face :background nil :foreground "green3")))
+
+(use-package alert
+  :commands (alert)
+  :init (setq alert-default-style 'notifier))

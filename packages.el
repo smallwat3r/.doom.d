@@ -29,6 +29,9 @@
 (package! anzu)
 (package! evil-anzu)
 
+(package! slack)
+(package! alert)
+
 (package! color-theme-sanityinc-tomorrow)
 (package! simplicity-theme :recipe
   (:host github
