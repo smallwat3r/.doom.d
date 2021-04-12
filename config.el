@@ -429,6 +429,7 @@
            :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
 
 ;; slack
+;; doc: https://github.com/yuya373/emacs-slack
 (use-package slack
   :commands (slack-start)
   :init
@@ -467,6 +468,7 @@
     '(slack-mrkdwn-code-face :background nil :foreground "green3")
     '(slack-mrkdwn-code-block-face :background nil :foreground "green3")))
 
+;; doc: https://github.com/jwiegley/alert
 (use-package alert
   :commands (alert)
   :init (setq alert-default-style 'notifier))
