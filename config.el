@@ -60,7 +60,7 @@
   "M-SPC" #'cycle-spacing
   "M-o"   #'delete-blank-lines
   ";f"    #'format-all-buffer
-  ";q"    #'evil-save-and-close
+  ";q"    #'zz/save-and-close-buffer
   ";w"    #'evil-write
   "C-k"   #'join-line
   "B"     #'beginning-of-line-text

@@ -37,6 +37,13 @@
   (shrink-window 5))
 
 ;;;###autoload
+(defun zz/save-and-close-buffer ()
+  "Save and close current buffer."
+  (interactive)
+  (save-buffer)
+  (kill-this-buffer))
+
+;;;###autoload
 (defun zz/locate-python-venv-path ()
   "Look for python virtual environments in the workspace"
   (interactive)
