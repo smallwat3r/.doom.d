@@ -82,7 +82,6 @@
   '(link :background nil :foreground "PaleTurquoise2" :weight regular :underline t)
   '(link-visited :background nil :foreground "maroon4" :weight regular :underline t)
   '(minibuffer-prompt :background nil :foreground "#f6df92")
-  '(nav-flash-face :background "#313131")
   '(persp-face-lighter-buffer-not-in-persp :background nil))
 
 ;;
@@ -147,6 +146,13 @@
     '(evil-goggles-paste-face :background "#172f00")
     '(evil-goggles-yank-face :background "#363636")))
 
+;; beacon
+;; doc: https://github.com/Malabarba/beacon
+(use-package! beacon
+  :delight
+  :custom (beacon-size 20)
+  :init (beacon-mode 1))
+
 ;;
 ;;; Doom-dashboard
 
@@ -183,12 +189,13 @@
 ;; Show counter while in search modes
 ;; doc: https://github.com/emacsorphanage/anzu
 (use-package! anzu
+  :delight
   :after-call isearch-mode
-  :config (custom-set-faces!
-            '(anzu-mode-line :foreground "#870052" :weight bold)))
+  :custom-face (anzu-mode-line ((t (:foreground "#870052" :weight bold)))))
 
 ;; doc: https://github.com/emacsorphanage/evil-anzu
 (use-package! evil-anzu
+  :delight
   :after-call evil-ex-start-search evil-ex-start-word-search evil-ex-search-activate-highlight
   :config (global-anzu-mode +1))
 
@@ -212,7 +219,6 @@
      ;; hidden minor-modes from modeline
      (company-mode nil company)
      (ivy-mode nil ivy)
-     (anzu-mode nil anzu)
      (evil-org-mode nil evil-org)
      (which-key-mode nil which-key)
      (gcmh-mode nil gcmh)

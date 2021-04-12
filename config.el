@@ -103,8 +103,8 @@
 ;; doc: https://github.com/asok/all-the-icons-ivy
 (use-package! all-the-icons-ivy-rich
   :after ivy-rich
-  :init (all-the-icons-ivy-rich-mode 1)
-  :config (setq all-the-icons-ivy-rich-icon-size 0.7))
+  :custom (all-the-icons-ivy-rich-icon-size 1)
+  :init (all-the-icons-ivy-rich-mode 1))
 
 ;;
 ;;; Dired
@@ -122,24 +122,22 @@
 (use-package! dired-narrow
   :after dired
   :commands (dired-narrow-fuzzy)
-  :init (map! :map dired-mode-map
-              :n "/" #'dired-narrow-fuzzy))
+  :init (map! :map dired-mode-map :n "/" #'dired-narrow-fuzzy))
 
 ;; Toggle directories with TAB in dired
 (use-package! dired-subtree
   :after dired
   :commands (dired-subtree-toggle dired-subtree-cycle)
+  :custom-face
+  (dired-subtree-depth-1-face ((t (:background nil))))
+  (dired-subtree-depth-2-face ((t (:background nil))))
+  (dired-subtree-depth-3-face ((t (:background nil))))
+  (dired-subtree-depth-4-face ((t (:background nil))))
+  (dired-subtree-depth-5-face ((t (:background nil))))
+  (dired-subtree-depth-6-face ((t (:background nil))))
   :init (map! :map dired-mode-map
               "<tab>" #'dired-subtree-toggle
-              "<backtab>" #'dired-subtree-cycle)
-  :config
-  (custom-set-faces!
-    '(dired-subtree-depth-1-face :background nil)
-    '(dired-subtree-depth-2-face :background nil)
-    '(dired-subtree-depth-3-face :background nil)
-    '(dired-subtree-depth-4-face :background nil)
-    '(dired-subtree-depth-5-face :background nil)
-    '(dired-subtree-depth-6-face :background nil)))
+              "<backtab>" #'dired-subtree-cycle))
 
 ;;
 ;;; Company
@@ -282,6 +280,7 @@
      :desc "Exec into"          "e" #'kubernetes-exec-into))))
 
 (use-package! kubernetes-evil
+  :delight
   :after kubernetes)
 
 ;;
@@ -357,10 +356,11 @@
 ;; doc: https://github.com/awth13/org-appear
 (use-package! org-appear
   :hook (org-mode . org-appear-mode)
-  :init (setq org-appear-autoemphasis t
-              org-appear-autolinks t
-              org-appear-autosubmarkers t
-              org-appear-autoentities t))
+  :custom
+  (org-appear-autoemphasis t)
+  (org-appear-autolinks t)
+  (org-appear-autosubmarkers t)
+  (org-appear-autoentities t))
 
 ;; org-journal
 ;; doc: https://github.com/bastibe/org-journal
@@ -432,9 +432,16 @@
 ;; doc: https://github.com/yuya373/emacs-slack
 (use-package slack
   :commands (slack-start)
-  :init
-  (setq slack-buffer-emojify t
-        slack-prefer-current-team t)
+  :custom
+  (slack-buffer-emojify t)
+  (slack-prefer-current-team t)
+  :custom-face
+  (slack-message-mention-face ((t (:background nil :foreground "aquamarine2" :weight bold))))
+  (slack-message-mention-face ((t (:background nil :foreground "aquamarine2" :weight bold))))
+  (slack-message-mention-keyword-face ((t (:background nil :foreground "purple1" :weight bold))))
+  (slack-message-mention-me-face ((t (:background nil :foreground "gold" :weight bold))))
+  (slack-mrkdwn-code-face ((t (:background nil :foreground "green3"))))
+  (slack-mrkdwn-code-block-face ((t (:background nil :foreground "green3"))))
   :config
   (slack-register-team
    :default t
@@ -459,16 +466,9 @@
   (evil-define-key 'normal slack-edit-message-mode-map
     ",k" 'slack-message-cancel-edit
     ",mu" 'slack-message-embed-mention
-    ",mc" 'slack-message-embed-channel)
-
-  (custom-set-faces!
-    '(slack-message-mention-face :background nil :foreground "aquamarine2" :weight bold)
-    '(slack-message-mention-keyword-face :background nil :foreground "purple1" :weight bold)
-    '(slack-message-mention-me-face :background nil :foreground "gold" :weight bold)
-    '(slack-mrkdwn-code-face :background nil :foreground "green3")
-    '(slack-mrkdwn-code-block-face :background nil :foreground "green3")))
+    ",mc" 'slack-message-embed-channel))
 
 ;; doc: https://github.com/jwiegley/alert
 (use-package alert
   :commands (alert)
-  :init (setq alert-default-style 'notifier))
+  :custom (aleter-default-style 'notifier))

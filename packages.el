@@ -15,6 +15,8 @@
 
 (package! scratch)
 
+(package! beacon)
+
 (package! org-appear)
 
 (package! google-translate)
