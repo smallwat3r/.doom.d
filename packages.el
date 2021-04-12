@@ -13,8 +13,6 @@
 (package! dired-narrow)
 (package! dired-subtree)
 
-(package! deadgrep)
-
 (package! scratch)
 
 (package! org-appear)

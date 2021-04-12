@@ -351,8 +351,8 @@
     '(org-hide :background nil)
     '(org-indent :background nil)
     '(org-block :background "gray10")
-    '(org-block-begin-line :background "gray10" :overline nil :underline nil)
-    '(org-block-end-line :background "gray10" :overline nil :underline nil)))
+    '(org-block-begin-line :background "gray10" :overline nil :underline nil :slant normal)
+    '(org-block-end-line :background "gray10" :overline nil :underline nil :slant normal)))
 
 ;; doc: https://github.com/awth13/org-appear
 (use-package! org-appear
