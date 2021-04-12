@@ -62,7 +62,9 @@
   ";f"    #'format-all-buffer
   ";q"    #'evil-save-and-close
   ";w"    #'evil-write
-  "C-k"   #'join-line))
+  "C-k"   #'join-line
+  "B"     #'beginning-of-line-text
+  "E"     #'end-of-line))
 
 ;;
 ;;; Projectile
@@ -376,8 +378,9 @@
 ;; doc: https://github.com/purcell/exec-path-from-shell
 (use-package! exec-path-from-shell
   :if (memq window-system '(mac ns x))
-  :init (setq exec-path-from-shell-arguments '("-l")  ; disable annoying warning
-              exec-path-from-shell-variables '("PATH" "GOPATH"))
+  :custom
+  (exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-variables '("PATH" "GOPATH"))
   :config (exec-path-from-shell-initialize))
 
 ;; google-translate
