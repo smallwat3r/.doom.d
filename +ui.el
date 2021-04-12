@@ -150,7 +150,9 @@
 ;; doc: https://github.com/Malabarba/beacon
 (use-package! beacon
   :delight
-  :custom (beacon-size 20)
+  :custom
+  (beacon-size 15)
+  (beacon-blink-when-window-scrolls nil)
   :init (beacon-mode 1))
 
 ;;
