@@ -208,7 +208,7 @@
   (delight
    '((abbrev-mode " Abv" abbrev)
      (pipenv-mode " pip" pipenv)
-     (yas-minor-mode " υ" yasnippet)
+     (yas-minor-mode " Yas" yasnippet)
      (git-gutter-mode " Gg" git-gutter)
      (dired-mode "δ" :major)
      (emacs-lisp-mode "ξ" :major)
@@ -229,7 +229,9 @@
      (dtrt-indent-mode nil dtrt-indent)
      (evil-escape-mode nil evil-escape)
      (evil-traces-mode nil evil-traces)
+     (org-indent-mode nil org-indent)
      (outline-minor-mode nil outline)
+     (persp-mode nil persp-mode)
      (whitespace-mode nil whitespace)
      (smartparens-mode nil smartparens)
      (evil-goggles-mode nil evil-goggles)
