@@ -134,7 +134,8 @@
           +zen-text-scale 0)))
 
 ;; Activate goto-address mode on some major modes
-(add-hook! (prog-mode text-mode restclient-mode) (goto-address-mode t))
+(add-hook! (prog-mode text-mode restclient-mode vterm-mode eshell-mode)
+  (goto-address-mode t))
 
 ;; evil-goggles
 ;; doc: https://github.com/edkolev/evil-goggles
