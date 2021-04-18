@@ -161,12 +161,16 @@
   ;; Keep mode-line
   (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
 
+  (defun zz/vterm-delete-word ()
+    "Delete a word in vterm."
+    (interactive)
+    (vterm-send-key (kbd "C-w")))
+
   ;; Bindings
   (map!
    :map vterm-mode-map :n "B" #'vterm-beginning-of-line
    :map vterm-mode-map :n "<return>" #'evil-insert-resume
-   :map vterm-mode-map "<C-backspace>" (lambda ()
-                                         (interactive) (vterm-send-key (kbd "C-w")))))
+   :map vterm-mode-map "<C-backspace>" #'zz/vterm-delete-word))
 
 ;;
 ;;; Linters, checkers and programming language specifics
