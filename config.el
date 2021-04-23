@@ -196,18 +196,14 @@
 
 (after! sh-script
   (set-company-backend! 'sh-mode nil)  ; disable backend because of slowliness
-  ;; shfmt formatter settings
-  ;; -i:  2 space identation
-  ;; -ci: Indent switch cases
-  (set-formatter! 'shfmt "shfmt -i 2 -ci"
-    :modes '(sh-mode)))
+  (set-formatter! 'shfmt "shfmt -i 2 -ci" :modes '(sh-mode)))
 
 (after! python
   (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
-  (set-formatter! 'black
-    '("black" "-q" "-l" "100" "-"
-      ("--pyi" (string= (file-name-extension buffer-file-name) "pyi")))
-    :modes '(python-mode)))
+  (set-formatter! 'black "black -q -l 100 -" :modes '(python-mode)))
+
+(after! (:any html-mode web-mode)
+  (set-formatter! 'html-tidy "tidy -q -indent -wrap 150" :modes '(html-mode web-mode)))
 
 (after! (:any js-mode json-mode)
   (setq js-indent-level 2))
@@ -217,7 +213,8 @@
   (setq-default js2-basic-offset 2))
 
 (after! web-mode
-  (setq web-mode-code-indent-offset 2
+  (setq web-mode-indent-style 2
+        web-mode-code-indent-offset 2
         web-mode-css-indent-offset 2
         web-mode-markup-indent-offset 2)
 
