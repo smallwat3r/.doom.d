@@ -64,7 +64,7 @@
 ;;
 ;;; Projectile
 
-;; doc: https://github.com/bbatsov/projctile
+;; doc: https://github.com/bbatsov/projectile
 ;;      https://docs.projectile.mx/projectile/index.html
 ;;
 ;; Run `projectile-discover-projects-in-search-path' to autoload all the projects from the
