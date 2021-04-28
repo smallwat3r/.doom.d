@@ -145,6 +145,9 @@
         company-tooltip-limit 10
         company-minimum-prefix-length 1))
 
+;; Disable company in shell mode
+(add-hook! 'shell-mode-hook (company-mode -1))
+
 ;;
 ;;; Vterm
 
@@ -169,12 +172,15 @@
 ;;
 ;;; Docker
 
-(map!
- (:leader
-  (:prefix ("d" . "docker")
-   :desc "List images"     "i" #'docker-images
-   :desc "List containers" "c" #'docker-containers
-   :desc "Exec into"       "e" #'docker-container-shell)))
+(use-package! docker
+  :commands (docker-images docker-containers docker-container-shell)
+  :init
+  (map!
+   (:leader
+    (:prefix ("d" . "docker")
+     :desc "List images"     "i" #'docker-images
+     :desc "List containers" "c" #'docker-containers
+     :desc "Exec into"       "e" #'docker-container-shell))))
 
 ;;
 ;;; Org
