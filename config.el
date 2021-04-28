@@ -1,12 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;;
-;;; Load configs
-
-(load! "+ui")
-(load! "+eshell")
-
-;;
 ;;; General
 
 ;; Disable confirmation prompt when exiting Emacs.
@@ -173,87 +167,6 @@
    :map vterm-mode-map "<C-backspace>" #'zz/vterm-delete-word))
 
 ;;
-;;; Linters, checkers and programming language specifics
-
-;; doc: https://www.flycheck.org/en/latest/
-(after! flycheck
-  ;; Pylint (python)
-  (setq flycheck-python-pylint-executable "/usr/local/bin/pylint"
-        flycheck-pylintrc "~/.config/pylintrc")
-  (setq-hook! 'python-mode-hook flycheck-checker 'python-pylint)
-
-  ;; Shellcheck (bash)
-  (setq flycheck-shellcheck-excluded-warnings '("SC1091"))
-  (setq-hook! 'sh-mode-hook flycheck-checker 'sh-shellcheck))
-
-;; Grammar spell checker
-;; doc: https://gitlab.com/ideasman42/emacs-spell-fu
-(after! spell-fu
-  (setq spell-fu-idle-delay 0.5))
-
-;; Force grammar spell checking to be turn on manually
-(remove-hook! (text-mode) #'spell-fu-mode)
-
-(after! sh-script
-  (set-company-backend! 'sh-mode nil)  ; disable backend because of slowliness
-  (set-formatter! 'shfmt "shfmt -i 2 -ci" :modes '(sh-mode)))
-
-(after! python
-  (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
-  (set-formatter! 'black "black -q -l 100 -" :modes '(python-mode)))
-
-(after! (:any html-mode web-mode)
-  (set-formatter! 'html-tidy "tidy -q -indent -wrap 150" :modes '(html-mode web-mode)))
-
-(after! (:any js-mode json-mode)
-  (setq js-indent-level 2))
-
-(after! js2-mode
-  (setq-default indent-tabs-mode nil)
-  (setq-default js2-basic-offset 2))
-
-(after! web-mode
-  (setq web-mode-indent-style 2
-        web-mode-code-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-markup-indent-offset 2)
-
-  (custom-set-faces!
-    '(web-mode-html-attr-equal-face :foreground "gray60")
-    '(web-mode-html-attr-name-face :foreground "gray60")
-    '(web-mode-html-tag-face :foreground "gray60")
-    '(web-mode-html-tag-bracket-face :foreground "gray45")))
-
-;; Scratch buffers
-;; doc: https://github.com/ieure/scratch-el
-(use-package! scratch
-  :config
-  (defun zz/add-scratch-buffer-header (text)
-    "Add an automatic header to a scratch buffer."
-    (when scratch-buffer
-      (save-excursion
-        (goto-char (point-min))
-        (insert text)
-        (newline 2))
-      (goto-char (point-max))))
-
-  (defun zz/scratch-rest-mode ()
-    "Start a scratch buffer in restclient-mode"
-    (interactive)
-    (scratch 'restclient-mode))
-
-  (map!
-   (:leader
-    (:prefix "o"
-     :desc "Scratch buffer current mode" "x" #'scratch
-     :desc "Scratch buffer restclient"   "h" #'zz/scratch-rest-mode)))
-
-  ;; Auto add headers on scratch buffers in specific modes
-  (add-hook! 'org-mode-hook (zz/add-scratch-buffer-header "#+TITLE: Scratch file"))
-  (add-hook! 'sh-mode-hook (zz/add-scratch-buffer-header "#!/usr/bin/env bash"))
-  (add-hook! 'restclient-mode-hook (zz/add-scratch-buffer-header "#\n# restclient\n#")))
-
-;;
 ;;; Docker
 
 (map!
@@ -262,44 +175,6 @@
    :desc "List images"     "i" #'docker-images
    :desc "List containers" "c" #'docker-containers
    :desc "Exec into"       "e" #'docker-container-shell)))
-
-;;
-;;; Emails
-
-;; Emails are sent using msmtp
-(setq sendmail-program "/usr/local/bin/msmtp")
-
-(setq mail-user-agent 'message-user-agent
-      mail-specify-envelope-from t
-      mail-envelope-from 'header
-      message-sendmail-envelope-from 'header)
-
-;; doc: https://notmuchmail.org/emacstips/
-(after! notmuch
-  ;; Main buffer sections
-  (setq notmuch-show-log nil
-        notmuch-hello-sections `(notmuch-hello-insert-saved-searches
-                                 notmuch-hello-insert-alltags))
-
-  ;; Remove pop-up rule, so it opens in its own buffer
-  (set-popup-rule! "^\\*notmuch-hello" :ignore t)
-
-  ;; Email list formats
-  (setq notmuch-search-result-format
-        '(("date" . "%12s ")
-          ("count" . "%-7s ")
-          ("authors" . "%-15s ")
-          ("tags" . "(%s) ")
-          ("subject" . "%-72s")))
-
-  ;; Use a custom command to fetch for new emails with mbsync
-  (setq +notmuch-sync-backend 'custom
-        +notmuch-sync-command "mbsync -a && notmuch new")
-
-  ;; Set default tags on replies
-  (setq notmuch-fcc-dirs
-        '((user-mail-address . "personal/sent -inbox +sent -unread")
-          (user-mail-address-2 . "sws/sent -inbox +sent -unread"))))
 
 ;;
 ;;; Org
@@ -352,6 +227,36 @@
 ;;
 ;;; Misc
 
+;; Scratch buffers
+;; doc: https://github.com/ieure/scratch-el
+(use-package! scratch
+  :config
+  (defun zz/add-scratch-buffer-header (text)
+    "Add an automatic header to a scratch buffer."
+    (when scratch-buffer
+      (save-excursion
+        (goto-char (point-min))
+        (insert text)
+        (newline 2))
+      (goto-char (point-max))))
+
+  (defun zz/scratch-rest-mode ()
+    "Start a scratch buffer in restclient-mode"
+    (interactive)
+    (scratch 'restclient-mode))
+
+  (map!
+   (:leader
+    (:prefix "o"
+     :desc "Scratch buffer current mode" "x" #'scratch
+     :desc "Scratch buffer restclient"   "h" #'zz/scratch-rest-mode)))
+
+  ;; Auto add headers on scratch buffers in specific modes
+  (add-hook! 'org-mode-hook (zz/add-scratch-buffer-header "#+TITLE: Scratch file"))
+  (add-hook! 'sh-mode-hook (zz/add-scratch-buffer-header "#!/usr/bin/env bash"))
+  (add-hook! 'restclient-mode-hook (zz/add-scratch-buffer-header "#\n# restclient\n#")))
+
+;; exec-path-from-shell
 ;; Executable paths in Emacs as it works from the shell
 ;; doc: https://github.com/purcell/exec-path-from-shell
 (use-package! exec-path-from-shell
@@ -373,3 +278,11 @@
            :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
            :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
            :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
+
+;;
+;;; Load configs
+
+(load! "+email")
+(load! "+eshell")
+(load! "+prog")
+(load! "+ui")
