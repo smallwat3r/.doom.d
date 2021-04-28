@@ -95,7 +95,7 @@
 
 (defun eshell/sl (&rest args)
   "ls typo."
-  (zz/ls args))
+  (zz/eshell/ls args))
 
 (defun eshell/o ()
   "Open in finder."
