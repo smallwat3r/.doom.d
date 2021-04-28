@@ -71,7 +71,7 @@
    "k" "kubectl $*"
    "kt" "kubetail $*"
    "kgn" "kubectl get namespaces"
-   "ls" "zz/ls $*"))
+   "ls" "zz/eshell/ls $*"))
 
 ;;
 ;;; Custom Eshell functions
@@ -89,7 +89,7 @@
   "cd into my dotfiles directory."
   (eshell/cd "~/dotfiles"))
 
-(defun zz/ls (&rest args)
+(defun zz/eshell/ls (&rest args)
   "ls to always list hidden files."
   (eshell/ls "-a" args))
 
