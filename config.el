@@ -264,30 +264,6 @@
    :desc "Exec into"       "e" #'docker-container-shell)))
 
 ;;
-;;; Kubernetes
-
-;; doc: https://github.com/chrisbarrett/kubernetes-el
-
-(use-package! kubernetes
-  :commands (kubernetes-overview)
-  :init
-  (map!
-   (:leader
-    (:prefix ("k" . "kubernetes")
-     :desc "Overview"           "o" #'kubernetes-overview
-     :desc "Set context"        "c" #'kubernetes-use-context
-     :desc "Set namespace"      "n" #'kubernetes-set-namespace
-     :desc "Display logs"       "l" #'kubernetes-logs-fetch-all
-     :desc "Display service"    "s" #'kubernetes-display-service
-     :desc "Display deployment" "d" #'kubernetes-display-deployment
-     :desc "Describe"           "D" #'kubernetes-describe-pod
-     :desc "Exec into"          "e" #'kubernetes-exec-into))))
-
-(use-package! kubernetes-evil
-  :delight
-  :after kubernetes)
-
-;;
 ;;; Emails
 
 ;; Emails are sent using msmtp
@@ -334,12 +310,12 @@
 ;; deft
 ;; doc: https://github.com/jrblevin/deft
 (after! deft
-  (setq deft-directory my-notes-directory
-        deft-recursive t))
+  (setq deft-directory my-notes-directory))
 
 (map!
  (:leader
   (:prefix "n"
+   :desc "Open deft" "d" #'deft
    :desc "Deft new file" "D" #'deft-new-file-named)))
 
 ;; org
@@ -385,41 +361,6 @@
   (exec-path-from-shell-variables '("PATH" "GOPATH"))
   :config (exec-path-from-shell-initialize))
 
-;; google-translate
-;; doc: https://github.com/atykhonov/google-translate
-(use-package! google-translate
-  :commands (google-translate-at-point
-             google-translate-query-translate
-             google-translate-buffer)
-  :init
-  (set-popup-rule! "*Google Translate*" :size 0.4 :side 'bottom :select t :modeline t)
-
-  (after! google-translate-backend
-    (setq google-translate-backend-method 'curl))
-
-  ;; fix
-  (after! google-translate-tk
-    (advice-add #'google-translate--search-tkk
-                :override (lambda () "Search TKK fix." (list 430675 2721866130))))
-
-  (map!
-   (:leader
-    (:prefix ("T" . "translate")
-     :desc "Translate query"    "q" #'google-translate-query-translate
-     :desc "Translate at point" "t" #'google-translate-at-point
-     :desc "Translate buffer"   "b" #'google-translate-buffer))))
-
-;; google-this
-;; doc: https://github.com/Malabarba/emacs-google-this
-(use-package! google-this
-  :commands (google-this google-this-word google-this-line)
-  :init (map!
-         (:leader
-          (:prefix ("G" . "google")
-           :desc "Query google"     "q" #'google-this
-           :desc "Google this word" "w" #'google-this-word
-           :desc "Google this line" "l" #'google-this-line))))
-
 ;; lorem-ipsum
 ;; doc: https://github.com/jschaf/emacs-lorem-ipsum
 (use-package! lorem-ipsum
@@ -432,48 +373,3 @@
            :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
            :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
            :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
-
-;; slack
-;; doc: https://github.com/yuya373/emacs-slack
-(use-package slack
-  :commands (slack-start)
-  :custom
-  (slack-buffer-emojify t)
-  (slack-prefer-current-team t)
-  :custom-face
-  (slack-message-mention-face ((t (:background nil :foreground "aquamarine2" :weight bold))))
-  (slack-message-mention-face ((t (:background nil :foreground "aquamarine2" :weight bold))))
-  (slack-message-mention-keyword-face ((t (:background nil :foreground "purple1" :weight bold))))
-  (slack-message-mention-me-face ((t (:background nil :foreground "gold" :weight bold))))
-  (slack-mrkdwn-code-face ((t (:background nil :foreground "green3"))))
-  (slack-mrkdwn-code-block-face ((t (:background nil :foreground "green3"))))
-  :config
-  (slack-register-team
-   :default t
-   :name (+pass-get-secret "slack/btl/name")
-   :token (+pass-get-secret "slack/btl/token")
-   :full-and-display-names t)
-
-  (slack-register-team
-   :name (+pass-get-secret "slack/sws/name")
-   :token (+pass-get-secret "slack/sws/token")
-   :full-and-display-names t)
-
-  (evil-define-key 'normal slack-mode-map
-    ",ra" 'slack-message-add-reaction
-    ",rr" 'slack-message-remove-reaction
-    ",rs" 'slack-message-show-reaction-users
-    ",me" 'slack-message-edit
-    ",md" 'slack-message-delete
-    ",mu" 'slack-message-embed-mention
-    ",mc" 'slack-message-embed-channel)
-
-  (evil-define-key 'normal slack-edit-message-mode-map
-    ",k" 'slack-message-cancel-edit
-    ",mu" 'slack-message-embed-mention
-    ",mc" 'slack-message-embed-channel))
-
-;; doc: https://github.com/jwiegley/alert
-(use-package alert
-  :commands (alert)
-  :custom (alert-default-style 'notifier))

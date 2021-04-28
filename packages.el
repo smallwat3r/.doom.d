@@ -7,9 +7,6 @@
 
 (package! exec-path-from-shell)
 
-(package! kubernetes)
-(package! kubernetes-evil)
-
 (package! dired-narrow)
 (package! dired-subtree)
 
@@ -19,9 +16,6 @@
 
 (package! org-appear)
 
-(package! google-translate)
-(package! google-this)
-
 (package! lorem-ipsum)
 
 (package! all-the-icons-ivy-rich)
@@ -30,9 +24,6 @@
 
 (package! anzu)
 (package! evil-anzu)
-
-(package! slack)
-(package! alert)
 
 (package! color-theme-sanityinc-tomorrow)
 (package! simplicity-theme :recipe

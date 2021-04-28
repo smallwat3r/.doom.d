@@ -2,77 +2,81 @@
 
 (setq comp-speed 2)  ; native compilation (gccEmacs)
 
-(doom!
- :completion
- company
- (ivy +fuzzy)
+(doom! :smallwat3r
+       deft
+       kubernetes
+       google
+       slack
 
- :ui
- deft
- doom
- doom-dashboard
- (emoji +unicode)
- hl-todo
- ophints
- (popup +defaults)
- treemacs
- vc-gutter
- workspaces
- zen
+       :completion
+       company
+       (ivy +fuzzy)
 
- :editor
- (evil +everywhere)
- file-templates
- (fold +vimish-fold +evil-vimish-fold)
- format
- snippets
+       :ui
+       doom
+       doom-dashboard
+       (emoji +unicode)
+       hl-todo
+       ophints
+       (popup +defaults)
+       treemacs
+       vc-gutter
+       workspaces
+       zen
 
- :emacs
- dired
- electric
- undo
- vc
+       :editor
+       (evil +everywhere)
+       file-templates
+       (fold +vimish-fold +evil-vimish-fold)
+       format
+       snippets
 
- :term
- eshell
- vterm
+       :emacs
+       dired
+       electric
+       undo
+       vc
 
- :checkers
- (spell +aspell)
- syntax
+       :term
+       eshell
+       vterm
 
- :tools
- docker
- (eval +overlay)
- (lookup +dictionary +docsets)
- lsp
- magit
- make
- pass
- pdf
- rgb
+       :checkers
+       (spell +aspell)
+       syntax
 
- :os
- tty
- (:if IS-MAC macos)
+       :tools
+       docker
+       (eval +overlay)
+       (lookup +dictionary +docsets)
+       lsp
+       magit
+       make
+       pass
+       pdf
+       rgb
 
- :lang
- cc
- (dart +lsp +flutter)
- emacs-lisp
- (go +lsp)
- (javascript +lsp)
- json
- (markdown +grip)
- (org +journal)
- (python +lsp)
- rest
- (sh +lsp)
- web
- yaml
+       :os
+       tty
+       (:if IS-MAC macos)
 
- :email
- notmuch
+       :lang
+       cc
+       (dart +lsp +flutter)
+       emacs-lisp
+       (go +lsp)
+       (javascript +lsp)
+       json
+       (markdown +grip)
+       (org +journal)
+       (python +lsp)
+       rest
+       (sh +lsp)
+       web
+       yaml
 
- :config
- (default +bindings +smartparens))
+       :email
+       notmuch
+
+       :config
+       (default +bindings +smartparens))
