@@ -4,8 +4,8 @@
 
 (doom! :smallwat3r
        deft
-       kubernetes
        google
+       kubernetes
        slack
 
        :completion
