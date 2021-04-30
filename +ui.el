@@ -8,18 +8,7 @@
 (add-to-list 'default-frame-alist '(drag-internal-border . 1))
 (add-to-list 'default-frame-alist '(internal-border-width . 0))
 
-;; In case there is a titlebar, this shows the current running Emacs version and
-;; the title of the current file and a flag (**) if the file has been modified
-;; (eg. **<filename>)
-(setq-default frame-title-format
-              '("Emacs @ " emacs-version " - "
-                (:eval
-                 (if (buffer-modified-p) " **"))
-                (:eval
-                 (if (buffer-file-name)
-                     (replace-regexp-in-string
-                      ".*/[0-9]*-?" " "
-                      (subst-char-in-string ?_ ? buffer-file-name)) "%b"))))
+(setq-default frame-title-format '("Emacs@" emacs-version))
 
 ;; Hide file icon from titlebar
 (setq ns-use-proxy-icon nil)

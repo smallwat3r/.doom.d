@@ -7,6 +7,7 @@
        google
        kubernetes
        slack
+       tree-sitter
 
        :completion
        company
