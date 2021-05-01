@@ -1,4 +1,4 @@
-;;; $DOOMDIR/+email.el -*- lexical-binding: t; -*-
+;;; $DOOMDIR/+prog.el -*- lexical-binding: t; -*-
 
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
