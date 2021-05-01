@@ -1,6 +1,8 @@
 ;;; $DOOMDIR/+email.el -*- lexical-binding: t; -*-
 
-;; doc: https://www.flycheck.org/en/latest/
+(after! lsp-mode
+  (setq lsp-enable-file-watchers nil))
+
 (after! flycheck
   ;; Pylint (python)
   (setq flycheck-python-pylint-executable "/usr/local/bin/pylint"
@@ -11,8 +13,6 @@
   (setq flycheck-shellcheck-excluded-warnings '("SC1091"))
   (setq-hook! 'sh-mode-hook flycheck-checker 'sh-shellcheck))
 
-;; Grammar spell checker
-;; doc: https://gitlab.com/ideasman42/emacs-spell-fu
 (after! spell-fu
   (setq spell-fu-idle-delay 0.5))
 

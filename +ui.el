@@ -117,10 +117,9 @@
       window-divider-default-bottom-width global-window-divider-width)
 
 ;; Writeroom
-(when (featurep! :ui zen)
-  (after! writeroom-mode
-    (setq +zen-window-divider-size global-window-divider-width
-          +zen-text-scale 0)))
+(after! writeroom-mode
+  (setq +zen-window-divider-size global-window-divider-width
+        +zen-text-scale 0))
 
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode vterm-mode eshell-mode)
