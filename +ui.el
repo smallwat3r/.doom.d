@@ -144,6 +144,15 @@
   (beacon-blink-when-window-scrolls nil)
   :init (beacon-mode 1))
 
+(after! persp-mode
+  ;; Permanently display workspaces in minibuffer
+  (defun display-workspaces-in-minibuffer ()
+    (with-current-buffer " *Minibuf-0*"
+      (erase-buffer)
+      (insert (+workspace--tabline))))
+  (run-with-idle-timer 1 t #'display-workspaces-in-minibuffer)
+  (+workspace/display))
+
 ;;
 ;;; Doom-dashboard
 
