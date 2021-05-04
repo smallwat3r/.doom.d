@@ -6,7 +6,7 @@
   :after eshell
   :commands shrink-path-prompt)
 
-(defun zz/eshell-current-git-branch ()
+(defun my/eshell-current-git-branch ()
   "Get current branch name from repository."
   (let ((args '("symbolic-ref" "HEAD" "--short")))
     (with-temp-buffer
@@ -15,10 +15,10 @@
         (goto-char (point-min))
         (buffer-substring-no-properties (point) (line-end-position))))))
 
-(defun zz/eshell-prompt ()
+(defun my/eshell-prompt ()
   "Default Eshell prompt."
   (let ((base/dir (shrink-path-prompt default-directory))
-        (base/branch (zz/eshell-current-git-branch)))
+        (base/branch (my/eshell-current-git-branch)))
     (concat
                                         ; python venv
      (if (getenv "VIRTUAL_ENV")
@@ -53,7 +53,7 @@
 
   ;; Prompt settings
   (setq eshell-prompt-regexp "^.* [#→] "
-        eshell-prompt-function #'zz/eshell-prompt)
+        eshell-prompt-function #'my/eshell-prompt)
 
   ;; List of eshell aliases
   (set-eshell-alias!
@@ -72,7 +72,7 @@
    "k" "kubectl $*"
    "kt" "kubetail $*"
    "kgn" "kubectl get namespaces"
-   "ls" "zz/eshell/ls $*"))
+   "ls" "my/eshell/ls $*"))
 
 ;;
 ;;; Custom Eshell functions
@@ -90,13 +90,13 @@
   "cd into my dotfiles directory."
   (eshell/cd "~/dotfiles"))
 
-(defun zz/eshell/ls (&rest args)
+(defun my/eshell/ls (&rest args)
   "ls to always list hidden files."
   (eshell/ls "-a" args))
 
 (defun eshell/sl (&rest args)
   "ls typo."
-  (zz/eshell/ls args))
+  (my/eshell/ls args))
 
 (defun eshell/o ()
   "Open in finder."

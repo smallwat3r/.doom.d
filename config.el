@@ -40,21 +40,21 @@
 (map!
  (:leader
   (:prefix "f" :desc "Cycle through frame" "j" #'other-frame)
-  (:prefix "o" :desc "Open in Alacritty"   "a" #'zz/alacritty-here)
+  (:prefix "o" :desc "Open in Alacritty"   "a" #'my/alacritty-here)
   (:prefix "o" :desc "Open link at point"  "l" #'browse-url-at-point)))
 
 (map!
  (:map evil-normal-state-map
-  "C-2"   #'zz/scroll-up
-  "C-1"   #'zz/scroll-down
-  "S-C-h" #'zz/enlarge-window-horizontally
-  "S-C-l" #'zz/shrink-window-horizontally
-  "S-C-k" #'zz/enlarge-window
-  "S-C-j" #'zz/shrink-window
+  "C-2"   #'my/scroll-up
+  "C-1"   #'my/scroll-down
+  "S-C-h" #'my/enlarge-window-horizontally
+  "S-C-l" #'my/shrink-window-horizontally
+  "S-C-k" #'my/enlarge-window
+  "S-C-j" #'my/shrink-window
   "M-SPC" #'cycle-spacing
   "M-o"   #'delete-blank-lines
   ";f"    #'format-all-buffer
-  ";d"    #'zz/save-and-close-buffer
+  ";d"    #'my/save-and-close-buffer
   ";q"    #'evil-save-and-close
   ";w"    #'evil-write
   "C-k"   #'join-line
@@ -158,7 +158,7 @@
   ;; Keep mode-line
   (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
 
-  (defun zz/vterm-delete-word ()
+  (defun my/vterm-delete-word ()
     "Delete a word in vterm."
     (interactive)
     (vterm-send-key (kbd "C-w")))
@@ -167,7 +167,7 @@
   (map!
    :map vterm-mode-map :n "B" #'vterm-beginning-of-line
    :map vterm-mode-map :n "<return>" #'evil-insert-resume
-   :map vterm-mode-map "<C-backspace>" #'zz/vterm-delete-word))
+   :map vterm-mode-map "<C-backspace>" #'my/vterm-delete-word))
 
 ;;
 ;;; Docker
@@ -237,7 +237,7 @@
 ;; doc: https://github.com/ieure/scratch-el
 (use-package! scratch
   :config
-  (defun zz/add-scratch-buffer-header (text)
+  (defun my/add-scratch-buffer-header (text)
     "Add an automatic header to a scratch buffer."
     (when scratch-buffer
       (save-excursion
@@ -246,7 +246,7 @@
         (newline 2))
       (goto-char (point-max))))
 
-  (defun zz/scratch-rest-mode ()
+  (defun my/scratch-rest-mode ()
     "Start a scratch buffer in restclient-mode"
     (interactive)
     (scratch 'restclient-mode))
@@ -255,12 +255,12 @@
    (:leader
     (:prefix "o"
      :desc "Scratch buffer current mode" "x" #'scratch
-     :desc "Scratch buffer restclient"   "h" #'zz/scratch-rest-mode)))
+     :desc "Scratch buffer restclient"   "h" #'my/scratch-rest-mode)))
 
   ;; Auto add headers on scratch buffers in specific modes
-  (add-hook! 'org-mode-hook (zz/add-scratch-buffer-header "#+TITLE: Scratch file"))
-  (add-hook! 'sh-mode-hook (zz/add-scratch-buffer-header "#!/usr/bin/env bash"))
-  (add-hook! 'restclient-mode-hook (zz/add-scratch-buffer-header "#\n# restclient\n#")))
+  (add-hook! 'org-mode-hook (my/add-scratch-buffer-header "#+TITLE: Scratch file"))
+  (add-hook! 'sh-mode-hook (my/add-scratch-buffer-header "#!/usr/bin/env bash"))
+  (add-hook! 'restclient-mode-hook (my/add-scratch-buffer-header "#\n# restclient\n#")))
 
 ;; exec-path-from-shell
 ;; Executable paths in Emacs as it works from the shell
