@@ -233,6 +233,11 @@
 ;;
 ;;; Misc
 
+;; grip-mode
+(after! grip-mode
+  (setq grip-github-user "smallwat3r"
+        grip-github-password (+pass-get-secret "github/password")))
+
 ;; Scratch buffers
 ;; doc: https://github.com/ieure/scratch-el
 (use-package! scratch
