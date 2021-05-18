@@ -70,7 +70,7 @@
        json
        (markdown +grip)
        (org +journal)
-       (python +lsp)
+       (python +lsp +pyright)
        rest
        (sh +lsp)
        web
