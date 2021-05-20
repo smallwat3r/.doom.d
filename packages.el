@@ -3,7 +3,8 @@
 
 (disable-packages!
  solaire-mode
- better-jumper)
+ better-jumper
+ lsp-ui)
 
 (package! exec-path-from-shell)
 
