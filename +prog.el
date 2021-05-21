@@ -27,8 +27,8 @@
   (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
   (set-formatter! 'black "black -q -l 100 -" :modes '(python-mode)))
 
-(after! (:any html-mode web-mode)
-  (set-formatter! 'html-tidy "tidy -q -indent -wrap 150" :modes '(html-mode web-mode)))
+(setq-hook! 'html-mode-hook +format-with :none)
+(setq-hook! 'web-mode-hook +format-with :none)
 
 (after! (:any js-mode json-mode)
   (setq js-indent-level 2))
