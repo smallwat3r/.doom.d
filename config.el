@@ -72,8 +72,8 @@
 
 (after! projectile
   (setq projectile-sort-order 'recentf
-        projectile-mode-line-prefix "PJ"
-        projectile-mode-line-function '(lambda () (format " PJ[%s]" (projectile-project-name)))
+        projectile-mode-line-prefix "P"
+        projectile-mode-line-function '(lambda () (format " P[%s]" (projectile-project-name)))
         projectile-ignored-projects '("~/" "/tmp" "~/Downloads")
         projectile-project-search-path '("~/dotfiles/" "~/Projects/" "~/Code/" "~/Github/")))
 

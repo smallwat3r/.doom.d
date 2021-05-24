@@ -144,8 +144,8 @@
   (beacon-blink-when-window-scrolls nil)
   :init (beacon-mode 1))
 
+;; Permanently display workspaces in minibuffer
 (after! persp-mode
-  ;; Permanently display workspaces in minibuffer
   (defun display-workspaces-in-minibuffer ()
     (with-current-buffer " *Minibuf-0*"
       (erase-buffer)
