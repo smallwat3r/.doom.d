@@ -3,6 +3,10 @@
 ;; doc: https://github.com/chrisbarrett/kubernetes-el
 (use-package! kubernetes
   :commands (kubernetes-overview)
+  :custom
+  (kubernetes-redraw-frequency 10)
+  (kubernetes-poll-frequency 10)
+  (kubernetes-default-exec-command "/bin/sh")
   :init
   (map!
    (:leader
