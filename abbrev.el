@@ -8,7 +8,6 @@
     ("atm"     "at the moment" )
     ("plz"     "please")
     ("ty"      "thank you")
-    ("its"     "it's")
     ("afaict"  "as far as I can tell")
 
     ;; Typos
