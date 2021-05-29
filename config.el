@@ -267,16 +267,6 @@
   (add-hook! 'sh-mode-hook (my/add-scratch-buffer-header "#!/usr/bin/env bash"))
   (add-hook! 'restclient-mode-hook (my/add-scratch-buffer-header "#\n# restclient\n#")))
 
-;; exec-path-from-shell
-;; Executable paths in Emacs as it works from the shell
-;; doc: https://github.com/purcell/exec-path-from-shell
-(use-package! exec-path-from-shell
-  :if (memq window-system '(mac ns x))
-  :custom
-  (exec-path-from-shell-arguments '("-l"))
-  (exec-path-from-shell-variables '("PATH" "GOPATH"))
-  :config (exec-path-from-shell-initialize))
-
 ;; lorem-ipsum
 ;; doc: https://github.com/jschaf/emacs-lorem-ipsum
 (use-package! lorem-ipsum

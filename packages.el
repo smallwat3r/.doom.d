@@ -6,8 +6,6 @@
  better-jumper
  lsp-ui)
 
-(package! exec-path-from-shell)
-
 (package! dired-narrow)
 (package! dired-subtree)
 
