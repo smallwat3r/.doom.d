@@ -8,7 +8,7 @@ brew tap railwaycat/emacsmacport
 brew install emacs-mac
 #+end_src
 
-Edit: I'm now trying Emacs 28 with native-comp (gccEmacs) from the emacs-plus port
+Edit: I'm now trying Emacs 28 with native compilation (gccEmacs) from the emacs-plus port
 #+begin_src shell
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@28 --with-cacodemon-icon --with-native-comp

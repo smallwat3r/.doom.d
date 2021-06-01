@@ -137,7 +137,9 @@
 (after! company
   (setq company-idle-delay 0.1
         company-tooltip-limit 10
-        company-minimum-prefix-length 1))
+        company-minimum-prefix-length 1
+        company-format-margin-function #'company-text-icons-margin
+        company-text-icons-format "%s "))
 
 ;; Disable company in shell mode
 (add-hook! 'shell-mode-hook (company-mode -1))
