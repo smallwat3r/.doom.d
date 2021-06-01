@@ -27,23 +27,9 @@
 ;;; Themes config
 
 ;; Set up our default theme
-(setq doom-theme 'sanityinc-tomorrow-bright)
+(setq doom-theme 'modus-vivendi)
 
 (custom-set-faces!
-  ;; Eye saver
-  '(default :background "gray0")
-
-  ;; turn off background on some elements
-  '(company-tooltip :background nil)
-  '(magit-diff-context :background nil)
-  '(magit-diff-context-highlight :background nil)
-  '(markdown-code-face :background nil)
-  '(whitespace-tab :background nil)
-  '(whitespace-space :background nil)
-  '(whitespace-newline :background nil)
-  '(whitespace-hspace :background nil)
-  '(whitespace-indentation :background nil)
-
   ;; Remove some additional code syntax highlighting, keep it simple
   '(font-lock-function-name-face :foreground nil)
   '(font-lock-variable-name-face :foreground nil)
@@ -59,19 +45,16 @@
   '(diff-refine-changed :inverse-video nil :weight bold)
 
   ;; Comments and docstrings colors
-  '(font-lock-comment-face :foreground "#329400" :slant normal)
+  '(font-lock-comment-face :foreground "#2e8900" :slant normal)
   '(font-lock-comment-delimiter-face :foreground "#0a4700" :slant normal)
-  '(font-lock-doc-face :foreground "#329400" :slant normal)
+  '(font-lock-doc-face :foreground "#2e8900" :slant normal)
 
   ;; Miscellaneous
-  '(+workspace-tab-selected-face :background nil :foreground "#b294bb" :weight bold)
   '(cursor :background "#d7ff00")
   '(show-paren-match :foreground "#d7ff00" :background "#ff5f5f" :slant normal :box nil)
   '(show-paren-mismatch :foreground "#ffffff" :background "#db0000" :slant normal :box nil)
-  '(link :background nil :foreground "PaleTurquoise2" :weight regular :underline t)
-  '(link-visited :background nil :foreground "maroon4" :weight regular :underline t)
-  '(minibuffer-prompt :background nil :foreground "#f6df92")
-  '(persp-face-lighter-buffer-not-in-persp :background nil))
+  '(link :background nil :foreground "DarkGoldenrod3" :weight regular :underline t)
+  '(link-visited :background nil :foreground "DarkGoldenrod4" :weight regular :underline t))
 
 ;;
 ;;; Editor
@@ -85,14 +68,12 @@
         doom-themes-treemacs-line-spacing 0
         doom-themes-treemacs-theme "doom-colors"
         treemacs-width 35)
-
-  (custom-set-faces!
-    '(doom-themes-treemacs-file-face :foreground "#dbdbdb")))
+  (treemacs-resize-icons 14))
 
 ;; Git fringe
 ;; doc: https://github.com/emacsorphanage/git-gutter-fringe
 (after! git-gutter-fringe
-  (fringe-mode 1) ; thinest possible
+  (fringe-mode 1)
 
   (custom-set-faces!
     '(git-gutter-fr:added :foreground "chartreuse3")
@@ -181,17 +162,11 @@
 ;;
 ;;; Modeline
 
-(custom-set-faces!
-  '(mode-line :box nil :foreground "#000000" :background "#dfdfdf" :box "#222222")
-  '(mode-line-highlight :box nil)
-  '(mode-line-inactive :box nil :foreground "#000000" :background "#5c5c5c" :box "#222222"))
-
 ;; Show counter while in search modes
 ;; doc: https://github.com/emacsorphanage/anzu
 (use-package! anzu
   :delight
-  :after-call isearch-mode
-  :custom-face (anzu-mode-line ((t (:foreground "#870052" :weight bold)))))
+  :after-call isearch-mode)
 
 ;; doc: https://github.com/emacsorphanage/evil-anzu
 (use-package! evil-anzu

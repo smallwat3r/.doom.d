@@ -89,13 +89,7 @@
   ;; Ask to pick an existing buffer when splitting the window
   (defadvice! prompt-for-buffer (&rest _)
     :after '(evil-window-split evil-window-vsplit)
-    (+ivy/switch-buffer))
-
-  (custom-set-faces!
-    '(ivy-minibuffer-match-face-1 :background nil :foreground "gray27")
-    '(ivy-minibuffer-match-face-2 :background nil :foreground "orchid")
-    '(ivy-minibuffer-match-face-3 :background nil :foreground "turquoise")
-    '(ivy-minibuffer-match-face-4 :background nil :foreground "DarkGoldenrod1")))
+    (+ivy/switch-buffer)))
 
 ;; doc: https://github.com/asok/all-the-icons-ivy
 (use-package! all-the-icons-ivy-rich

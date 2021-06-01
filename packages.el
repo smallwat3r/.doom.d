@@ -2,7 +2,6 @@
 ;;; $DOOMDIR/packages.el
 
 (disable-packages!
- solaire-mode
  better-jumper
  lsp-ui)
 
@@ -23,8 +22,3 @@
 
 (package! anzu)
 (package! evil-anzu)
-
-(package! color-theme-sanityinc-tomorrow)
-(package! simplicity-theme :recipe
-  (:host github
-   :repo "smallwat3r/emacs-simplicity-theme"))
