@@ -1,7 +1,5 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-(setq comp-speed 2)  ; native compilation (gccEmacs)
-
 (doom! :smallwat3r
        deft
        google

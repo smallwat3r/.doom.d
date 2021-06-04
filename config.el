@@ -1,6 +1,20 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;;
+;;; Frame
+
+(setq default-frame-alist
+      (append default-frame-alist
+              '((width . 105)
+                (height . 65)
+                (drag-internal-border . 1)
+                (internal-border-width . 0))))
+
+(setq-default frame-title-format '("Emacs@" emacs-version))
+
+(setq ns-use-proxy-icon nil)  ; hide file icon from titlebar
+
+;;
 ;;; General
 
 ;; Disable confirmation prompt when exiting Emacs.

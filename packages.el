@@ -3,7 +3,9 @@
 
 (disable-packages!
  better-jumper
- lsp-ui)
+ lsp-ui
+ company-anaconda
+ anaconda-mode)
 
 (package! dired-narrow)
 (package! dired-subtree)

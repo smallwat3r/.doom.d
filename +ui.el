@@ -1,19 +1,6 @@
 ;;; $DOOMDIR/+ui.el -*- lexical-binding: t; -*-
 
 ;;
-;;; Frame
-
-(add-to-list 'default-frame-alist '(width . 105))
-(add-to-list 'default-frame-alist '(height . 65))
-(add-to-list 'default-frame-alist '(drag-internal-border . 1))
-(add-to-list 'default-frame-alist '(internal-border-width . 0))
-
-(setq-default frame-title-format '("Emacs@" emacs-version))
-
-;; Hide file icon from titlebar
-(setq ns-use-proxy-icon nil)
-
-;;
 ;;; Fonts
 
 (setq doom-font (font-spec :family "MonacoB2" :size 13)
