@@ -27,9 +27,17 @@
 ;;; Themes config
 
 ;; Set up our default theme
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'sanityinc-tomorrow-bright)
 
 (custom-set-faces!
+  '(default-inverse :inverse-video default :background nil)
+
+  '(cursor :background "#d7ff00")
+  '(show-paren-match :foreground "#d7ff00" :background "#ff5f5f" :slant normal :box nil)
+  '(show-paren-mismatch :foreground "#ffffff" :background "#db0000" :slant normal :box nil)
+  '(link :background nil :foreground "DarkGoldenrod3" :weight regular :underline t)
+  '(link-visited :background nil :foreground "DarkGoldenrod4" :weight regular :underline t)
+
   ;; Remove some additional code syntax highlighting, keep it simple
   '(font-lock-function-name-face :foreground nil)
   '(font-lock-variable-name-face :foreground nil)
@@ -49,12 +57,22 @@
   '(font-lock-comment-delimiter-face :foreground "#0a4700" :slant normal)
   '(font-lock-doc-face :foreground "#2e8900" :slant normal)
 
-  ;; Miscellaneous
-  '(cursor :background "#d7ff00")
-  '(show-paren-match :foreground "#d7ff00" :background "#ff5f5f" :slant normal :box nil)
-  '(show-paren-mismatch :foreground "#ffffff" :background "#db0000" :slant normal :box nil)
-  '(link :background nil :foreground "DarkGoldenrod3" :weight regular :underline t)
-  '(link-visited :background nil :foreground "DarkGoldenrod4" :weight regular :underline t))
+  ;; Keep company really simple
+  '(company-preview :background "moccasin" :foreground "black")
+  '(company-preview-common :foreground "darkred")
+  '(company-preview-search :foreground "darkred")
+  '(company-tooltip :foreground "black" :background "moccasin")
+  '(company-tooltip-selection :inverse-video nil :background "light blue" :foreground "black")
+  '(company-tooltip-common :foreground "darkred")
+  '(company-tooltip-common-selection :foreground "darkred")
+  '(company-tooltip-search :background "tan1")
+  '(company-tooltip-search-selection :background "tan1")
+  '(company-tooltip-mouse :background "tan1")
+  '(company-tooltip-annotation :foreground "firebrick4")
+  '(company-tooltip-annotation-selection :foreground "firebrick4")
+  '(company-scrollbar-bg :background "moccasin")
+  '(company-scrollbar-fg :background "darkred")
+  '(company-echo-common :foreground "firebrick4"))
 
 ;;
 ;;; Editor

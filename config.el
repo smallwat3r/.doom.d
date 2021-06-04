@@ -137,9 +137,41 @@
 (after! company
   (setq company-idle-delay 0.1
         company-tooltip-limit 10
-        company-minimum-prefix-length 1
-        company-format-margin-function #'company-text-icons-margin
-        company-text-icons-format "%s "))
+        company-minimum-prefix-length 1)
+
+  ;; Company icons
+  (setq company-format-margin-function #'company-text-icons-margin
+        company-text-icons-format "%s "
+        company-text-icons-add-background nil)
+
+  (setq company-text-icons-mapping
+        '((array "[" default-inverse)
+          (boolean "1" default-inverse)
+          (class "C" default-inverse)
+          (color "#" default-inverse)
+          (constant "c" default-inverse)
+          (enum-member "e" default-inverse)
+          (enum "e" default-inverse)
+          (field "f" default-inverse)
+          (file "F" default-inverse)
+          (folder "D" default-inverse)
+          (interface "i" default-inverse)
+          (keyword "k" default-inverse)
+          (method "m" default-inverse)
+          (function "f" default-inverse)
+          (module "{" default-inverse)
+          (numeric "n" default-inverse)
+          (operator "o" default-inverse)
+          (parameter "p" default-inverse)
+          (property "p" default-inverse)
+          (ruler "r" default-inverse)
+          (snippet "S" default-inverse)
+          (string "s" default-inverse)
+          (struct "%" default-inverse)
+          (text "w" default-inverse)
+          (value "v" default-inverse)
+          (variable "v" default-inverse)
+          (t "." default-inverse))))
 
 ;; Disable company in shell mode
 (add-hook! 'shell-mode-hook (company-mode -1))

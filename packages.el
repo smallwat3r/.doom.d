@@ -22,3 +22,5 @@
 
 (package! anzu)
 (package! evil-anzu)
+
+(package! color-theme-sanityinc-tomorrow)
