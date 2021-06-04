@@ -1,29 +1,20 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;;
-;;; Frame
+;; Personal information
+(setq user-full-name "Matthieu Petiteau"
+      user-mail-address "mpetiteau.pro@gmail.com"
+      user-mail-address-2 "matthieu@smallwatersolutions.com")
 
-(setq default-frame-alist
-      (append default-frame-alist
-              '((width . 105)
-                (height . 65)
-                (drag-internal-border . 1)
-                (internal-border-width . 0))))
-
-(setq-default frame-title-format '("Emacs@" emacs-version))
-
-(setq ns-use-proxy-icon nil)  ; hide file icon from titlebar
+(load! "+ui")
+(load! "+email")
+(load! "+eshell")
+(load! "+prog")
 
 ;;
 ;;; General
 
 ;; Disable confirmation prompt when exiting Emacs.
 (setq confirm-kill-emacs nil)
-
-;; Personal information
-(setq user-full-name "Matthieu Petiteau"
-      user-mail-address "mpetiteau.pro@gmail.com"
-      user-mail-address-2 "matthieu@smallwatersolutions.com")
 
 ;; Some general settings
 (setq evil-vsplit-window-right t
@@ -321,11 +312,3 @@
            :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
            :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
            :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
-
-;;
-;;; Load configs
-
-(load! "+email")
-(load! "+eshell")
-(load! "+prog")
-(load! "+ui")

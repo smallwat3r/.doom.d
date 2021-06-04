@@ -4,6 +4,7 @@
 (disable-packages!
  better-jumper
  lsp-ui
+ lsp-python-ms
  company-anaconda
  anaconda-mode)
 
