@@ -233,7 +233,7 @@
               '("%e"
                 (:eval evil-mode-line-tag)
                 mode-line-modified
-                "%b"
+                (:eval (shrink-path-file (buffer-file-name) nil))
                 vc-mode
                 "    "
                 "%p (%l,%c)"

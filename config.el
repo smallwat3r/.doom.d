@@ -266,6 +266,10 @@
 ;;
 ;;; Misc
 
+;; shrink-path
+(use-package! shrink-path
+  :commands (shrink-path-file shrink-path-prompt))
+
 ;; grip-mode
 (after! grip-mode
   (setq grip-github-user "smallwat3r"

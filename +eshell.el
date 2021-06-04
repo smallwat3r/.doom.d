@@ -2,10 +2,6 @@
 
 ;; doc: https://www.gnu.org/software/emacs/manual/html_node/eshell/index.html
 
-(use-package! shrink-path
-  :after eshell
-  :commands shrink-path-prompt)
-
 (defun my/eshell-current-git-branch ()
   "Get current branch name from repository."
   (let ((args '("symbolic-ref" "HEAD" "--short")))
