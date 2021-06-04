@@ -13,6 +13,8 @@
 
 (package! scratch)
 
+(package! shrink-path)
+
 (package! beacon)
 
 (package! org-appear)
