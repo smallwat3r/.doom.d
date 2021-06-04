@@ -155,7 +155,7 @@
 
   ;; Company icons
   (setq company-format-margin-function #'company-text-icons-margin
-        company-text-icons-format "%s "
+        company-text-icons-format " %s "
         company-text-icons-add-background nil)
 
   (setq company-text-icons-mapping
