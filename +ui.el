@@ -23,6 +23,7 @@
       doom-big-font-increment 2)
 
 (setq-default line-spacing 0)
+(setq-default tab-width 8)
 
 ;;
 ;;; Themes config
