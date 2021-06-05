@@ -16,17 +16,17 @@
   (let ((base/dir (shrink-path-prompt default-directory))
         (base/branch (my/eshell-current-git-branch)))
     (concat
-                                        ; python venv
+     ;; python venv
      (if (getenv "VIRTUAL_ENV")
          (let ((venv (file-name-nondirectory (getenv "VIRTUAL_ENV"))))
            (propertize (format "(%s) " venv) 'face 'default)))
-                                        ; directory path
+     ;; directory path
      (propertize (car base/dir) 'face 'font-lock-comment-face)
      (propertize (cdr base/dir) 'face 'default)
-                                        ; git branch
+     ;; git branch
      (if base/branch
          (propertize (format " (%s)" base/branch) 'face 'default))
-                                        ; user / super user
+     ;; user / super user
      (propertize (if (= (user-uid) 0) " # " " → ") 'face 'default))))
 
 ;; Remove the virtual env variable once the env has been deactivated, it will
