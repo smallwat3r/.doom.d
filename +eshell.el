@@ -27,7 +27,7 @@
      (if base/branch
          (propertize (format " (%s)" base/branch) 'face 'default))
      ;; user / super user
-     (propertize (if (= (user-uid) 0) " # " " → ") 'face 'default))))
+     (propertize (if (= (user-uid) 0) " # " " λ ") 'face 'default))))
 
 ;; Remove the virtual env variable once the env has been deactivated, it will
 ;; get recreated once we reactivate the env. It's used in our eshell prompt
@@ -48,7 +48,7 @@
   (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
 
   ;; Prompt settings
-  (setq eshell-prompt-regexp "^.* [#→] "
+  (setq eshell-prompt-regexp "^.* [#λ] "
         eshell-prompt-function #'my/eshell-prompt)
 
   ;; List of eshell aliases
