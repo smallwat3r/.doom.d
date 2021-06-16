@@ -46,7 +46,8 @@
  (:leader
   (:prefix "f" :desc "Cycle through frame" "j" #'other-frame)
   (:prefix "o" :desc "Open in Alacritty"   "a" #'my/alacritty-here)
-  (:prefix "o" :desc "Open link at point"  "l" #'browse-url-at-point)))
+  (:prefix "o" :desc "Open link at point"  "l" #'browse-url-at-point)
+  (:prefix "p" :desc "Run project Makefile target" "m" #'makefile-executor-execute-project-target)))
 
 (map!
  (:leader
