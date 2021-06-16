@@ -46,7 +46,9 @@
  (:leader
   (:prefix "f" :desc "Cycle through frame" "j" #'other-frame)
   (:prefix "o" :desc "Open in Alacritty"   "a" #'my/alacritty-here)
-  (:prefix "o" :desc "Open link at point"  "l" #'browse-url-at-point)))
+  (:prefix "o" :desc "Open link at point"  "l" #'browse-url-at-point)
+  (:prefix "o" :desc "Open vterm here"     "T" #'my/vterm/here-current-buffer)
+  (:prefix "o" :desc "Toggle vterm popup"  "t" #'my/vterm/toggle-current-buffer)))
 
 (map!
  (:map evil-normal-state-map
