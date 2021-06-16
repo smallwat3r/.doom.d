@@ -1,16 +1,15 @@
 ;;; $DOOMDIR/autoload/term.el -*- lexical-binding: t; -*-
-
 ;;;###autoload
 (defun my/vterm/toggle-current-buffer ()
   "Toggles a terminal popup window to the directory of the current buffer."
   (interactive)
-  (+vterm/toggle default-directory))
+  (+vterm/toggle t))
 
 ;;;###autoload
 (defun my/vterm/here-current-buffer ()
   "Open a terminal buffer in the current window to the directory of the current buffer."
   (interactive)
-  (+vterm/here default-directory))
+  (+vterm/here t))
 
 ;;;###autoload
 (defun my/alacritty-here ()
