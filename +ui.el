@@ -32,9 +32,9 @@
 (setq doom-theme 'sanityinc-tomorrow-bright)
 
 (custom-set-faces!
-  '(default-inverse :inverse-video default :background nil)
+  '(default-inverse :background default :inverse-video t)
 
-  '(cursor :background "#d7ff00")
+  '(cursor :background "white")
   '(show-paren-match :foreground "#d7ff00" :background "#ff5f5f" :slant normal :box nil)
   '(show-paren-mismatch :foreground "#ffffff" :background "#db0000" :slant normal :box nil)
   '(link :background nil :foreground "DarkGoldenrod3" :weight regular :underline t)
