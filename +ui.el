@@ -74,7 +74,13 @@
   '(company-tooltip-annotation-selection :foreground "firebrick4")
   '(company-scrollbar-bg :background "moccasin")
   '(company-scrollbar-fg :background "darkred")
-  '(company-echo-common :foreground "firebrick4"))
+  '(company-echo-common :foreground "firebrick4")
+
+  ;; Web-mode
+  '(web-mode-html-attr-equal-face :foreground "gray60")
+  '(web-mode-html-attr-name-face :foreground "gray60")
+  '(web-mode-html-tag-face :foreground "gray60")
+  '(web-mode-html-tag-bracket-face :foreground "gray45"))
 
 ;;
 ;;; Editor

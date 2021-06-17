@@ -23,26 +23,20 @@
   (set-company-backend! 'sh-mode nil))  ; disable backend because of slowliness
 
 (after! python
-  (setq python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9"))
+  python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
 
-(after! js2-mode
-  (setq-default indent-tabs-mode nil)
-  (setq-default js2-basic-offset 2))
+(setq-hook! 'json-mode js-indent-level 2)
 
-(after! (:any js-mode json-mode)
-  (setq js-indent-level 2))
+(setq-hook! 'js2-mode js2-basic-offset 2)
 
-(after! web-mode
-  (setq web-mode-indent-style 2
-        web-mode-code-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-markup-indent-offset 2)
+(setq-hook! 'web-mode-hook
+  tab-width 2
+  web-mode-markup-indent-offset 2
+  web-mode-css-indent-offset 2
+  web-mode-script-padding 2
+  web-mode-style-padding 2)
 
-  (custom-set-faces!
-    '(web-mode-html-attr-equal-face :foreground "gray60")
-    '(web-mode-html-attr-name-face :foreground "gray60")
-    '(web-mode-html-tag-face :foreground "gray60")
-    '(web-mode-html-tag-bracket-face :foreground "gray45")))
+(setq-hook! 'go-mode indent-tabs-mode t)
 
 ;;
 ;;; Formatters
