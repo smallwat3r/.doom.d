@@ -46,6 +46,12 @@
   '(font-lock-constant-face :foreground nil)
   '(font-lock-type-face :foreground nil)
 
+  ;; We then need to remap the colors from web-mode
+  '(web-mode-html-attr-equal-face :inherit font-lock-keyword-face)
+  '(web-mode-html-attr-name-face :inherit font-lock-keyword-face)
+  '(web-mode-html-tag-face :inherit font-lock-keyword-face)
+  '(web-mode-html-tag-bracket-face :inherit font-lock-builtin-face)
+
   ;; Make diff-refine less aggressive
   '(magit-diff-added-highlight :weight regular)
   '(magit-diff-removed-highlight :weight regular)
@@ -74,13 +80,7 @@
   '(company-tooltip-annotation-selection :foreground "firebrick4")
   '(company-scrollbar-bg :background "moccasin")
   '(company-scrollbar-fg :background "darkred")
-  '(company-echo-common :foreground "firebrick4")
-
-  ;; Web-mode
-  '(web-mode-html-attr-equal-face :foreground "gray60")
-  '(web-mode-html-attr-name-face :foreground "gray60")
-  '(web-mode-html-tag-face :foreground "gray60")
-  '(web-mode-html-tag-bracket-face :foreground "gray45"))
+  '(company-echo-common :foreground "firebrick4"))
 
 ;;
 ;;; Editor
