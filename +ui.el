@@ -205,9 +205,8 @@
 (use-package! delight
   :config
   (delight
-   '((abbrev-mode " Abv" abbrev)
-     (pipenv-mode " pip" pipenv)
-     (yas-minor-mode " Yas" yasnippet)
+   '((pipenv-mode " pip" pipenv)
+     (yas-minor-mode " Y" yasnippet)
      (git-gutter-mode " Gg" git-gutter)
      (dired-mode "δ" :major)
      (emacs-lisp-mode "ξ" :major)
@@ -219,6 +218,7 @@
 
      ;; hidden minor-modes from modeline
      (company-mode nil company)
+     (abbrev-mode nil abbrev)
      (ivy-mode nil ivy)
      (evil-org-mode nil evil-org)
      (which-key-mode nil which-key)
