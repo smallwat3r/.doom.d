@@ -3,6 +3,9 @@
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
 
+(after! magit
+  (setq git-commit-summary-max-length 70))
+
 (after! flycheck
   ;; Pylint (python)
   (setq flycheck-python-pylint-executable "/usr/local/bin/pylint"
