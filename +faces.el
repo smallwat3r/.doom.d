@@ -49,4 +49,14 @@
   '(company-tooltip-annotation-selection :foreground "firebrick4")
   '(company-scrollbar-bg :background "moccasin")
   '(company-scrollbar-fg :background "darkred")
-  '(company-echo-common :foreground "firebrick4"))
+  '(company-echo-common :foreground "firebrick4")
+
+  ;; git-gutter-fr
+  '(git-gutter-fr:added :foreground "chartreuse3")
+  '(git-gutter-fr:modified :foreground "gold")
+  '(git-gutter-fr:deleted :foreground "red3")
+
+  ;; evil-goggles
+  '(evil-goggles-delete-face :background "#2f001a")
+  '(evil-goggles-paste-face :background "#172f00")
+  '(evil-goggles-yank-face :background "#363636"))

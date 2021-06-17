@@ -50,12 +50,7 @@
 ;; Git fringe
 ;; doc: https://github.com/emacsorphanage/git-gutter-fringe
 (after! git-gutter-fringe
-  (fringe-mode 1)
-
-  (custom-set-faces!
-    '(git-gutter-fr:added :foreground "chartreuse3")
-    '(git-gutter-fr:modified :foreground "gold")
-    '(git-gutter-fr:deleted :foreground "red3")))
+  (fringe-mode 1))
 
 ;; Disable line numbers by default
 (setq display-line-numbers-type nil)
@@ -86,12 +81,7 @@
 ;; evil-goggles
 ;; doc: https://github.com/edkolev/evil-goggles
 (after! evil-goggles
-  (setq evil-goggles-duration 0.250)
-
-  (custom-set-faces!
-    '(evil-goggles-delete-face :background "#2f001a")
-    '(evil-goggles-paste-face :background "#172f00")
-    '(evil-goggles-yank-face :background "#363636")))
+  (setq evil-goggles-duration 0.250))
 
 ;; beacon
 ;; doc: https://github.com/Malabarba/beacon
