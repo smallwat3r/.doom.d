@@ -1,4 +1,4 @@
-;;; $DOOMDIR/+faces.el -*- lexical-binding: t; -*-
+;;; $DOOMDIR/+custom-faces.el -*- lexical-binding: t; -*-
 
 (custom-set-faces!
   '(default-inverse :background default :inverse-video t)
