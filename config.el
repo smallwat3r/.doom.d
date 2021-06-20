@@ -84,6 +84,10 @@
   (:prefix "o" :desc "Toggle vterm @ buffer dir"   "v" #'my/vterm/toggle-current-buffer)))
 
 (map!
+ (:map evil-insert-state-map
+  "C-h"   #'left-char
+  "C-l"   #'right-char)
+
  (:map evil-normal-state-map
   "C-2"   #'my/scroll-up
   "C-1"   #'my/scroll-down
