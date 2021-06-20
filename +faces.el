@@ -31,7 +31,7 @@
 
   ;; Comments and docstrings colors
   '(font-lock-comment-face :foreground "#2e8900" :slant normal)
-  '(font-lock-comment-delimiter-face :foreground "#0a4700" :slant normal)
+  '(font-lock-comment-delimiter-face :foreground "#0a4700" :slant normal :weight bold)
   '(font-lock-doc-face :foreground "#2e8900" :slant normal)
 
   ;; Keep company really simple
@@ -50,6 +50,15 @@
   '(company-scrollbar-bg :background "moccasin")
   '(company-scrollbar-fg :background "darkred")
   '(company-echo-common :foreground "firebrick4")
+
+  ;; org
+  '(org-column :background nil)
+  '(org-column-title :background nil)
+  '(org-hide :background nil)
+  '(org-indent :background nil)
+  '(org-block :background "gray10")
+  '(org-block-begin-line :background "gray10" :overline nil :underline nil :slant normal)
+  '(org-block-end-line :background "gray10" :overline nil :underline nil :slant normal)
 
   ;; git-gutter-fr
   '(git-gutter-fr:added :foreground "chartreuse3")
