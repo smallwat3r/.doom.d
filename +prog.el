@@ -29,17 +29,14 @@
   python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
 
 (setq-hook! 'json-mode js-indent-level 2)
-
 (setq-hook! 'js2-mode js2-basic-offset 2)
-
+(setq-hook! 'go-mode indent-tabs-mode t)
 (setq-hook! 'web-mode-hook
   tab-width 2
   web-mode-markup-indent-offset 2
   web-mode-css-indent-offset 2
   web-mode-script-padding 2
   web-mode-style-padding 2)
-
-(setq-hook! 'go-mode indent-tabs-mode t)
 
 ;;
 ;;; Formatters
@@ -49,8 +46,8 @@
 (set-formatter! 'prettier
   '("prettier"
     "--print-width" "120"
-    ("--stdin-filepath" "%s" buffer-file-name)
-    :modes '(js2-mode js-mode)))
+    ("--stdin-filepath" "%s" buffer-file-name))
+  :modes '(js2-mode js-mode rsjx-mode))
 
 (setq-hook! 'html-mode-hook +format-with :none)
 (setq-hook! 'web-mode-hook +format-with :none)
