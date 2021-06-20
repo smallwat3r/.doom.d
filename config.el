@@ -86,7 +86,9 @@
 (map!
  (:map evil-insert-state-map
   "C-h"   #'left-char
-  "C-l"   #'right-char)
+  "C-l"   #'right-char
+  "C-k"   #'previous-line
+  "C-j"   #'next-line)
 
  (:map evil-normal-state-map
   "C-2"   #'my/scroll-up
