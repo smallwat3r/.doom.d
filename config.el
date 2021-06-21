@@ -405,10 +405,25 @@
 (remove-hook! (text-mode) #'spell-fu-mode)
 
 (after! sh-script
+  (setq-default indent-tabs-mode nil)
+  (set-formatter! 'shfmt
+    '("shfmt"
+      "-i" "2" ; nb of spaces used for indentation
+      "-ci"    ; indent switch cases
+      "-bn")   ; binary ops may start a line
+    :modes '(sh-mode))
   (set-company-backend! 'sh-mode nil))  ; disable backend because of slowliness
 
+(setq-hook! 'sh-mode-hook sh-basic-offset 2)
+
 (after! python
-  python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9")
+  python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9"
+  (set-formatter! 'black
+    '("black"
+      "--quiet"
+      "--line-length" "100"
+      "-")  ; apply in file changes
+    :modes '(python-mode)))
 
 (setq-hook! 'json-mode js-indent-level 2)
 (setq-hook! 'js2-mode js2-basic-offset 2)
@@ -420,19 +435,14 @@
   web-mode-script-padding 2
   web-mode-style-padding 2)
 
-;;
-;;; Formatters
+(setq-hook! 'html-mode-hook +format-with :none)
+(setq-hook! 'web-mode-hook +format-with :none)
 
-(set-formatter! 'shfmt "shfmt -i 2 -ci" :modes '(sh-mode))
-(set-formatter! 'black "black -q -l 100 -" :modes '(python-mode))
 (set-formatter! 'prettier
   '("prettier"
     "--print-width" "120"
     ("--stdin-filepath" "%s" buffer-file-name))
   :modes '(js2-mode js-mode rsjx-mode))
-
-(setq-hook! 'html-mode-hook +format-with :none)
-(setq-hook! 'web-mode-hook +format-with :none)
 
 ;;
 ;;; Vterm
