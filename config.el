@@ -405,7 +405,6 @@
 (remove-hook! (text-mode) #'spell-fu-mode)
 
 (after! sh-script
-  (setq-default indent-tabs-mode nil)
   (set-formatter! 'shfmt
     '("shfmt"
       "-i" "2" ; nb of spaces used for indentation
@@ -414,7 +413,9 @@
     :modes '(sh-mode))
   (set-company-backend! 'sh-mode nil))  ; disable backend because of slowliness
 
-(setq-hook! 'sh-mode-hook sh-basic-offset 2)
+(setq-hook! 'sh-mode-hook
+  sh-basic-offset 2
+  indent-tabs-mode nil)
 
 (after! python
   python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9"
@@ -432,8 +433,8 @@
       ("--stdin-filepath" "%s" buffer-file-name))
     :modes '(js2-mode)))
 
-(setq-hook! 'json-mode js-indent-level 2)
 (setq-hook! 'js2-mode js2-basic-offset 2)
+(setq-hook! 'json-mode js-indent-level 2)
 (setq-hook! 'go-mode indent-tabs-mode t)
 (setq-hook! 'web-mode-hook
   tab-width 2
