@@ -66,24 +66,20 @@
 ;;
 ;;; Bindings
 
-;; Make sure M-3 prints a hash symbol
-(map! (:map key-translation-map "M-3" "#"))
-
 (map!
+ (:map key-translation-map "M-3" "#") ; Make sure M-3 prints a hash symbol
+
+ (:leader "§" #'other-frame)
+
  (:leader
-  (:prefix "f" :desc "Cycle through frame" "j" #'other-frame)
   (:prefix "o" :desc "Open in Alacritty"   "a" #'my/alacritty-here)
   (:prefix "o" :desc "Open link at point"  "l" #'browse-url-at-point)
-  (:prefix "p" :desc "Run project Makefile target" "m" #'makefile-executor-execute-project-target)))
-
-(map!
- (:leader
+  (:prefix "p" :desc "Run project Makefile target" "m" #'makefile-executor-execute-project-target)
   (:prefix "o" :desc "Open vterm @ project root"   "T" #'+vterm/here)
   (:prefix "o" :desc "Toggle vterm @ project root" "t" #'+vterm/toggle)
   (:prefix "o" :desc "Open vterm @ buffer dir"     "V" #'my/vterm/here-current-buffer)
-  (:prefix "o" :desc "Toggle vterm @ buffer dir"   "v" #'my/vterm/toggle-current-buffer)))
+  (:prefix "o" :desc "Toggle vterm @ buffer dir"   "v" #'my/vterm/toggle-current-buffer))
 
-(map!
  (:map evil-insert-state-map
   "C-h"   #'left-char
   "C-l"   #'right-char
