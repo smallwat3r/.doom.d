@@ -1,4 +1,5 @@
 ;;; $DOOMDIR/autoload/term.el -*- lexical-binding: t; -*-
+
 ;;;###autoload
 (defun my/vterm/toggle-current-buffer ()
   "Toggles a terminal popup window to the directory of the current buffer."
