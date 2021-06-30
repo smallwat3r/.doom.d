@@ -172,6 +172,23 @@
   (run-with-idle-timer 1 t #'display-workspaces-in-minibuffer)
   (+workspace/display))
 
+;; Custom file templates
+(setq +file-templates-dir "~/.doom.d/templates"
+      +file-templates-default-trigger "_template")
+
+;; Use file templates only for a few specific modes
+(setq +file-templates-alist
+      '(("/packages\\.el$" :when +file-templates-in-emacs-dirs-p
+         :trigger "_template-doom-packages"
+         :mode emacs-lisp-mode)
+        ("\\.el$" :when +file-templates-in-emacs-dirs-p
+         :trigger "_template-doom-module"
+         :mode emacs-lisp-mode)
+        (org-journal-mode :ignore t)
+        (org-mode)
+        (restclient-mode)
+        (sh-mode)))
+
 ;;
 ;;; Doom-dashboard
 
@@ -442,6 +459,9 @@
 
 (setq-hook! 'html-mode-hook +format-with :none)
 (setq-hook! 'web-mode-hook +format-with :none)
+
+;; Restclient file extension
+(add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))
 
 ;;
 ;;; Vterm
