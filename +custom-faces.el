@@ -30,9 +30,9 @@
   '(diff-refine-changed :inverse-video nil :weight bold)
 
   ;; Comments and docstrings colors
-  '(font-lock-comment-face :foreground "#2e8900" :slant italic)
+  '(font-lock-comment-face :foreground "#2e8900" :slant normal)
   '(font-lock-comment-delimiter-face :foreground "#0a4700" :slant normal :weight bold)
-  '(font-lock-doc-face :foreground "#2e8900" :slant italic)
+  '(font-lock-doc-face :foreground "#2e8900" :slant normal)
 
   ;; Keep company really simple
   '(company-preview :background "moccasin" :foreground "black")

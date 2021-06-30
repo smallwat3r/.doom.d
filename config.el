@@ -48,7 +48,7 @@
 ;;
 ;;; Fonts
 
-(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 13)
+(setq doom-font (font-spec :family "Monaco" :size 13)
       doom-variable-pitch-font (font-spec :family "Geneva"))
 
 (setq doom-font-increment 1
