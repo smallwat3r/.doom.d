@@ -1,3 +1,6 @@
+# -*- mode: snippet -*-
+# name: Restclient template
+# --
 #
 # Emacs Restclient
 # Example usages: https://raw.githubusercontent.com/pashky/restclient.el/master/examples/httpbin
