@@ -1,6 +1,6 @@
 #
 # Emacs Restclient
-# Usage examples: https://raw.githubusercontent.com/pashky/restclient.el/master/examples/httpbin
+# Example usages: https://raw.githubusercontent.com/pashky/restclient.el/master/examples/httpbin
 #
 
 $0
