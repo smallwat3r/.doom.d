@@ -35,12 +35,12 @@
       scroll-margin 7                   ; top and bottom margins to trigger scroll
       which-key-idle-delay 0.2)         ; delay to show key bindings menu
 
-;; My abbreviations. These are stored in abbrev.el
-(setq abbrev-file-name (expand-file-name "abbrev.el" doom-private-dir))
-(setq save-abbrevs 'silently)
+;; Abbreviations
 (setq-default abbrev-mode t)
+(setq save-abbrevs nil)
+(setq abbrev-file-name (expand-file-name "abbrev_defs" doom-private-dir))
 
-;; Custom File. File used by Emacs to cache some data relative to the config
+;; Custom File, used by Emacs to cache some data relative to the config
 (setq-default custom-file (expand-file-name ".custom.el" doom-private-dir))
 (when (file-exists-p custom-file)
   (load custom-file))
