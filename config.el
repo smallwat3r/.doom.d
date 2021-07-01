@@ -70,7 +70,8 @@
 (map!
  (:map key-translation-map "M-3" "#") ; Make sure M-3 prints a hash symbol
 
- (:leader "§" #'other-frame)
+ (:leader "§" #'other-frame
+  :leader "1" #'my/where-am-i)
 
  (:leader
   (:prefix "o" :desc "Open in Alacritty"   "a" #'my/alacritty-here)
