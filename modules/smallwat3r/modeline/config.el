@@ -17,8 +17,7 @@
 (use-package! delight
   :config
   (delight
-   '((pipenv-mode " pip" pipenv)
-     (yas-minor-mode " Y" yasnippet)
+   '((yas-minor-mode " Y" yasnippet)
      (git-gutter-mode " Gg" git-gutter)
      (dired-mode "δ" :major)
      (emacs-lisp-mode "ξ" :major)

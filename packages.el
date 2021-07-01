@@ -6,7 +6,8 @@
  lsp-ui
  lsp-python-ms
  company-anaconda
- anaconda-mode)
+ anaconda-mode
+ pipenv)
 
 (package! dired-narrow)
 (package! dired-subtree)
