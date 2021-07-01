@@ -4,6 +4,7 @@
        deft
        google
        kubernetes
+       modeline
        slack
        tree-sitter
 
@@ -60,7 +61,6 @@
 
        :lang
        cc
-       (dart +lsp +flutter)
        emacs-lisp
        (go +lsp)
        (javascript +lsp)
