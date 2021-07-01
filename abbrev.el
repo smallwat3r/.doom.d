@@ -3,35 +3,21 @@
 (clear-abbrev-table global-abbrev-table)
 
 (define-abbrev-table 'global-abbrev-table
-  '(("btw"     "by the way")
-    ("pov"     "point of view")
-    ("atm"     "at the moment" )
-    ("plz"     "please")
-    ("ty"      "thank you")
-    ("afaict"  "as far as I can tell")
-
-    ;; Typos
-    ("altough"  "although")
-    ("widht"    "width")
-    ("thougth"  "thought")
-    ("tought"   "thought")
-    ("lenght"   "length")
-    ("strenght" "strength")
-    ("weigth"   "weight")
-    ("wether"   "whether")
-
-    ;; Unicode stuff
+  '(("btw" "by the way")
+    ("atm" "at the moment" )
+    ("ty" "thank you")
     ("uno" "✗")
     ("uok" "✓")
     ("ura" "→" )
-
-    ;; Personal stuff
-    ("zna" "Matthieu Petiteau")
-    ("zem" "<mpetiteau.pro@gmail.com>")
-    ("zme" "Matthieu Petiteau <mpetiteau.pro@gmail.com>")))
-
-;;
-;;; Specific major-modes
+    ("altough" "although")
+    ("widht" "width")
+    ("thougth" "thought")
+    ("tought" "thought")
+    ("lenght" "length")
+    ("strenght" "strength")
+    ("weigth" "weight")
+    ("wether" "whether")
+    ("recieve" "receive")))
 
 (define-abbrev-table 'prog-mode-abbrev-table
   '(("rt" "return")
@@ -48,20 +34,7 @@
     ("pr" "print")
     ("cl" "class")
     ("ifn" "if __name__ == \"__main__\":\n    ")
-    ("pdb" "import pdb; pdb.set_trace()  # Debug")))
-
-(define-abbrev-table 'sql-mode-abbrev-table
-  '(("s" "SELECT")
-    ("f" "FROM")
-    ("w" "WHERE")
-    ("d" "DISTINCT")
-    ("ob" "ORDER BY")
-    ("gb" "GROUP BY")
-    ("l" "LIMIT")
-    ("u" "UNION")
-    ("j" "JOIN")
-    ("lj" "LEFT JOIN")
-    ("rj" "RIGHT JOIN")))
+    ("pdb" "import pdb; pdb.set_trace()  # debug")))
 
 (set-default 'abbrev-mode t)
 
