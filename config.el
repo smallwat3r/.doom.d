@@ -17,15 +17,12 @@
 ;;
 ;;; General
 
-;; Personal information
 (setq user-full-name "Matthieu Petiteau"
       user-mail-address "mpetiteau.pro@gmail.com"
       user-mail-address-2 "matthieu@smallwatersolutions.com")
 
-;; Disable confirmation prompt when exiting Emacs.
-(setq confirm-kill-emacs nil)
+(setq confirm-kill-emacs nil)  ; Let me quit Emacs
 
-;; Some general settings
 (setq evil-vsplit-window-right t
       evil-split-window-below t
       default-directory "~/"
@@ -60,9 +57,8 @@
 ;;
 ;;; Themes
 
-;; Set up our default theme
 (setq doom-theme 'sanityinc-tomorrow-bright)
-(load! "+custom-faces")
+(load! "+custom-faces")  ; load my custom overwrites
 
 ;;
 ;;; Bindings
@@ -108,10 +104,11 @@
 ;;
 ;;; Editor
 
-;; I do like a blinking cursor
-(blink-cursor-mode 1)
+(blink-cursor-mode 1)  ; I do like a blinking cursor
 
-;; Treemacs
+;; Vertical file explorer
+;; doc: https://github.com/Alexander-Miller/treemacs
+
 (after! treemacs
   (setq doom-themes-treemacs-enable-variable-pitch nil
         doom-themes-treemacs-line-spacing 0
@@ -119,8 +116,9 @@
         treemacs-width 35)
   (treemacs-resize-icons 14))
 
-;; Git fringe
+;; Git fringe indicator
 ;; doc: https://github.com/emacsorphanage/git-gutter-fringe
+
 (after! git-gutter-fringe
   (fringe-mode 1))
 
@@ -134,43 +132,55 @@
 (add-hook! 'rainbow-mode-hook
   (hl-line-mode (if rainbow-mode -1 +1)))
 
-;; Set window dividers width
 (defvar global-window-divider-width 2
   "Default global width size of a window divider.")
 
+;; Set window dividers width
 (setq window-divider-default-right-width global-window-divider-width
       window-divider-default-bottom-width global-window-divider-width)
-
-;; Writeroom
-(after! writeroom-mode
-  (setq +zen-window-divider-size global-window-divider-width
-        +zen-text-scale 0))
 
 ;; Activate goto-address mode on some major modes
 (add-hook! (prog-mode text-mode restclient-mode vterm-mode eshell-mode)
   (goto-address-mode t))
 
-;; evil-goggles
+;; Zen mode
+;; doc: https://github.com/joostkremers/writeroom-mode
+
+(after! writeroom-mode
+  (setq +zen-window-divider-size global-window-divider-width
+        +zen-text-scale 0))
+
+;; Evil visual hints
 ;; doc: https://github.com/edkolev/evil-goggles
+
 (after! evil-goggles
   (setq evil-goggles-duration 0.250))
 
-;; beacon
+;; Highlight where is my cursor on big jumps
 ;; doc: https://github.com/Malabarba/beacon
+
 (use-package! beacon
   :custom
   (beacon-size 15)
   (beacon-blink-when-window-scrolls nil)
   :init (beacon-mode 1))
 
-;; Permanently display workspaces in minibuffer
+;; Workspace management
+;; doc: https://github.com/Bad-ptr/persp-mode.el
+
 (after! persp-mode
-  (defun display-workspaces-in-minibuffer ()
+
+  (defun my/display-workspaces-in-minibuffer ()
     (with-current-buffer " *Minibuf-0*"
       (erase-buffer)
       (insert (+workspace--tabline))))
-  (run-with-idle-timer 1 t #'display-workspaces-in-minibuffer)
+
+  ;; Permanently display the windows in the minibuffer
+  (run-with-idle-timer 1 t #'my/display-workspaces-in-minibuffer)
   (+workspace/display))
+
+;;
+;;; Custom templates
 
 ;; Custom file templates
 (setq +file-templates-dir "~/.doom.d/templates"
@@ -188,7 +198,7 @@
         (sh-mode)))
 
 ;;
-;;; Doom-dashboard
+;;; Dashboard
 
 (setq +doom-dashboard-functions
       '(doom-dashboard-widget-shortmenu
@@ -213,7 +223,7 @@
          :action doom/help)))
 
 ;;
-;;; Projectile
+;;; Project space management
 
 ;; doc: https://github.com/bbatsov/projectile
 ;;      https://docs.projectile.mx/projectile/index.html
@@ -229,27 +239,7 @@
         projectile-project-search-path '("~/dotfiles/" "~/Projects/" "~/Code/" "~/Github/")))
 
 ;;
-;;; Ivy
-
-;; doc: https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html#org121eea9
-(after! ivy
-  (setq ivy-use-virtual-buffers t
-        ivy-count-format "(%d/%d) "
-        +ivy-buffer-preview t)
-
-  ;; Ask to pick an existing buffer when splitting the window
-  (defadvice! prompt-for-buffer (&rest _)
-    :after '(evil-window-split evil-window-vsplit)
-    (+ivy/switch-buffer)))
-
-;; doc: https://github.com/asok/all-the-icons-ivy
-(use-package! all-the-icons-ivy-rich
-  :after ivy-rich
-  :custom (all-the-icons-ivy-rich-icon-size 1)
-  :init (all-the-icons-ivy-rich-mode 1))
-
-;;
-;;; Dired
+;;; File explorer
 
 ;; doc: https://www.emacswiki.org/emacs/DiredMode
 ;;      https://github.com/Fuco1/dired-hacks
@@ -282,9 +272,31 @@
               "<backtab>" #'dired-subtree-cycle))
 
 ;;
-;;; Company
+;;; Completion frameworks
 
+;; doc: https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html#org121eea9
+
+(after! ivy
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "(%d/%d) "
+        +ivy-buffer-preview t)
+
+  ;; Ask to pick an existing buffer when splitting the window
+  (defadvice! prompt-for-buffer (&rest _)
+    :after '(evil-window-split evil-window-vsplit)
+    (+ivy/switch-buffer)))
+
+;; Ivy icons
+;; doc: https://github.com/asok/all-the-icons-ivy
+
+(use-package! all-the-icons-ivy-rich
+  :after ivy-rich
+  :custom (all-the-icons-ivy-rich-icon-size 1)
+  :init (all-the-icons-ivy-rich-mode 1))
+
+;; Code completion
 ;; doc: https://www.emacswiki.org/emacs/CompanyMode
+
 (after! company
   (setq company-idle-delay 0.1
         company-tooltip-limit 10
@@ -328,13 +340,22 @@
 (add-hook! 'shell-mode-hook (company-mode -1))
 
 ;;
-;;; Prog
+;;; Programmation
+
+;; Language server protocol
+;; doc: https://emacs-lsp.github.io/lsp-mode/
 
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
 
+;; Git porcelain
+;; doc: https://github.com/magit/magit
+
 (after! magit
   (setq git-commit-summary-max-length 70))
+
+;; Interactive code analysis and linting
+;; doc: https://www.flycheck.org/en/latest/
 
 (after! flycheck
   ;; Pylint (python)
@@ -345,6 +366,9 @@
   ;; Shellcheck (bash)
   (setq flycheck-shellcheck-excluded-warnings '("SC1091"))
   (setq-hook! 'sh-mode-hook flycheck-checker 'sh-shellcheck))
+
+;; Check for spelling mistakes
+;; doc: https://gitlab.com/ideasman42/emacs-spell-fu
 
 (after! spell-fu
   (setq spell-fu-idle-delay 0.5))
@@ -401,6 +425,7 @@
 ;;; Vterm
 
 ;; doc: https://github.com/akermu/emacs-libvterm
+
 (after! vterm
   (setq vterm-max-scrollback 6000)
 
@@ -408,7 +433,6 @@
   (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
 
   (defun my/vterm-delete-word ()
-    "Delete a word in vterm."
     (interactive)
     (vterm-send-key (kbd "C-w")))
 
@@ -433,8 +457,8 @@
 (add-hook! 'eshell-mode-hook (company-mode -1))
 
 (after! eshell
+
   (defun my/eshell-current-git-branch ()
-    "Get current branch name from repository."
     (let ((args '("symbolic-ref" "HEAD" "--short")))
       (with-temp-buffer
         (apply #'process-file "git" nil (list t nil) nil args)
@@ -443,7 +467,6 @@
           (buffer-substring-no-properties (point) (line-end-position))))))
 
   (defun my/eshell-prompt ()
-    "Default Eshell prompt."
     (let ((base/dir (shrink-path-prompt default-directory))
           (base/branch (my/eshell-current-git-branch)))
       (concat
@@ -577,8 +600,16 @@
 (defvar my-notes-directory "~/org"
   "Where I'm storing my notes.")
 
-;; deft
+;; Org
+;; doc: https://orgmode.org/manual/
+
+(after! org
+  (setq org-directory my-notes-directory
+        org-hide-emphasis-markers t))
+
+;; Deft
 ;; doc: https://github.com/jrblevin/deft
+
 (after! deft
   (setq deft-directory my-notes-directory))
 
@@ -588,13 +619,9 @@
    :desc "Open deft" "d" #'deft
    :desc "Deft new file" "D" #'deft-new-file-named)))
 
-;; org
-;; doc: https://orgmode.org/manual/
-(after! org
-  (setq org-directory my-notes-directory
-        org-hide-emphasis-markers t))
-
+;; Make invisible parts of Org elements appear visible
 ;; doc: https://github.com/awth13/org-appear
+
 (use-package! org-appear
   :hook (org-mode . org-appear-mode)
   :custom
@@ -603,8 +630,9 @@
   (org-appear-autosubmarkers t)
   (org-appear-autoentities t))
 
-;; org-journal
+;; Journal
 ;; doc: https://github.com/bastibe/org-journal
+
 (after! org-journal
   (setq org-journal-dir (expand-file-name "journal/" my-notes-directory)
         org-journal-date-format "%A, %d %B %Y"
@@ -621,7 +649,9 @@
       mail-envelope-from 'header
       message-sendmail-envelope-from 'header)
 
+;; Email client
 ;; doc: https://notmuchmail.org/emacstips/
+
 (after! notmuch
   ;; Main buffer sections
   (setq notmuch-show-log nil
@@ -651,21 +681,24 @@
 ;;
 ;;; Misc
 
-;; shrink-path
+;; shrink-path util
 (use-package! shrink-path
   :commands (shrink-path-file shrink-path-prompt))
 
-;; grip-mode
+;; Markdown visualiser
+;; doc: https://github.com/seagle0128/grip-mode
+
 (after! grip-mode
   (setq grip-github-user "smallwat3r"
         grip-github-password (+pass-get-secret "github/password")))
 
 ;; Scratch buffers
 ;; doc: https://github.com/ieure/scratch-el
+
 (use-package! scratch
   :config
+
   (defun my/add-scratch-buffer-header (text)
-    "Add an automatic header to a scratch buffer."
     (when scratch-buffer
       (save-excursion
         (goto-char (point-min))
@@ -674,7 +707,6 @@
       (goto-char (point-max))))
 
   (defun my/scratch-rest-mode ()
-    "Start a scratch buffer in restclient-mode"
     (interactive)
     (scratch 'restclient-mode))
 
@@ -689,8 +721,9 @@
   (add-hook! 'sh-mode-hook (my/add-scratch-buffer-header "#!/usr/bin/env bash"))
   (add-hook! 'restclient-mode-hook (my/add-scratch-buffer-header "#\n# restclient\n#")))
 
-;; lorem-ipsum
+;; Insert lorem-ipsum text
 ;; doc: https://github.com/jschaf/emacs-lorem-ipsum
+
 (use-package! lorem-ipsum
   :commands (lorem-ipsum-insert-paragraphs
              lorem-ipsum-insert-sentences
