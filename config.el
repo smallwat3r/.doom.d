@@ -21,7 +21,7 @@
       user-mail-address "mpetiteau.pro@gmail.com"
       user-mail-address-2 "matthieu@smallwatersolutions.com")
 
-(setq confirm-kill-emacs nil)  ; Let me quit Emacs
+(setq confirm-kill-emacs nil)  ; Let me quit Emacs fast
 
 (setq evil-vsplit-window-right t
       evil-split-window-below t

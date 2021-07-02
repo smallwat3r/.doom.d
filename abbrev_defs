@@ -4,12 +4,12 @@
   '(("ph" ".PHONY:" nil 0)))
 
 (define-abbrev-table 'python-mode-abbrev-table
-  '(("false" "False" nil 0)
+  '(("true" "True" nil 0)
+    ("false" "False" nil 0)
     ("ifn" "if __name__ == \"__main__\":\n    " nil 0)
     ("none" "None" nil 0)
     ("pdb" "import pdb; pdb.set_trace()  # debug" nil 0)
-    ("shb" "#!/usr/bin/env python3\n" nil 0)
-    ("true" "True" nil 0)))
+    ("shb" "#!/usr/bin/env python3\n" nil 0)))
 
 (define-abbrev-table 'sh-mode-abbrev-table
   '(("shb" "#!/usr/bin/env bash\n" nil 0)))
