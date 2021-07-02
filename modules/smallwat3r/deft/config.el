@@ -1,5 +1,7 @@
 ;;; smallwat3r/deft/config.el -*- lexical-binding: t; -*-
 
+;; doc: https://github.com/jrblevin/deft/
+
 (use-package! deft
   :commands (deft deft-new-file-named)
   :custom

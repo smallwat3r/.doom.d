@@ -2,6 +2,7 @@
 
 ;; google-translate
 ;; doc: https://github.com/atykhonov/google-translate
+
 (use-package! google-translate
   :commands (google-translate-at-point
              google-translate-query-translate
@@ -26,6 +27,7 @@
 
 ;; google-this
 ;; doc: https://github.com/Malabarba/emacs-google-this
+
 (use-package! google-this
   :commands (google-this google-this-word google-this-line)
   :init (map!

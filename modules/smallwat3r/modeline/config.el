@@ -2,11 +2,12 @@
 
 ;; Show counter while in search modes
 ;; doc: https://github.com/emacsorphanage/anzu
+;; doc: https://github.com/emacsorphanage/evil-anzu
+
 (use-package! anzu
   :delight
   :after-call isearch-mode)
 
-;; doc: https://github.com/emacsorphanage/evil-anzu
 (use-package! evil-anzu
   :delight
   :after-call evil-ex-start-search evil-ex-start-word-search evil-ex-search-activate-highlight
@@ -14,6 +15,7 @@
 
 ;; Manage how modes are displayed
 ;; doc: https://www.emacswiki.org/emacs/DelightedModes
+
 (use-package! delight
   :config
   (delight

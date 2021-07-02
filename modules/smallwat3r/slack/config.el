@@ -1,8 +1,13 @@
 ;;; smallwat3r/slack/config.el -*- lexical-binding: t; -*-
 
-;; slack
+;; Slack
 ;; doc: https://github.com/yuya373/emacs-slack
-(use-package slack
+
+;; To get a token:
+;;   - Open Chrome and sign into slack at https://my.slack.com/customize
+;;   - From the dev tools console type: TS.boot_data.api_token
+
+(use-package! slack
   :commands (slack-start)
   :custom
   (slack-buffer-emojify t)
@@ -17,13 +22,13 @@
   :config
   (slack-register-team
    :default t
-   :name (+pass-get-secret "slack/btl/name")
-   :token (+pass-get-secret "slack/btl/token")
+   :name "B"
+   :token (+pass-get-secret "slack/b/token")
    :full-and-display-names t)
 
   (slack-register-team
-   :name (+pass-get-secret "slack/sws/name")
-   :token (+pass-get-secret "slack/sws/token")
+   :name "S"
+   :token (+pass-get-secret "slack/s/token")
    :full-and-display-names t)
 
   (evil-define-key 'normal slack-mode-map
@@ -40,7 +45,9 @@
     ",mu" 'slack-message-embed-mention
     ",mc" 'slack-message-embed-channel))
 
+;; Trigger alerts
 ;; doc: https://github.com/jwiegley/alert
-(use-package alert
+
+(use-package! alert
   :commands (alert)
   :custom (alert-default-style 'notifier))
