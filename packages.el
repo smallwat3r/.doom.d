@@ -17,4 +17,5 @@
 (package! org-appear)
 (package! lorem-ipsum)
 (package! all-the-icons-ivy-rich)
+(package! applescript-mode)
 (package! color-theme-sanityinc-tomorrow)

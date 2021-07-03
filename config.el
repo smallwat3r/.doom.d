@@ -418,8 +418,8 @@
 (setq-hook! 'html-mode-hook +format-with :none)
 (setq-hook! 'web-mode-hook +format-with :none)
 
-;; Restclient file extension
-(add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))
+(add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode)) ; restclient
+(add-to-list 'interpreter-mode-alist '("osascript" . applescript-mode)) ; applescript
 
 ;;
 ;;; Vterm
