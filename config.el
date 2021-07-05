@@ -418,8 +418,8 @@
 (setq-hook! 'html-mode-hook +format-with :none)
 (setq-hook! 'web-mode-hook +format-with :none)
 
-(add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode)) ; restclient
-(add-to-list 'interpreter-mode-alist '("osascript" . applescript-mode)) ; applescript
+(add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))  ; restclient
+(add-to-list 'interpreter-mode-alist '("osascript" . applescript-mode))  ; applescript
 
 ;;
 ;;; Vterm
@@ -428,9 +428,7 @@
 
 (after! vterm
   (setq vterm-max-scrollback 6000)
-
-  ;; Keep mode-line
-  (remove-hook! 'vterm-mode-hook #'hide-mode-line-mode)
+  (remove-hook! 'vterm-mode-hook #'hide-mode-line-mode)  ; always display modeline
 
   (defun my/vterm-delete-word ()
     (interactive)
@@ -488,8 +486,7 @@
         eshell-modify-global-environment t
         eshell-destroy-buffer-when-process-dies t)
 
-  ;; Keep mode-line
-  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
+  (remove-hook! 'eshell-mode-hook #'hide-mode-line-mode)  ; always display modeline
 
   ;; Prompt settings
   (setq eshell-prompt-regexp "^.* [#λ] "
