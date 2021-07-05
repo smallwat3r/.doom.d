@@ -418,8 +418,16 @@
 (setq-hook! 'html-mode-hook +format-with :none)
 (setq-hook! 'web-mode-hook +format-with :none)
 
-(add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))  ; restclient
-(add-to-list 'interpreter-mode-alist '("osascript" . applescript-mode))  ; applescript
+;; Detect specific modes
+
+(setq auto-mode-alist
+      (append '(("\\.restclient" . restclient-mode)
+                ("abbrev_defs" . emacs-lisp-mode))
+              auto-mode-alist))
+
+(setq interpreter-mode-alist
+      (append '(("osascript" . applescript-mode))
+              interpreter-mode-alist))
 
 ;;
 ;;; Vterm
