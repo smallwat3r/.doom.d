@@ -126,7 +126,7 @@
 (setq display-line-numbers-type nil)
 
 ;; Disable hl-line
-(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
+(remove-hook! 'doom-first-buffer-hook #'global-hl-line-mode)
 
 ;; When hl-line is available, do not override the color of rainbow-mode
 (add-hook! 'rainbow-mode-hook
