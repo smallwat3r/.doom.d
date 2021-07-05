@@ -430,7 +430,7 @@
   (setq vterm-max-scrollback 6000)
 
   ;; Keep mode-line
-  (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
+  (remove-hook! 'vterm-mode-hook #'hide-mode-line-mode)
 
   (defun my/vterm-delete-word ()
     (interactive)

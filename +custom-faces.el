@@ -67,5 +67,5 @@
 
   ;; evil-goggles
   '(evil-goggles-delete-face :background "#2f001a")
-  '(evil-goggles-paste-face :background "#172f00")
-  '(evil-goggles-yank-face :background "#363636"))
+  '(evil-goggles-paste-face :background "#224500")
+  '(evil-goggles-yank-face :background "#7a700a"))
