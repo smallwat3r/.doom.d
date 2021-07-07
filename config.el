@@ -169,7 +169,6 @@
 ;; doc: https://github.com/Bad-ptr/persp-mode.el
 
 (after! persp-mode
-
   (defun my/display-workspaces-in-minibuffer ()
     (with-current-buffer " *Minibuf-0*"
       (erase-buffer)
@@ -701,30 +700,18 @@
 ;; doc: https://github.com/ieure/scratch-el
 
 (use-package! scratch
-  :config
+  :commands (scratch))
 
-  (defun my/add-scratch-buffer-header (text)
-    (when scratch-buffer
-      (save-excursion
-        (goto-char (point-min))
-        (insert text)
-        (newline 2))
-      (goto-char (point-max))))
+(map!
+ (:leader
+  (:prefix "o"
+   :desc "Scratch buffer current mode" "x" #'scratch
+   :desc "Scratch buffer restclient"   "h" #'my/scratch-rest-mode)))
 
-  (defun my/scratch-rest-mode ()
-    (interactive)
-    (scratch 'restclient-mode))
-
-  (map!
-   (:leader
-    (:prefix "o"
-     :desc "Scratch buffer current mode" "x" #'scratch
-     :desc "Scratch buffer restclient"   "h" #'my/scratch-rest-mode)))
-
-  ;; Auto add headers on scratch buffers in specific modes
-  (add-hook! 'org-mode-hook (my/add-scratch-buffer-header "#+TITLE: Scratch file"))
-  (add-hook! 'sh-mode-hook (my/add-scratch-buffer-header "#!/usr/bin/env bash"))
-  (add-hook! 'restclient-mode-hook (my/add-scratch-buffer-header "#\n# restclient\n#")))
+;; Auto add headers on scratch buffers in specific modes
+(add-hook! 'org-mode-hook (my/add-scratch-buffer-header "#+TITLE: Scratch file"))
+(add-hook! 'sh-mode-hook (my/add-scratch-buffer-header "#!/usr/bin/env bash"))
+(add-hook! 'restclient-mode-hook (my/add-scratch-buffer-header "#\n# restclient\n#"))
 
 ;; Insert lorem-ipsum text
 ;; doc: https://github.com/jschaf/emacs-lorem-ipsum
@@ -732,10 +719,11 @@
 (use-package! lorem-ipsum
   :commands (lorem-ipsum-insert-paragraphs
              lorem-ipsum-insert-sentences
-             lorem-ipsum-insert-list)
-  :init (map!
-         (:leader
-          (:prefix ("l" . "lorem ipsum")
-           :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
-           :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
-           :desc "Insert list"       "l" #'lorem-ipsum-insert-list))))
+             lorem-ipsum-insert-list))
+
+(map!
+ (:leader
+  (:prefix ("l" . "lorem ipsum")
+   :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
+   :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
+   :desc "Insert list"       "l" #'lorem-ipsum-insert-list)))
