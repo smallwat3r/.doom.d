@@ -469,7 +469,6 @@
 (add-hook! 'eshell-mode-hook (company-mode -1))
 
 (after! eshell
-
   (defun my/eshell-current-git-branch ()
     (let ((args '("symbolic-ref" "HEAD" "--short")))
       (with-temp-buffer
