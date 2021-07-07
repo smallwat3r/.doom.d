@@ -23,5 +23,5 @@ git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
 
 You can then clone this repo in your ~/.doom.d folder
 #+begin_src shell
-git clone https://github.com/smallwat3r/.doom.d ~
+git clone https://github.com/smallwat3r/.doom.d ~/.doom.d
 #+end_src
