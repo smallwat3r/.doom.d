@@ -8,7 +8,8 @@
               '((width . 105)
                 (height . 65)
                 (drag-internal-border . 1)
-                (internal-border-width . 0))))
+                (internal-border-width . 0)
+                (inhibit-double-buffering . t))))
 
 (setq-default frame-title-format '("Emacs@" emacs-version))
 
@@ -64,42 +65,46 @@
 ;;; Bindings
 
 (map!
- (:map key-translation-map "M-3" "#") ; Make sure M-3 prints a hash symbol
-
- (:leader "§" #'other-frame
-  :leader "1" #'my/where-am-i)
-
- (:leader
-  (:prefix "o" :desc "Open in Alacritty"   "a" #'my/alacritty-here)
-  (:prefix "o" :desc "Open link at point"  "l" #'browse-url-at-point)
-  (:prefix "p" :desc "Run project Makefile target" "m" #'makefile-executor-execute-project-target)
-  (:prefix "o" :desc "Open vterm @ project root"   "T" #'+vterm/here)
-  (:prefix "o" :desc "Toggle vterm @ project root" "t" #'+vterm/toggle)
-  (:prefix "o" :desc "Open vterm @ buffer dir"     "V" #'my/vterm/here-current-buffer)
-  (:prefix "o" :desc "Toggle vterm @ buffer dir"   "v" #'my/vterm/toggle-current-buffer))
+ (:map key-translation-map
+  "M-3" "#") ; Make sure M-3 prints a hash symbol
 
  (:map evil-insert-state-map
-  "C-h"   #'left-char
-  "C-l"   #'right-char
-  "C-k"   #'previous-line
-  "C-j"   #'next-line)
+  "C-h" #'left-char
+  "C-l" #'right-char
+  "C-k" #'previous-line
+  "C-j" #'next-line)
 
  (:map evil-normal-state-map
-  "C-2"   #'my/scroll-up
-  "C-1"   #'my/scroll-down
+  "C-2" #'my/scroll-up
+  "C-1" #'my/scroll-down
   "S-C-h" #'my/enlarge-window-horizontally
   "S-C-l" #'my/shrink-window-horizontally
   "S-C-k" #'my/enlarge-window
   "S-C-j" #'my/shrink-window
   "M-SPC" #'cycle-spacing
-  "M-o"   #'delete-blank-lines
-  ";f"    #'format-all-buffer
-  ";d"    #'my/save-and-close-buffer
-  ";q"    #'evil-save-and-close
-  ";w"    #'evil-write
-  "C-k"   #'join-line
-  "B"     #'beginning-of-line-text
-  "E"     #'end-of-line))
+  "M-o" #'delete-blank-lines
+  ";f" #'format-all-buffer
+  ";d" #'my/save-and-close-buffer
+  ";q" #'evil-save-and-close
+  ";w" #'evil-write
+  "C-k" #'join-line
+  "B" #'beginning-of-line-text
+  "E" #'end-of-line)
+
+ (:leader
+  "§" #'other-frame
+  "1" #'my/where-am-i
+
+  (:prefix "o"
+   :desc "Open in Alacritty" "a" #'my/alacritty-here
+   :desc "Open link at point" "l" #'browse-url-at-point
+   :desc "Open vterm @ project root" "T" #'+vterm/here
+   :desc "Toggle vterm @ project root" "t" #'+vterm/toggle
+   :desc "Open vterm @ buffer dir" "V" #'my/vterm/here-current-buffer
+   :desc "Toggle vterm @ buffer dir" "v" #'my/vterm/toggle-current-buffer)
+
+  (:prefix "p"
+   :desc "Run project Makefile target" "m" #'makefile-executor-execute-project-target)))
 
 ;;
 ;;; Editor
@@ -343,6 +348,8 @@
 
 ;; Language server protocol
 ;; doc: https://emacs-lsp.github.io/lsp-mode/
+
+(setq +lsp-prompt-to-install-server 'quiet)
 
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
