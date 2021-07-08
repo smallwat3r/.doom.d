@@ -56,8 +56,8 @@
        rgb
 
        :os
-       tty
        (:if IS-MAC macos)
+       tty
 
        :lang
        cc

@@ -74,6 +74,9 @@
   "C-k" #'previous-line
   "C-j" #'next-line)
 
+ (:map evil-visual-state-map
+  ";f" #'+format/region)
+
  (:map evil-normal-state-map
   "C-2" #'my/scroll-up
   "C-1" #'my/scroll-down
@@ -83,10 +86,8 @@
   "S-C-j" #'my/shrink-window
   "M-SPC" #'cycle-spacing
   "M-o" #'delete-blank-lines
-  ";f" #'format-all-buffer
   ";d" #'my/save-and-close-buffer
-  ";q" #'evil-save-and-close
-  ";w" #'evil-write
+  ";w" #'my/save-buffer
   "C-k" #'join-line
   "B" #'beginning-of-line-text
   "E" #'end-of-line)

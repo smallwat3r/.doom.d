@@ -1,10 +1,18 @@
 ;;; $DOOMDIR/autoload/buffers.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
-(defun my/save-and-close-buffer ()
-  "Save and close current buffer."
+(defun my/save-buffer ()
+  "Save buffer with confirmation."
   (interactive)
   (save-buffer)
+  (message "Saved `%s'" (buffer-name)))
+
+;;;###autoload
+(defun my/save-and-close-buffer ()
+  "Save and close current buffer with confirmation."
+  (interactive)
+  (save-buffer)
+  (message "Closed and saved `%s'" (buffer-name))
   (kill-this-buffer))
 
 ;;;###autoload
