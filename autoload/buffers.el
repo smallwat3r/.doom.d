@@ -2,7 +2,7 @@
 
 ;;;###autoload
 (defun my/save-buffer ()
-  "Save buffer with confirmation."
+  "Save current buffer with confirmation."
   (interactive)
   (save-buffer)
   (message "Saved `%s'" (buffer-name)))
