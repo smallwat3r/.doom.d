@@ -2,13 +2,13 @@
 
 ;;;###autoload
 (defun my/where-am-i ()
-  "An interactive function showing function `buffer-file-name' or `buffer-name'."
+  "Show where I'm at."
   (interactive)
   (message (kill-new (if (buffer-file-name) (buffer-file-name) (buffer-name)))))
 
 ;;;###autoload
 (defun my/arrayify (start end quote)
-  "Turn strings on newlines into a QUOTEd, comma-separated one-liner."
+  "Turn strings on newlines into a comma-separated one-liner."
   (interactive "r\nMQuote: ")
   (let ((insertion
          (mapconcat
@@ -18,15 +18,21 @@
     (insert insertion)))
 
 ;;;###autoload
-(defun my/locate-python-venv-path ()
-  "Look for python virtual environments in the workspace"
+(defun my/vterm/toggle-current-buffer ()
+  "Toggles a terminal popup window to the directory of the current buffer."
   (interactive)
-  (-when-let (venv-base-directory (locate-dominating-file default-directory "env/"))
-    (concat venv-base-directory "env")))
+  (+vterm/toggle t))
 
 ;;;###autoload
-(defun my/locate-python-venv-executable ()
-  "Look for python executable in virtual environment"
+(defun my/vterm/here-current-buffer ()
+  "Open a terminal buffer in the current window to the directory of the current buffer."
   (interactive)
-  (or (executable-find (f-expand "bin/python" (my/locate-python-venv-path)))
-      (with-no-warnings (python-shell-interpreter))))
+  (+vterm/here t))
+
+;;;###autoload
+(defun my/alacritty-here ()
+  "Open alacritty from the current directory."
+  (interactive "@")
+  (shell-command
+   (format "alacritty --working-directory %S >/dev/null 2>&1 & disown"
+           default-directory)))

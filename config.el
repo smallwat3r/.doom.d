@@ -92,6 +92,15 @@
   "B" #'beginning-of-line-text
   "E" #'end-of-line)
 
+ (:after python
+  (:map python-mode-map
+   (:leader
+    (:prefix "o"
+     :desc "Open Python repl" "r" #'my/open-python-repl)
+    (:prefix "e"
+     :desc "Activate venv" "a" #'my/activate-closest-python-venv
+     :desc "Deactivate venv" "d" #'my/deactivate-python-venv))))
+
  (:leader
   "§" #'other-frame
   "1" #'my/where-am-i
@@ -345,9 +354,7 @@
 (add-hook! 'shell-mode-hook (company-mode -1))
 
 ;;
-;;; Programmation
-
-;; Language server protocol
+;;; Programmation Language server protocol
 ;; doc: https://emacs-lsp.github.io/lsp-mode/
 
 (setq +lsp-prompt-to-install-server 'quiet)
@@ -397,13 +404,16 @@
   indent-tabs-mode nil)
 
 (after! python
-  python-shell-interpreter "/usr/local/opt/python@3.9/bin/python3.9"
+  (setq python-shell-interpreter "python3")
   (set-formatter! 'black
     '("black"
       "--quiet"
       "--line-length" "100"
       "-")  ; apply in file changes
     :modes '(python-mode)))
+
+;; Disable warnings in python repl
+(add-hook! 'inferior-python-mode-hook 'python-shell-completion-native-turn-off)
 
 (after! js2-mode
   (set-formatter! 'prettier
