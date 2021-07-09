@@ -64,57 +64,7 @@
 ;;
 ;;; Bindings
 
-(map!
- (:map key-translation-map
-  "M-3" "#") ; Make sure M-3 prints a hash symbol
-
- (:map evil-insert-state-map
-  "C-h" #'left-char
-  "C-l" #'right-char
-  "C-k" #'previous-line
-  "C-j" #'next-line)
-
- (:map evil-visual-state-map
-  ";f" #'+format/region)
-
- (:map evil-normal-state-map
-  "C-2" #'my/scroll-up
-  "C-1" #'my/scroll-down
-  "S-C-h" #'my/enlarge-window-horizontally
-  "S-C-l" #'my/shrink-window-horizontally
-  "S-C-k" #'my/enlarge-window
-  "S-C-j" #'my/shrink-window
-  "M-SPC" #'cycle-spacing
-  "M-o" #'delete-blank-lines
-  ";d" #'my/save-and-close-buffer
-  ";w" #'my/save-buffer
-  "C-k" #'join-line
-  "B" #'beginning-of-line-text
-  "E" #'end-of-line)
-
- (:after python
-  (:map python-mode-map
-   (:leader
-    (:prefix "o"
-     :desc "Open Python repl" "r" #'my/open-python-repl)
-    (:prefix "e"
-     :desc "Activate venv" "a" #'my/activate-closest-python-venv
-     :desc "Deactivate venv" "d" #'my/deactivate-python-venv))))
-
- (:leader
-  "§" #'other-frame
-  "1" #'my/where-am-i
-
-  (:prefix "o"
-   :desc "Open in Alacritty" "a" #'my/alacritty-here
-   :desc "Open link at point" "l" #'browse-url-at-point
-   :desc "Open vterm @ project root" "T" #'+vterm/here
-   :desc "Toggle vterm @ project root" "t" #'+vterm/toggle
-   :desc "Open vterm @ buffer dir" "V" #'my/vterm/here-current-buffer
-   :desc "Toggle vterm @ buffer dir" "v" #'my/vterm/toggle-current-buffer)
-
-  (:prefix "p"
-   :desc "Run project Makefile target" "m" #'makefile-executor-execute-project-target)))
+(load! "+bindings")
 
 ;;
 ;;; Editor
@@ -267,8 +217,7 @@
 ;; Narrowing searchs in dired
 (use-package! dired-narrow
   :after dired
-  :commands (dired-narrow-fuzzy)
-  :init (map! :map dired-mode-map :n "/" #'dired-narrow-fuzzy))
+  :commands (dired-narrow-fuzzy))
 
 ;; Toggle directories with TAB in dired
 (use-package! dired-subtree
@@ -280,10 +229,7 @@
   (dired-subtree-depth-3-face ((t (:background nil))))
   (dired-subtree-depth-4-face ((t (:background nil))))
   (dired-subtree-depth-5-face ((t (:background nil))))
-  (dired-subtree-depth-6-face ((t (:background nil))))
-  :init (map! :map dired-mode-map
-              "<tab>" #'dired-subtree-toggle
-              "<backtab>" #'dired-subtree-cycle))
+  (dired-subtree-depth-6-face ((t (:background nil)))))
 
 ;;
 ;;; Completion frameworks
@@ -457,13 +403,7 @@
 
   (defun my/vterm-delete-word ()
     (interactive)
-    (vterm-send-key (kbd "C-w")))
-
-  ;; Bindings
-  (map!
-   :map vterm-mode-map :n "B" #'vterm-beginning-of-line
-   :map vterm-mode-map :n "<return>" #'evil-insert-resume
-   :map vterm-mode-map "<C-backspace>" #'my/vterm-delete-word))
+    (vterm-send-key (kbd "C-w"))))
 
 ;;
 ;;; Eshell
@@ -606,14 +546,7 @@
 ;;; Docker
 
 (use-package! docker
-  :commands (docker-images docker-containers docker-container-shell)
-  :init
-  (map!
-   (:leader
-    (:prefix ("d" . "docker")
-     :desc "List images"     "i" #'docker-images
-     :desc "List containers" "c" #'docker-containers
-     :desc "Exec into"       "e" #'docker-container-shell))))
+  :commands (docker-images docker-containers docker-container-shell))
 
 ;;
 ;;; Org
@@ -633,12 +566,6 @@
 
 (after! deft
   (setq deft-directory my-notes-directory))
-
-(map!
- (:leader
-  (:prefix "n"
-   :desc "Open deft" "d" #'deft
-   :desc "Deft new file" "D" #'deft-new-file-named)))
 
 ;; Make invisible parts of Org elements appear visible
 ;; doc: https://github.com/awth13/org-appear
@@ -719,12 +646,6 @@
 (use-package! scratch
   :commands (scratch))
 
-(map!
- (:leader
-  (:prefix "o"
-   :desc "Scratch buffer current mode" "x" #'scratch
-   :desc "Scratch buffer restclient"   "h" #'my/scratch-rest-mode)))
-
 ;; Auto add headers on scratch buffers in specific modes
 (add-hook! 'org-mode-hook (my/add-scratch-buffer-header "#+TITLE: Scratch file"))
 (add-hook! 'sh-mode-hook (my/add-scratch-buffer-header "#!/usr/bin/env bash"))
@@ -737,10 +658,3 @@
   :commands (lorem-ipsum-insert-paragraphs
              lorem-ipsum-insert-sentences
              lorem-ipsum-insert-list))
-
-(map!
- (:leader
-  (:prefix ("l" . "lorem ipsum")
-   :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
-   :desc "Insert sentences"  "s" #'lorem-ipsum-insert-sentences
-   :desc "Insert list"       "l" #'lorem-ipsum-insert-list)))
