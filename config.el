@@ -69,7 +69,7 @@
 ;;
 ;;; Editor
 
-(blink-cursor-mode 1)  ; I do like a blinking cursor
+(setq display-line-numbers-type nil)  ; no line number
 
 ;; Vertical file explorer
 ;; doc: https://github.com/Alexander-Miller/treemacs
@@ -86,9 +86,6 @@
 
 (after! git-gutter-fringe
   (fringe-mode 1))
-
-;; Disable line numbers by default
-(setq display-line-numbers-type nil)
 
 ;; Disable hl-line
 (remove-hook! 'doom-first-buffer-hook #'global-hl-line-mode)
