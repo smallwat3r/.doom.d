@@ -115,7 +115,7 @@
 ;; doc: https://github.com/joostkremers/writeroom-mode
 
 (after! writeroom-mode
-  (setq +zen-window-divimostder-size global-window-divider-width
+  (setq +zen-window-divider-size global-window-divider-width
         +zen-text-scale 0))
 
 ;; Evil visual hints
