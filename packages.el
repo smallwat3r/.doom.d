@@ -19,4 +19,7 @@
 (package! all-the-icons-ivy-rich)
 (package! applescript-mode)
 (package! nginx-mode)
-(package! color-theme-sanityinc-tomorrow)
+
+;; Colorthemes
+;; (package! color-theme-sanityinc-tomorrow)
+(package! parchment-theme)

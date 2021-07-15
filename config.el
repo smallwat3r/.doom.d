@@ -46,7 +46,7 @@
 ;;
 ;;; Fonts
 
-(setq doom-font (font-spec :family "Monaco" :size 13)
+(setq doom-font (font-spec :family "Monaco" :size 13 :weight 'bold)
       doom-variable-pitch-font (font-spec :family "Geneva"))
 
 (setq doom-font-increment 1
@@ -58,8 +58,8 @@
 ;;
 ;;; Themes
 
-(setq doom-theme 'sanityinc-tomorrow-bright)
-(load! "+custom-faces")  ; load my custom overwrites
+(setq doom-theme 'parchment)
+(load! "+custom-faces")  ; load my custom faces overwrites
 
 ;;
 ;;; Bindings
@@ -85,7 +85,7 @@
 ;; doc: https://github.com/emacsorphanage/git-gutter-fringe
 
 (after! git-gutter-fringe
-  (fringe-mode 1))
+  (fringe-mode 3))
 
 ;; Disable hl-line
 (remove-hook! 'doom-first-buffer-hook #'global-hl-line-mode)
@@ -109,7 +109,7 @@
 ;; doc: https://github.com/joostkremers/writeroom-mode
 
 (after! writeroom-mode
-  (setq +zen-window-divider-size global-window-divider-width
+  (setq +zen-window-divimostder-size global-window-divider-width
         +zen-text-scale 0))
 
 ;; Evil visual hints
@@ -167,21 +167,26 @@
 
 (setq +doom-dashboard-menu-sections
       '(("Open project"
-         :action projectile-switch-project)
+         :action projectile-switch-project
+         :face 'default)
         ("Recently opened files"
-         :action recentf-open-files)
+         :action recentf-open-files
+         :face 'default)
         ("Reload last session"
          :when (cond ((require 'persp-mode nil t)
                       (file-exists-p
                        (expand-file-name persp-auto-save-fname persp-save-dir)))
                      ((require 'desktop nil t)
                       (file-exists-p (desktop-full-file-name))))
-         :action doom/quickload-session)
+         :action doom/quickload-session
+         :face 'default)
         ("Open private configuration"
          :when (file-directory-p doom-private-dir)
-         :action doom/open-private-config)
+         :action doom/open-private-config
+         :face 'default)
         ("Open documentation"
-         :action doom/help)))
+         :action doom/help
+         :face 'default)))
 
 ;;
 ;;; Project space management
