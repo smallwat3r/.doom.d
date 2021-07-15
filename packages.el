@@ -20,6 +20,6 @@
 (package! applescript-mode)
 (package! nginx-mode)
 
-;; Colorthemes
+;; Themes
 ;; (package! color-theme-sanityinc-tomorrow)
 (package! parchment-theme)
