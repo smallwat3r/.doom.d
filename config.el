@@ -46,8 +46,14 @@
 ;;
 ;;; Fonts
 
-(setq doom-font (font-spec :family "Monaco" :size 13 :weight 'bold)
-      doom-variable-pitch-font (font-spec :family "Geneva"))
+(defvar my-monospace-font "Monaco"
+  "Monospace font")
+
+(defvar my-sans-serif-font "Geneva"
+  "Sans serif font")
+
+(setq doom-font (font-spec :family my-monospace-font :size 13 :weight 'bold)
+      doom-variable-pitch-font (font-spec :family my-sans-serif-font :size 13))
 
 (setq doom-font-increment 1
       doom-big-font-increment 2)
@@ -58,7 +64,7 @@
 ;;
 ;;; Themes
 
-(setq doom-theme 'parchment)
+(setq doom-theme 'modus-operandi)
 (load! "+custom-faces")  ; load my custom faces overwrites
 
 ;;
