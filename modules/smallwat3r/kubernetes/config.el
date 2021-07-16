@@ -17,10 +17,10 @@
      :desc "Set namespace"      "n" #'kubernetes-set-namespace
      :desc "Display logs"       "l" #'kubernetes-logs-fetch-all
      :desc "Display service"    "s" #'kubernetes-display-service
+     :desc "Display secrets"    "S" #'kubernetes-display-secret
      :desc "Display deployment" "d" #'kubernetes-display-deployment
      :desc "Describe"           "D" #'kubernetes-describe-pod
      :desc "Exec into"          "e" #'kubernetes-exec-into))))
 
 (use-package! kubernetes-evil
-  :delight
   :after kubernetes)

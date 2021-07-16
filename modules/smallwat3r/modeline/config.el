@@ -58,8 +58,8 @@
                 (:eval evil-mode-line-tag)
                 mode-line-modified
                 " %b "
-                vc-mode
-                "    "
+                (:eval (propertize vc-mode 'face '(:background nil :foreground nil)))
+                "  "
                 "%p (%l,%c)"
                 "  "
                 (:eval (format-time-string "%a %d %b %H:%M"))

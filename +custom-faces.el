@@ -1,8 +1,7 @@
 ;;; $DOOMDIR/+custom-faces.el -*- lexical-binding: t; -*-
 
 (custom-set-faces!
-  '(default :foreground "#000000" :background "#FFFFD7")
-  '(default-inverse :background default :inverse-video t)
+  '((default term) :foreground "#000000" :background "#FFFFD7")
 
   '(link :background nil :foreground "#007777" :underline t)
   '(link-visited :background nil :foreground "#004d4d" :underline t)
