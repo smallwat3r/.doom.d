@@ -63,8 +63,11 @@
 ;;
 ;;; Themes
 
+;; Lets use `modus-operandi' as a good base for our theme and load `+custom-faces' to
+;; override most of the default faces to my liking
+
 (setq doom-theme 'modus-operandi)
-(load! "+custom-faces")  ; load my custom faces overwrites
+(load! "+custom-faces")
 
 ;;
 ;;; Bindings
@@ -303,9 +306,6 @@
           (variable "v" default)
           (t "." default))))
 
-;; Disable company in shell mode
-(add-hook! 'shell-mode-hook (company-mode -1))
-
 ;;
 ;;; Programmation Language server protocol
 ;; doc: https://emacs-lsp.github.io/lsp-mode/
@@ -418,7 +418,7 @@
 ;; doc: https://www.gnu.org/software/emacs/manual/html_node/eshell/index.html
 
 ;; Remove the virtual env variable once the env has been deactivated, it will
-;; get recreated once we reactivate the env. It's used in our eshell prompt
+;; get recreated once we reactivate the env. It's used in the eshell prompt
 ;; so we need to remove it when not in use.
 (add-hook! 'pyvenv-post-deactivate-hooks (lambda () (setenv "VIRTUAL_ENV" nil)))
 
