@@ -2,15 +2,21 @@
 
 (custom-set-faces!
   '((default term) :foreground "black" :background "cornsilk")
+  '(font-lock-comment-delimiter-face :foreground "#AF8700" :slant normal :weight bold)
+  '(font-lock-comment-face :foreground "#AF8700" :slant normal)
+
   '(link :background nil :foreground "LightSeaGreen" :underline t)
   '(link-visited :background nil :foreground "DeepSkyBlue4" :underline t)
-  '(minibuffer-prompt :background nil :foreground "maroon4")
-  '(fringe :background "#EAFFFF")
-  '(region :background "#eeee9e")
-  '((isearch lazy-highlight) :background "yellow" :foreground nil)
-  '(magit-diff-context-highlight :background nil)
 
-  ;; Modeline
+  '(minibuffer-prompt :background nil :foreground "maroon4")
+  '(fringe :background "azure")
+  '(region :background "#eeee9e")
+
+  '(magit-diff-context-highlight :background nil)
+  '((magit-section-highlight magit-diff-file-heading-highlight) :background "honeydew")
+  '(magit-diff-hunk-heading :background "grey28" :foreground "grey98")
+  '(magit-diff-hunk-heading-highlight :background "turquoise2" :foreground "black")
+
   '(mode-line
     :foreground nil
     :background "PaleTurquoise2"
@@ -21,6 +27,14 @@
     :background "azure"
     :box nil
     :inherit variable-pitch)
+
+  ;; Search stuff
+  '((isearch
+     lazy-highlight
+     evil-ex-lazy-highlight
+     evil-ex-search)
+    :background "yellow" :foreground "black")
+  '(evil-ex-substitute-matches :background "salmon" :foreground "black")
 
   ;; Remove some code syntax highlighting, keep it simple
   '((font-lock-function-name-face
@@ -36,20 +50,16 @@
   '(web-mode-html-tag-face :inherit font-lock-keyword-face)
   '(web-mode-html-tag-bracket-face :inherit font-lock-builtin-face)
 
-  ;; Comments and docstrings colors
-  '(font-lock-comment-delimiter-face :foreground "#AF8700" :slant normal :weight bold)
-  '(font-lock-comment-face :foreground "#AF8700" :slant normal)
-
-  ;; Keep company really simple
+  ;; company
   '(company-preview
-    :background "wheat"
+    :background "cornsilk2"
     :foreground "black")
   '((company-preview-common
      company-preview-search)
     :foreground "darkred")
   '(company-tooltip
     :foreground "black"
-    :background "wheat")
+    :background "cornsilk2")
   '(company-tooltip-selection
     :inverse-video nil
     :background "light blue"
@@ -64,11 +74,11 @@
   '((company-tooltip-annotation
      company-tooltip-annotation-selection)
     :foreground "firebrick4")
-  '(company-scrollbar-bg :background "wheat")
+  '(company-scrollbar-bg :background "cornsilk2")
   '(company-scrollbar-fg :background "darkred")
   '(company-echo-common :foreground "firebrick4")
 
-  ;; org / markdown
+  ;; org
   '((org-column org-column-title org-hide org-indent) :background nil)
   '(org-block :background "honeydew")
 
