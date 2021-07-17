@@ -232,14 +232,7 @@
 ;; Toggle directories with TAB in dired
 (use-package! dired-subtree
   :after dired
-  :commands (dired-subtree-toggle dired-subtree-cycle)
-  :custom-face
-  (dired-subtree-depth-1-face ((t (:background nil))))
-  (dired-subtree-depth-2-face ((t (:background nil))))
-  (dired-subtree-depth-3-face ((t (:background nil))))
-  (dired-subtree-depth-4-face ((t (:background nil))))
-  (dired-subtree-depth-5-face ((t (:background nil))))
-  (dired-subtree-depth-6-face ((t (:background nil)))))
+  :commands (dired-subtree-toggle dired-subtree-cycle))
 
 ;;
 ;;; Completion frameworks

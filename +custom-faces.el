@@ -78,6 +78,10 @@
   '(company-scrollbar-fg :background "darkred")
   '(company-echo-common :foreground "firebrick4")
 
+  ;; dired-subtree
+  '(,(cl-loop for i from 0 to 6 collect (intern (format "dired-subtree-depth-%d-face" i)))
+    :background unspecified)
+
   ;; org
   '((org-column org-column-title org-hide org-indent) :background unspecified)
   '(org-block :background "honeydew")
