@@ -54,7 +54,7 @@
 ;;; Set default modeline format
 
 (defface my-git-branch-face
-  '((t :inherit 'mode-line :background unspecified))
+  '((t :background unspecified :foreground unspecified))
   "The face used to display the current git branch in mode-line.")
 
 (setq-default mode-line-format
