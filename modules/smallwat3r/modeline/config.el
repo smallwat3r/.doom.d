@@ -53,12 +53,16 @@
 ;;
 ;;; Set default modeline format
 
+(defface my-git-branch-face
+  '((t :inherit 'mode-line :background unspecified))
+  "The face used to display the current git branch in mode-line.")
+
 (setq-default mode-line-format
               '("%e"
                 (:eval evil-mode-line-tag)
                 mode-line-modified
                 " %b "
-                (:eval (propertize vc-mode 'face '(:background nil :foreground nil)))
+                (vc-mode (:eval (propertize vc-mode 'face 'my-git-branch-face)))
                 "  "
                 "%p (%l,%c)"
                 "  "

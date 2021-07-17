@@ -176,10 +176,10 @@
 (setq +doom-dashboard-menu-sections
       '(("Open project"
          :action projectile-switch-project
-         :face 'default)
+         :face default)
         ("Recently opened files"
          :action recentf-open-files
-         :face 'default)
+         :face default)
         ("Reload last session"
          :when (cond ((require 'persp-mode nil t)
                       (file-exists-p
@@ -187,14 +187,14 @@
                      ((require 'desktop nil t)
                       (file-exists-p (desktop-full-file-name))))
          :action doom/quickload-session
-         :face 'default)
+         :face default)
         ("Open private configuration"
          :when (file-directory-p doom-private-dir)
          :action doom/open-private-config
-         :face 'default)
+         :face default)
         ("Open documentation"
          :action doom/help
-         :face 'default)))
+         :face default)))
 
 ;;
 ;;; Project space management

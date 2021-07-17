@@ -2,7 +2,6 @@
 ;;; $DOOMDIR/packages.el
 
 (disable-packages!
- better-jumper
  lsp-ui
  lsp-python-ms
  company-anaconda
