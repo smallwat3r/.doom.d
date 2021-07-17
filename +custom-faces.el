@@ -1,7 +1,13 @@
 ;;; $DOOMDIR/+custom-faces.el -*- lexical-binding: t; -*-
 
 (custom-set-faces!
-  '((default term) :foreground "black" :background "cornsilk")
+  '(default :inherit nil :extend nil :stipple nil :background "cornsilk"
+     :foreground "black" :inverse-video nil :box nil :strike-through nil
+     :overline nil :underline nil :slant normal :weight bold :height 1
+     :width normal :foundry "default" :family "default")
+
+  '(term :background unspecified)
+
   '(font-lock-comment-delimiter-face :foreground "#AF8700" :slant normal :weight bold)
   '(font-lock-comment-face :foreground "#AF8700" :slant normal)
 
