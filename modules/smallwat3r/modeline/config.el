@@ -32,6 +32,8 @@
      ;; hidden minor-modes from modeline
      (company-mode nil company)
      (abbrev-mode nil abbrev)
+     (better-jumper-mode nil better-jumper)
+     (better-jumper-local-mode nil better-jumper)
      (ivy-mode nil ivy)
      (evil-org-mode nil evil-org)
      (which-key-mode nil which-key)

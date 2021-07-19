@@ -51,7 +51,7 @@
 (defvar my-sans-serif-font "Geneva"
   "Sans serif font")
 
-(setq doom-font (font-spec :family my-monospace-font :size 13 :weight 'bold)
+(setq doom-font (font-spec :family my-monospace-font :size 13)
       doom-variable-pitch-font (font-spec :family my-sans-serif-font :size 13))
 
 (setq doom-font-increment 1
@@ -551,15 +551,16 @@
 ;;
 ;;; Org
 
+;; doc: https://orgmode.org/manual/
+
 (defvar my-notes-directory "~/org"
   "Where I'm storing my notes.")
-
-;; Org
-;; doc: https://orgmode.org/manual/
 
 (after! org
   (setq org-directory my-notes-directory
         org-hide-emphasis-markers t))
+
+(add-hook! 'org-mode-hook 'variable-pitch-mode)
 
 ;; Deft
 ;; doc: https://github.com/jrblevin/deft

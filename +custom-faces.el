@@ -3,7 +3,7 @@
 (custom-set-faces!
   '(default :inherit nil :extend nil :stipple nil :background "cornsilk"
      :foreground "black" :inverse-video nil :box nil :strike-through nil
-     :overline nil :underline nil :slant normal :weight bold :height 1
+     :overline nil :underline nil :slant normal :weight normal :height 1
      :width normal :foundry "default" :family "default")
 
   '(term :background unspecified)
@@ -59,30 +59,37 @@
   ;; company
   '(company-preview
     :background "cornsilk2"
-    :foreground "black")
+    :foreground "black"
+    :inherit fixed-pitch)
   '((company-preview-common
      company-preview-search)
-    :foreground "darkred")
+    :foreground "darkred"
+    :inherit fixed-pitch)
   '(company-tooltip
     :foreground "black"
-    :background "cornsilk2")
+    :background "cornsilk2"
+    :inherit fixed-pitch)
   '(company-tooltip-selection
     :inverse-video nil
     :background "light blue"
-    :foreground "black")
+    :foreground "black"
+    :inherit fixed-pitch)
   '((company-tooltip-common
      company-tooltip-common-selection)
-    :foreground "darkred")
+    :foreground "darkred"
+    :inherit fixed-pitch)
   '((company-tooltip-search
      company-tooltip-mouse
      company-tooltip-search-selection)
-    :background "tan1")
+    :background "tan1"
+    :inherit fixed-pitch)
   '((company-tooltip-annotation
      company-tooltip-annotation-selection)
-    :foreground "firebrick4")
-  '(company-scrollbar-bg :background "cornsilk2")
-  '(company-scrollbar-fg :background "darkred")
-  '(company-echo-common :foreground "firebrick4")
+    :foreground "firebrick4"
+    :inherit fixed-pitch)
+  '(company-scrollbar-bg :background "cornsilk2" :inherit fixed-pitch)
+  '(company-scrollbar-fg :background "darkred" :inherit fixed-pitch)
+  '(company-echo-common :foreground "firebrick4" :inherit fixed-pitch)
 
   ;; dired-subtree
   '(,(cl-loop for i from 0 to 6 collect (intern (format "dired-subtree-depth-%d-face" i)))
