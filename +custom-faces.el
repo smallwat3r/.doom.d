@@ -1,7 +1,7 @@
 ;;; $DOOMDIR/+custom-faces.el -*- lexical-binding: t; -*-
 
 (custom-set-faces!
-  '(default :inherit nil :extend nil :stipple nil :background "cornsilk"
+  '(default :inherit nil :extend nil :stipple nil :background "#fdf5e6"
      :foreground "black" :inverse-video nil :box nil :strike-through nil
      :overline nil :underline nil :slant normal :weight normal :height 1
      :width normal :foundry "default" :family "default")
@@ -58,7 +58,7 @@
 
   ;; company
   '(company-preview
-    :background "cornsilk2"
+    :background "cornsilk"
     :foreground "black"
     :inherit fixed-pitch)
   '((company-preview-common
@@ -67,7 +67,7 @@
     :inherit fixed-pitch)
   '(company-tooltip
     :foreground "black"
-    :background "cornsilk2"
+    :background "cornsilk"
     :inherit fixed-pitch)
   '(company-tooltip-selection
     :inverse-video nil
@@ -87,7 +87,7 @@
      company-tooltip-annotation-selection)
     :foreground "firebrick4"
     :inherit fixed-pitch)
-  '(company-scrollbar-bg :background "cornsilk2" :inherit fixed-pitch)
+  '(company-scrollbar-bg :background "cornsilk" :inherit fixed-pitch)
   '(company-scrollbar-fg :background "darkred" :inherit fixed-pitch)
   '(company-echo-common :foreground "firebrick4" :inherit fixed-pitch)
 
