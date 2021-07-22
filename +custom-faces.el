@@ -1,7 +1,7 @@
 ;;; $DOOMDIR/+custom-faces.el -*- lexical-binding: t; -*-
 
 (custom-set-faces!
-  '(default :inherit nil :extend nil :stipple nil :background "#fdf5e6"
+  '(default :inherit nil :extend nil :stipple nil :background "FloralWhite"
      :foreground "black" :inverse-video nil :box nil :strike-through nil
      :overline nil :underline nil :slant normal :weight normal :height 1
      :width normal :foundry "default" :family "default")
@@ -11,11 +11,6 @@
   '(font-lock-comment-delimiter-face :foreground "#AF8700" :slant normal :weight bold)
   '(font-lock-comment-face :foreground "#AF8700" :slant normal)
 
-  '(link :background unspecified :foreground "LightSeaGreen" :underline t)
-  '(link-visited :background unspecified :foreground "DeepSkyBlue4" :underline t)
-
-  '(minibuffer-prompt :background unspecified :foreground "maroon4")
-  '(fringe :background "azure")
   '(region :background "#eeee9e")
 
   '(magit-diff-context-highlight :background unspecified)
@@ -23,16 +18,7 @@
   '(magit-diff-hunk-heading :background "grey28" :foreground "grey98")
   '(magit-diff-hunk-heading-highlight :background "turquoise2" :foreground "black")
 
-  '(mode-line
-    :foreground  unspecified
-    :background "PaleTurquoise2"
-    :box nil
-    :inherit variable-pitch)
-  '(mode-line-inactive
-    :foreground unspecified
-    :background "azure"
-    :box nil
-    :inherit variable-pitch)
+  '((mode-line mode-line-inactive) :foreground unspecified :inherit variable-pitch)
 
   ;; Search stuff
   '((isearch

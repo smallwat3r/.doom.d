@@ -5,7 +5,7 @@
 
 (setq default-frame-alist
       (append default-frame-alist
-              '((width . 105)
+              '((width . 120)
                 (height . 65)
                 (drag-internal-border . 1)
                 (internal-border-width . 0)
