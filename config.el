@@ -574,12 +574,14 @@
 ;; doc: https://github.com/awth13/org-appear
 
 (use-package! org-appear
-  :hook (org-mode . org-appear-mode)
+  :after org-mode
   :custom
   (org-appear-autoemphasis t)
   (org-appear-autolinks t)
   (org-appear-autosubmarkers t)
   (org-appear-autoentities t))
+
+(add-hook! 'org-mode-hook 'org-appear-mode)
 
 ;; Journal
 ;; doc: https://github.com/bastibe/org-journal
