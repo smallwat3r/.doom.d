@@ -45,6 +45,8 @@
 ;;
 ;;; Fonts
 
+(setq ns-use-thin-smoothing t)
+
 (defvar my-monospace-font "Monaco"
   "Monospace font")
 
@@ -52,12 +54,12 @@
   "Sans serif font")
 
 (setq doom-font (font-spec :family my-monospace-font :size 13)
-      doom-variable-pitch-font (font-spec :family my-sans-serif-font :size 13))
+      doom-variable-pitch-font (font-spec :family my-sans-serif-font :size 14))
 
 (setq doom-font-increment 1
       doom-big-font-increment 2)
 
-(setq-default line-spacing 0)
+(setq-default line-spacing 1)
 (setq-default tab-width 8)
 
 ;;
