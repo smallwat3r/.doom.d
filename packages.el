@@ -18,3 +18,4 @@
 (package! all-the-icons-ivy-rich)
 (package! applescript-mode)
 (package! nginx-mode)
+(package! color-theme-sanityinc-tomorrow)

@@ -1,24 +1,29 @@
 ;;; $DOOMDIR/+custom-faces.el -*- lexical-binding: t; -*-
 
 (custom-set-faces!
-  '(default :inherit nil :extend nil :stipple nil :background "FloralWhite"
-     :foreground "black" :inverse-video nil :box nil :strike-through nil
-     :overline nil :underline nil :slant normal :weight normal :height 1
-     :width normal :foundry "default" :family "default")
-
+  '(cursor :background "white")
   '(term :background unspecified)
 
-  '(font-lock-comment-delimiter-face :foreground "#AF8700" :slant normal :weight bold)
-  '(font-lock-comment-face :foreground "#AF8700" :slant normal)
-
-  '(region :background "#eeee9e")
+  '(font-lock-comment-delimiter-face :foreground "chartreuse4" :slant normal :weight bold)
+  '(font-lock-comment-face :foreground "chartreuse4" :slant normal)
 
   '(magit-diff-context-highlight :background unspecified)
-  '((magit-section-highlight magit-diff-file-heading-highlight) :background "honeydew")
   '(magit-diff-hunk-heading :background "grey28" :foreground "grey98")
   '(magit-diff-hunk-heading-highlight :background "turquoise2" :foreground "black")
 
-  '((mode-line mode-line-inactive) :foreground unspecified :inherit variable-pitch)
+  '(show-paren-match :background "goldenrod1" :foreground "black")
+  '(show-paren-mismatch :background "red2" :foreground "white")
+
+  '(mode-line
+    :foreground "white"
+    :background "grey22"
+    :inherit variable-pitch
+    :box (:line-width 1 :color "gray48"))
+  '(mode-line-inactive
+    :foreground "gray48"
+    :background "grey9"
+    :inherit variable-pitch
+    :box (:line-width 1 :color "gray48"))
 
   ;; Search stuff
   '((isearch
@@ -44,7 +49,7 @@
 
   ;; company
   '(company-preview
-    :background "cornsilk"
+    :background "honeydew1"
     :foreground "black"
     :inherit fixed-pitch)
   '((company-preview-common
@@ -53,7 +58,7 @@
     :inherit fixed-pitch)
   '(company-tooltip
     :foreground "black"
-    :background "cornsilk"
+    :background "honeydew1"
     :inherit fixed-pitch)
   '(company-tooltip-selection
     :inverse-video nil
@@ -73,21 +78,13 @@
      company-tooltip-annotation-selection)
     :foreground "firebrick4"
     :inherit fixed-pitch)
-  '(company-scrollbar-bg :background "cornsilk" :inherit fixed-pitch)
+  '(company-scrollbar-bg :background "honeydew1" :inherit fixed-pitch)
   '(company-scrollbar-fg :background "darkred" :inherit fixed-pitch)
   '(company-echo-common :foreground "firebrick4" :inherit fixed-pitch)
 
   ;; dired-subtree
   '(,(cl-loop for i from 0 to 6 collect (intern (format "dired-subtree-depth-%d-face" i)))
     :background unspecified)
-
-  ;; org
-  '((org-column org-column-title org-hide org-indent) :background unspecified)
-  '(org-block :background "honeydew")
-
-  ;; markdown
-  '((markdown-pre-face markdown-code-face) :background "honeydew")
-  '((markdown-inline-code-face markdown-language-keyword-face) :background unspecified)
 
   ;; git-gutter-fr
   '(git-gutter-fr:added :foreground "LimeGreen")

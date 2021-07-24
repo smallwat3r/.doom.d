@@ -11,7 +11,7 @@
                 (internal-border-width . 0)
                 (inhibit-double-buffering . t))))
 
-(setq-default frame-title-format "")
+(setq frame-title-format '("Emacs " emacs-version))
 (setq ns-use-proxy-icon nil)  ; hide file icon from titlebar
 
 ;;
@@ -65,10 +65,10 @@
 ;;
 ;;; Themes
 
-;; Lets use `modus-operandi' as a good base for our theme and load `+custom-faces' to
+;; Lets use `sanityinc-tomorrow-bright' as a good base for our theme and load `+custom-faces' to
 ;; override most of the default faces to my liking
 
-(setq doom-theme 'modus-operandi)
+(setq doom-theme 'sanityinc-tomorrow-bright)
 (load! "+custom-faces")
 
 ;;
@@ -95,7 +95,7 @@
 ;; doc: https://github.com/emacsorphanage/git-gutter-fringe
 
 (after! git-gutter-fringe
-  (fringe-mode 3))
+  (fringe-mode 1))
 
 ;; Disable hl-line
 (remove-hook! 'doom-first-buffer-hook #'global-hl-line-mode)
@@ -262,6 +262,10 @@
 ;; Code completion
 ;; doc: https://www.emacswiki.org/emacs/CompanyMode
 
+(defface my-company-icons-face
+  '((t :background unspecified :foreground "black"))
+  "The face used to display the company icons.")
+
 (after! company
   (setq company-idle-delay 0.1
         company-tooltip-limit 10
@@ -273,33 +277,33 @@
         company-text-icons-add-background nil)
 
   (setq company-text-icons-mapping
-        '((array "[" default)
-          (boolean "1" default)
-          (class "C" default)
-          (color "#" default)
-          (constant "c" default)
-          (enum-member "e" default)
-          (enum "e" default)
-          (field "f" default)
-          (file "F" default)
-          (folder "D" default)
-          (interface "i" default)
-          (keyword "k" default)
-          (method "m" default)
-          (function "f" default)
-          (module "{" default)
-          (numeric "n" default)
-          (operator "o" default)
-          (parameter "p" default)
-          (property "p" default)
-          (ruler "r" default)
-          (snippet "S" default)
-          (string "s" default)
-          (struct "%" default)
-          (text "w" default)
-          (value "v" default)
-          (variable "v" default)
-          (t "." default))))
+        '((array "[" my-company-icons-face)
+          (boolean "1" my-company-icons-face)
+          (class "C" my-company-icons-face)
+          (color "#" my-company-icons-face)
+          (constant "c" my-company-icons-face)
+          (enum-member "e" my-company-icons-face)
+          (enum "e" my-company-icons-face)
+          (field "f" my-company-icons-face)
+          (file "F" my-company-icons-face)
+          (folder "D" my-company-icons-face)
+          (interface "i" my-company-icons-face)
+          (keyword "k" my-company-icons-face)
+          (method "m" my-company-icons-face)
+          (function "f" my-company-icons-face)
+          (module "{" my-company-icons-face)
+          (numeric "n" my-company-icons-face)
+          (operator "o" my-company-icons-face)
+          (parameter "p" my-company-icons-face)
+          (property "p" my-company-icons-face)
+          (ruler "r" my-company-icons-face)
+          (snippet "S" my-company-icons-face)
+          (string "s" my-company-icons-face)
+          (struct "%" my-company-icons-face)
+          (text "w" my-company-icons-face)
+          (value "v" my-company-icons-face)
+          (variable "v" my-company-icons-face)
+          (t "." my-company-icons-face))))
 
 ;;
 ;;; Programmation Language server protocol
