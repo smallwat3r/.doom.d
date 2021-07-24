@@ -65,10 +65,10 @@
 ;;
 ;;; Themes
 
-;; Lets use `sanityinc-tomorrow-bright' as a good base for our theme and load `+custom-faces' to
+;; Lets use `modus-vivendi' as a good base for our theme and load `+custom-faces' to
 ;; override most of the default faces to my liking
 
-(setq doom-theme 'sanityinc-tomorrow-bright)
+(setq doom-theme 'modus-vivendi)
 (load! "+custom-faces")
 
 ;;
@@ -126,7 +126,8 @@
 ;; doc: https://github.com/edkolev/evil-goggles
 
 (after! evil-goggles
-  (setq evil-goggles-duration 0.250))
+  (setq evil-goggles-duration 0.25)
+  (evil-goggles-use-diff-faces))
 
 ;; Highlight where is my cursor on big jumps
 ;; doc: https://github.com/Malabarba/beacon

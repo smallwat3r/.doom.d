@@ -8,15 +8,10 @@
   '(font-lock-comment-face :foreground "chartreuse4" :slant normal)
 
   '(magit-diff-context-highlight :background unspecified)
-  '(magit-diff-hunk-heading :background "grey28" :foreground "grey98")
-  '(magit-diff-hunk-heading-highlight :background "turquoise2" :foreground "black")
-
-  '(show-paren-match :background "goldenrod1" :foreground "black")
-  '(show-paren-mismatch :background "red2" :foreground "white")
 
   '(mode-line
     :foreground "white"
-    :background "grey22"
+    :background "grey9"
     :inherit variable-pitch
     :box (:line-width 1 :color "gray48"))
   '(mode-line-inactive
@@ -25,13 +20,7 @@
     :inherit variable-pitch
     :box (:line-width 1 :color "gray48"))
 
-  ;; Search stuff
-  '((isearch
-     lazy-highlight
-     evil-ex-lazy-highlight
-     evil-ex-search)
-    :background "yellow" :foreground "black")
-  '(evil-ex-substitute-matches :background "salmon" :foreground "black")
+  '(font-lock-builtin-face :foreground "SandyBrown")
 
   ;; Remove some code syntax highlighting, keep it simple
   '((font-lock-function-name-face
