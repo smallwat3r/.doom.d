@@ -1,5 +1,10 @@
 ;;; $DOOMDIR/+custom-faces.el -*- lexical-binding: t; -*-
 
+;; Lets use `modus-vivendi' as a good base for our theme and load `+custom-faces' to
+;; override most of the default faces to my liking
+
+(setq doom-theme 'modus-vivendi)
+
 (custom-set-faces!
   '(cursor :background "white")
   '(term :background unspecified)

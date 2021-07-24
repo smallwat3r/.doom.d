@@ -65,10 +65,6 @@
 ;;
 ;;; Themes
 
-;; Lets use `modus-vivendi' as a good base for our theme and load `+custom-faces' to
-;; override most of the default faces to my liking
-
-(setq doom-theme 'modus-vivendi)
 (load! "+custom-faces")
 
 ;;
