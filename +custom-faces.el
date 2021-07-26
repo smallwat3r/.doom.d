@@ -21,6 +21,8 @@
   '(diff-refine-removed :inherit magit-diff-removed-highlight :inverse-video nil :weight bold)
   '(diff-refine-changed :inverse-video nil :weight bold)
 
+  '((show-paren-match show-paren-match-expression) :background "grey83")
+
   '((lazy-highlight
      lsp-face-highlight-read
      lsp-face-highlight-textual
@@ -35,6 +37,8 @@
     :inherit variable-pitch
     :box nil
     :underline nil)
+
+  '((org-block org-block-end-line org-block-begin-line) :inherit fixed-pitch)
 
   ;; Remove some code syntax highlighting, keep it simple, but we then need to re-map some
   ;; of the colors from web-mode, just so we can have some syntax highlighting when reading
