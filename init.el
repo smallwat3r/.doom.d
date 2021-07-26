@@ -10,9 +10,10 @@
 
        :completion
        company
-       (ivy +fuzzy)
+       vertico
 
        :ui
+       doom
        doom-dashboard
        (emoji +unicode)
        hl-todo

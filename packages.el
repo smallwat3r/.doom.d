@@ -6,7 +6,8 @@
  lsp-python-ms
  company-anaconda
  anaconda-mode
- pipenv)
+ pipenv
+ solaire-mode)
 
 (package! dired-narrow)
 (package! dired-subtree)
@@ -15,6 +16,5 @@
 (package! beacon)
 (package! org-appear)
 (package! lorem-ipsum)
-(package! all-the-icons-ivy-rich)
 (package! applescript-mode)
 (package! nginx-mode)

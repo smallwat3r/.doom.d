@@ -47,7 +47,7 @@
 
 (setq ns-use-thin-smoothing t)
 
-(defvar my-monospace-font "Monaco"
+(defvar my-monospace-font "Hack"
   "Monospace font")
 
 (defvar my-sans-serif-font "Geneva"
@@ -208,7 +208,7 @@
   (setq projectile-sort-order 'recentf
         projectile-mode-line-prefix "P"
         projectile-mode-line-function '(lambda () (format " P[%s]" (projectile-project-name)))
-        projectile-ignored-projects '("~/" "/tmp" "~/Downloads")
+        projectile-ignored-projects '("~/" "/tmp" "~/Downloads" "~/backups")
         projectile-project-search-path '("~/dotfiles/" "~/Projects/" "~/Code/" "~/Github/")))
 
 ;;
@@ -236,31 +236,11 @@
 ;;
 ;;; Completion frameworks
 
-;; doc: https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html#org121eea9
-
-(after! ivy
-  (setq ivy-use-virtual-buffers t
-        ivy-count-format "(%d/%d) "
-        +ivy-buffer-preview t)
-
-  ;; Ask to pick an existing buffer when splitting the window
-  (defadvice! prompt-for-buffer (&rest _)
-    :after '(evil-window-split evil-window-vsplit)
-    (+ivy/switch-buffer)))
-
-;; Ivy icons
-;; doc: https://github.com/asok/all-the-icons-ivy
-
-(use-package! all-the-icons-ivy-rich
-  :after ivy-rich
-  :custom (all-the-icons-ivy-rich-icon-size 1)
-  :init (all-the-icons-ivy-rich-mode 1))
-
 ;; Code completion
 ;; doc: https://www.emacswiki.org/emacs/CompanyMode
 
 (defface my-company-icons-face
-  '((t :background unspecified :foreground "black"))
+  '((t :background unspecified :inherit default))
   "The face used to display the company icons.")
 
 (after! company
@@ -304,6 +284,7 @@
 
 ;;
 ;;; Programmation Language server protocol
+
 ;; doc: https://emacs-lsp.github.io/lsp-mode/
 
 (setq +lsp-prompt-to-install-server 'quiet)

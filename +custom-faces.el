@@ -1,86 +1,54 @@
 ;;; $DOOMDIR/+custom-faces.el -*- lexical-binding: t; -*-
 
-;; Lets use `modus-vivendi' as a good base for our theme and override most of the default
+;; Lets use `doom-solarized-dark' as a good base for our theme and override most of the default
 ;; faces to my liking
 
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'doom-solarized-dark
+      doom-themes-enable-bold nil
+      doom-themes-enable-italic nil)
 
 (custom-set-faces!
-  '(cursor :background "white")
-  '(term :background unspecified)
+  '((term
+     magit-diff-context-highlight
+     flycheck-error
+     flycheck-warning)
+    :background unspecified)
 
-  '(font-lock-comment-delimiter-face :foreground "chartreuse4" :slant normal :weight bold)
-  '(font-lock-comment-face :foreground "chartreuse4" :slant normal)
+  '(font-lock-comment-face :slant normal)
+  '(font-lock-comment-delimiter-face :slant normal :weight bold)
 
-  '(magit-diff-context-highlight :background unspecified)
+  '(diff-refine-added :inherit magit-diff-added-highlight :inverse-video nil :weight bold)
+  '(diff-refine-removed :inherit magit-diff-removed-highlight :inverse-video nil :weight bold)
+  '(diff-refine-changed :inverse-video nil :weight bold)
+
+  '((lazy-highlight
+     lsp-face-highlight-read
+     lsp-face-highlight-textual
+     lsp-face-highlight-write)
+    :foreground "gray64")
 
   '(mode-line
-    :foreground "white"
-    :background "grey9"
     :inherit variable-pitch
-    :box (:line-width 1 :color "gray48"))
+    :box nil
+    :underline nil)
   '(mode-line-inactive
-    :foreground "gray48"
-    :background "grey9"
     :inherit variable-pitch
-    :box (:line-width 1 :color "gray48"))
+    :box nil
+    :underline nil)
 
-  '(font-lock-builtin-face :foreground "SandyBrown")
-
-  ;; Remove some code syntax highlighting, keep it simple
+  ;; Remove some code syntax highlighting, keep it simple, but we then need to re-map some
+  ;; of the colors from web-mode, just so we can have some syntax highlighting when reading
+  ;; HTML code
   '((font-lock-function-name-face
      font-lock-variable-name-face
      font-lock-constant-face
      font-lock-type-face)
     :foreground unspecified)
-
-  ;; But we then need to re-map some of the colors from web-mode, just so we can have
-  ;; some syntax highlighting when reading HTML code
   '(web-mode-html-attr-equal-face :inherit font-lock-keyword-face)
   '(web-mode-html-attr-name-face :inherit font-lock-keyword-face)
   '(web-mode-html-tag-face :inherit font-lock-keyword-face)
   '(web-mode-html-tag-bracket-face :inherit font-lock-builtin-face)
 
-  ;; company
-  '(company-preview
-    :background "honeydew1"
-    :foreground "black"
-    :inherit fixed-pitch)
-  '((company-preview-common
-     company-preview-search)
-    :foreground "darkred"
-    :inherit fixed-pitch)
-  '(company-tooltip
-    :foreground "black"
-    :background "honeydew1"
-    :inherit fixed-pitch)
-  '(company-tooltip-selection
-    :inverse-video nil
-    :background "light blue"
-    :foreground "black"
-    :inherit fixed-pitch)
-  '((company-tooltip-common
-     company-tooltip-common-selection)
-    :foreground "darkred"
-    :inherit fixed-pitch)
-  '((company-tooltip-search
-     company-tooltip-mouse
-     company-tooltip-search-selection)
-    :background "tan1"
-    :inherit fixed-pitch)
-  '((company-tooltip-annotation
-     company-tooltip-annotation-selection)
-    :foreground "firebrick4"
-    :inherit fixed-pitch)
-  '(company-scrollbar-bg :background "honeydew1" :inherit fixed-pitch)
-  '(company-scrollbar-fg :background "darkred" :inherit fixed-pitch)
-  '(company-echo-common :foreground "firebrick4" :inherit fixed-pitch)
-
-  ;; dired-subtree
+  ;; Remove background color from dired-subtree faces
   '(,(cl-loop for i from 0 to 6 collect (intern (format "dired-subtree-depth-%d-face" i)))
-    :background unspecified)
-
-  ;; git-gutter-fr
-  '(git-gutter-fr:added :foreground "LimeGreen")
-  '(git-gutter-fr:modified :foreground "DarkTurquoise")
-  '(git-gutter-fr:deleted :foreground "OrangeRed"))
+    :background unspecified))
