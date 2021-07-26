@@ -27,7 +27,7 @@
        :editor
        (evil +everywhere)
        file-templates
-       (fold +vimish-fold +evil-vimish-fold)
+       fold
        format
        snippets
 
