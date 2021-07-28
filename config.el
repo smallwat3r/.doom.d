@@ -14,6 +14,7 @@
 (setq frame-title-format '("Emacs " emacs-version))
 (setq ns-use-proxy-icon nil)  ; hide file icon from titlebar
 
+
 ;;
 ;;; General
 
@@ -21,9 +22,9 @@
       user-mail-address "mpetiteau.pro@gmail.com"
       user-mail-address-2 "matthieu@smallwatersolutions.com")
 
-(setq confirm-kill-emacs nil)
-
-(setq evil-vsplit-window-right t
+(setq confirm-kill-emacs nil
+      load-prefer-newer t               ; always load newer bytes compiled files
+      evil-vsplit-window-right t
       evil-split-window-below t
       default-directory "~/"
       undo-limit 80000000
@@ -42,7 +43,6 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(setq load-prefer-newer t)  ; always load newer bytes compiled files
 
 ;;
 ;;; Fonts
@@ -64,15 +64,18 @@
 (setq-default line-spacing 1)
 (setq-default tab-width 8)
 
+
 ;;
 ;;; Themes
 
 (load! "+custom-faces")
 
+
 ;;
 ;;; Bindings
 
 (load! "+bindings")
+
 
 ;;
 ;;; Editor
@@ -149,6 +152,7 @@
   (run-with-idle-timer 1 t #'my/display-workspaces-in-minibuffer)
   (+workspace/display))
 
+
 ;;
 ;;; Custom templates
 
@@ -166,6 +170,7 @@
          :mode emacs-lisp-mode)
         (restclient-mode)
         (sh-mode)))
+
 
 ;;
 ;;; Dashboard
@@ -197,6 +202,7 @@
          :action doom/help
          :face default)))
 
+
 ;;
 ;;; Project space management
 
@@ -212,6 +218,7 @@
         projectile-mode-line-function '(lambda () (format " P[%s]" (projectile-project-name)))
         projectile-ignored-projects '("~/" "/tmp" "~/Downloads" "~/backups")
         projectile-project-search-path '("~/dotfiles/" "~/Projects/" "~/Code/" "~/Github/")))
+
 
 ;;
 ;;; File explorer
@@ -234,6 +241,7 @@
 (use-package! dired-subtree
   :after dired
   :commands (dired-subtree-toggle dired-subtree-cycle))
+
 
 ;;
 ;;; Completion frameworks
@@ -283,6 +291,7 @@
           (value "v" my-company-icons-face)
           (variable "v" my-company-icons-face)
           (t "." my-company-icons-face))))
+
 
 ;;
 ;;; Programmation Language server protocol
@@ -378,6 +387,7 @@
       (append '(("osascript" . applescript-mode))
               interpreter-mode-alist))
 
+
 ;;
 ;;; Vterm
 
@@ -390,6 +400,7 @@
   (defun my/vterm-delete-word ()
     (interactive)
     (vterm-send-key (kbd "C-w"))))
+
 
 ;;
 ;;; Eshell
@@ -528,11 +539,13 @@
                    (".*" "echo 'Could not extract the file:'")))))
       (eshell-command-result (concat command " " file)))))
 
+
 ;;
 ;;; Docker
 
 (use-package! docker
   :commands (docker-images docker-containers docker-container-shell))
+
 
 ;;
 ;;; Org
@@ -575,6 +588,7 @@
         org-journal-date-format "%A, %d %B %Y"
         org-journal-file-format "journal-%Y%m%d.org"))
 
+
 ;;
 ;;; Mail
 
@@ -613,6 +627,7 @@
   (setq notmuch-fcc-dirs
         '((user-mail-address . "personal/sent -inbox +sent -unread")
           (user-mail-address-2 . "sws/sent -inbox +sent -unread"))))
+
 
 ;;
 ;;; Misc
