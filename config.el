@@ -605,8 +605,7 @@
           ("subject" . "%-72s")))
 
   ;; Use a custom command to fetch for new emails with mbsync
-  (setq +notmuch-sync-backend 'custom
-        +notmuch-sync-command "mbsync -a && notmuch new")
+  (setq +notmuch-sync-backend "mbsync -a && notmuch new")
 
   ;; Set default tags on replies
   (setq notmuch-fcc-dirs
