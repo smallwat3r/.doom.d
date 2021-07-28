@@ -72,7 +72,7 @@
    :desc "Open deft" "d" #'deft
    :desc "Deft new file" "D" #'deft-new-file-named)
 
-  (:prefix ("l" . "lorem ipsum")
+  (:prefix ("l" . "lorem")
    :desc "Insert paragraphs" "p" #'lorem-ipsum-insert-paragraphs
    :desc "Insert sentences" "s" #'lorem-ipsum-insert-sentences
    :desc "Insert list" "l" #'lorem-ipsum-insert-list)
