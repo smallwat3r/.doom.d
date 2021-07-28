@@ -38,10 +38,13 @@
     :box nil
     :underline nil)
 
-  '((org-block org-block-end-line org-block-begin-line) :inherit fixed-pitch)
+  '(org-block :inherit fixed-pitch)
+  '((org-block-end-line org-block-begin-line)
+    :inherit fixed-pitch :foreground unspecified :background unspecified)
 
   '(slack-preview-face :background unspecified)
-  '((slack-mrkdwn-code-face slack-mrkdwn-code-block-face) :foreground "grey51" :inherit fixed-pitch)
+  '((slack-mrkdwn-code-face slack-mrkdwn-code-block-face)
+    :foreground "grey51" :inherit fixed-pitch)
 
   ;; Remove some code syntax highlighting, keep it simple, but we then need to re-map some
   ;; of the colors from web-mode, just so we can have some syntax highlighting when reading
