@@ -606,7 +606,7 @@
 (after! notmuch
   ;; Main buffer sections
   (setq notmuch-show-log nil
-        notmuch-hello-sections `(notmuch-hello-insert-saved-searches
+        notmuch-hello-sections '(notmuch-hello-insert-saved-searches
                                  notmuch-hello-insert-alltags))
 
   ;; Remove pop-up rule, so it opens in its own buffer
