@@ -42,6 +42,8 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+(setq load-prefer-newer t)  ; always load newer bytes compiled files
+
 ;;
 ;;; Fonts
 
