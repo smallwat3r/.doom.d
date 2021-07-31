@@ -130,28 +130,6 @@
   (setq evil-goggles-duration 0.25)
   (evil-goggles-use-diff-faces))
 
-;; Highlight where is my cursor on big jumps
-;; doc: https://github.com/Malabarba/beacon
-
-(use-package! beacon
-  :custom
-  (beacon-size 15)
-  (beacon-blink-when-window-scrolls nil)
-  :init (beacon-mode 1))
-
-;; Workspace management
-;; doc: https://github.com/Bad-ptr/persp-mode.el
-
-(after! persp-mode
-  (defun my/display-workspaces-in-minibuffer ()
-    (with-current-buffer " *Minibuf-0*"
-      (erase-buffer)
-      (insert (+workspace--tabline))))
-
-  ;; Permanently display the windows in the minibuffer
-  (run-with-idle-timer 1 t #'my/display-workspaces-in-minibuffer)
-  (+workspace/display))
-
 
 ;;
 ;;; Custom templates
@@ -170,7 +148,6 @@
          :mode emacs-lisp-mode)
         (restclient-mode)
         (sh-mode)))
-
 
 ;;
 ;;; Dashboard
@@ -298,7 +275,8 @@
 
 ;; doc: https://emacs-lsp.github.io/lsp-mode/
 
-(setq +lsp-prompt-to-install-server 'quiet)
+(setq +lsp-prompt-to-install-server 'quiet
+      +format-with-lsp nil)
 
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
@@ -337,8 +315,9 @@
       "-i" "2" ; nb of spaces used for indentation
       "-ci"    ; indent switch cases
       "-bn")   ; binary ops may start a line
-    :modes '(sh-mode))
-  (set-company-backend! 'sh-mode nil))  ; disable backend because of slowliness
+    :modes '(sh-mode)))
+
+(add-hook! 'shell-mode-hook (company-mode -1))
 
 (setq-hook! 'sh-mode-hook
   sh-basic-offset 2
@@ -538,13 +517,6 @@
                    (".*\.Z" "uncompress")
                    (".*" "echo 'Could not extract the file:'")))))
       (eshell-command-result (concat command " " file)))))
-
-
-;;
-;;; Docker
-
-(use-package! docker
-  :commands (docker-images docker-containers docker-container-shell))
 
 
 ;;

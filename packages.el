@@ -13,7 +13,6 @@
 (package! dired-subtree)
 (package! scratch)
 (package! shrink-path)
-(package! beacon)
 (package! org-appear)
 (package! lorem-ipsum)
 (package! applescript-mode)

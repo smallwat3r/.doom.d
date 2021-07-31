@@ -1,7 +1,6 @@
 ;;; $DOOMDIR/+custom-faces.el -*- lexical-binding: t; -*-
 
-;; Lets use `doom-solarized-dark' as a good base for our theme and override most of the default
-;; faces to my liking
+;; Lets use a default theme as a base and override some faces to my liking
 
 (setq doom-theme 'doom-solarized-dark
       doom-themes-enable-bold nil
@@ -39,8 +38,7 @@
     :underline nil)
 
   '(org-block :inherit fixed-pitch)
-  '((org-block-end-line org-block-begin-line)
-    :inherit fixed-pitch :foreground unspecified :background unspecified)
+  '((org-block-end-line org-block-begin-line) :inherit org-block :foreground "SlateGrey")
 
   '(slack-preview-face :background unspecified)
   '((slack-mrkdwn-code-face slack-mrkdwn-code-block-face)
