@@ -68,6 +68,9 @@
    :desc "Scratch buffer current mode" "x" #'scratch
    :desc "Scratch buffer restclient" "h" #'my/scratch-rest-mode)
 
+  (:prefix "t"
+   :desc "Truncate lines" "t" #'toggle-truncate-lines)
+
   (:prefix "n"
    :desc "Open deft" "d" #'deft
    :desc "Deft new file" "D" #'deft-new-file-named)

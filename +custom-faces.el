@@ -29,15 +29,6 @@
      magit-header-line)
     :foreground "gray64")
 
-  '(mode-line
-    :inherit variable-pitch
-    :box nil
-    :underline nil)
-  '(mode-line-inactive
-    :inherit variable-pitch
-    :box nil
-    :underline nil)
-
   '(org-block :inherit fixed-pitch)
   '((org-block-end-line org-block-begin-line) :inherit org-block :foreground "SlateGrey")
 
@@ -56,8 +47,4 @@
   '(web-mode-html-attr-equal-face :inherit font-lock-keyword-face)
   '(web-mode-html-attr-name-face :inherit font-lock-keyword-face)
   '(web-mode-html-tag-face :inherit font-lock-keyword-face)
-  '(web-mode-html-tag-bracket-face :inherit font-lock-builtin-face)
-
-  ;; Remove background color from dired-subtree faces
-  '(,(cl-loop for i from 0 to 6 collect (intern (format "dired-subtree-depth-%d-face" i)))
-    :background unspecified))
+  '(web-mode-html-tag-bracket-face :inherit font-lock-builtin-face))
