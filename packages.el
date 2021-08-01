@@ -17,3 +17,6 @@
 (package! lorem-ipsum)
 (package! applescript-mode)
 (package! nginx-mode)
+(package! tubestatus :recipe
+  (:host github
+   :repo "smallwat3r/tubestatus.el"))

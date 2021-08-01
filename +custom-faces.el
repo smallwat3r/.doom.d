@@ -25,7 +25,8 @@
   '((lazy-highlight
      lsp-face-highlight-read
      lsp-face-highlight-textual
-     lsp-face-highlight-write)
+     lsp-face-highlight-write
+     magit-header-line)
     :foreground "gray64")
 
   '(mode-line
