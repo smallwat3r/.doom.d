@@ -49,7 +49,7 @@
 
 (setq ns-use-thin-smoothing t)
 
-(defvar my-monospace-font "Hack"
+(defvar my-monospace-font "Monaco"
   "Monospace font")
 
 (defvar my-sans-serif-font "Geneva"
@@ -331,6 +331,8 @@
       "--line-length" "100"
       "-")  ; apply in file changes
     :modes '(python-mode)))
+
+(set-popup-rule! "^\\*pytest*" :size 0.3)
 
 ;; Disable warnings in python repl
 (add-hook! 'inferior-python-mode-hook 'python-shell-completion-native-turn-off)
