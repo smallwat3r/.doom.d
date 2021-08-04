@@ -59,15 +59,23 @@
   '((t :background unspecified :foreground unspecified))
   "The face used to display the current git branch in mode-line.")
 
+(defun my-mode-line-render (left right)
+  (let ((available-width
+         (- (window-total-width)
+            (+ (length (format-mode-line left))
+               (length (format-mode-line right))))))
+    (append left (list (format (format "%%%ds" available-width) "")) right)))
+
 (setq-default mode-line-format
-              '("%e"
-                (:eval evil-mode-line-tag)
-                mode-line-modified
-                " %b "
-                (vc-mode (:eval (propertize vc-mode 'face 'my-git-branch-face)))
-                "  "
-                "%p (%l,%c)"
-                "  "
-                (:eval (format-time-string "%a %d %b %H:%M"))
-                "  "
-                mode-line-modes))
+              '((:eval
+                 (my-mode-line-render
+                  (quote ("%e"
+                          evil-mode-line-tag
+                          mode-line-modified
+                          mode-line-buffer-identification
+                          (vc-mode (:eval (propertize vc-mode 'face 'my-git-branch-face)))
+                          " %p %l,%c"))
+                  (quote ((:eval (format-time-string "%a %d %b %H:%M"))
+                          mode-line-frame-identification
+                          mode-line-modes
+                          mode-line-misc-info))))))
