@@ -29,7 +29,7 @@
      magit-header-line)
     :foreground "gray64")
 
-  '(org-block :inherit fixed-pitch)
+  '((org-block org-verbatim) :inherit fixed-pitch)
   '((org-block-end-line org-block-begin-line) :inherit org-block :foreground "SlateGrey")
 
   '(slack-preview-face :background unspecified)
