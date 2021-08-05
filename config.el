@@ -49,7 +49,7 @@
 
 (setq ns-use-thin-smoothing t)
 
-(defvar my-monospace-font "Monaco"
+(defvar my-monospace-font "Hack"
   "Monospace font")
 
 (defvar my-sans-serif-font "Geneva"
