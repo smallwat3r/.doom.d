@@ -21,3 +21,7 @@
 (package! tubestatus :recipe
   (:host github
    :repo "smallwat3r/tubestatus.el"))
+
+(package! untappd :recipe
+  (:host github
+   :repo "smallwat3r/untappd.el"))

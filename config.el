@@ -635,3 +635,11 @@
   :commands (lorem-ipsum-insert-paragraphs
              lorem-ipsum-insert-sentences
              lorem-ipsum-insert-list))
+
+;; Untappd
+;; doc: https://github.com/smallwat3r/untappd.el
+
+(use-package! untappd
+  :commands (untappd-feed)
+  :config (setq untappd-access-token
+                (auth-source-pass-get 'secret "untappd/token")))
