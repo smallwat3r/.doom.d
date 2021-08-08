@@ -58,6 +58,9 @@
    :desc "List containers" "c" #'docker-containers
    :desc "Exec into" "e" #'docker-container-shell)
 
+  (:prefix "f"
+   :desc "Find file in dotfiles" "P" #'my/find-file-in-dotfiles)
+
   (:prefix "o"
    :desc "Alacritty" "a" #'my/alacritty-here
    :desc "Link at point" "l" #'browse-url-at-point

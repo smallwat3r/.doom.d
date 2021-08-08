@@ -22,6 +22,9 @@
       user-mail-address "mpetiteau.pro@gmail.com"
       user-mail-address-2 "matthieu@smallwatersolutions.com")
 
+(defvar my-dotfiles-dir "~/dotfiles"
+  "Dotfiles directory.")
+
 (setq confirm-kill-emacs nil
       load-prefer-newer t               ; always load newer bytes compiled files
       evil-vsplit-window-right t
@@ -171,9 +174,13 @@
                       (file-exists-p (desktop-full-file-name))))
          :action doom/quickload-session
          :face default)
-        ("Open private configuration"
+        ("Find file in dotfiles"
+         :when (file-directory-p my-dotfiles-dir)
+         :action my/find-file-in-dotfiles
+         :face default)
+        ("Find file in Doom config"
          :when (file-directory-p doom-private-dir)
-         :action doom/open-private-config
+         :action doom/find-file-in-private-config
          :face default)
         ("Open documentation"
          :action doom/help

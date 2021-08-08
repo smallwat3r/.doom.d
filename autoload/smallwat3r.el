@@ -132,6 +132,12 @@
 ;;; Misc
 
 ;;;###autoload
+(defun my/find-file-in-dotfiles ()
+  "Find file in my dotfiles."
+  (interactive)
+  (doom-project-find-file my-dotfiles-dir))
+
+;;;###autoload
 (defun my/where-am-i ()
   "Show where I'm at."
   (interactive)
