@@ -83,6 +83,7 @@
 ;;
 ;;; Editor
 
+(setq-default with-editor-emacsclient-executable "emacsclient")
 (setq display-line-numbers-type nil)  ; no line number
 
 ;; Vertical file explorer
