@@ -466,7 +466,7 @@
     (eshell/cd (locate-dominating-file default-directory ".git")))
 
   (defun eshell/md (dir)
-    "mkdir and cd into directory."
+    "mkdir and cd into DIR."
     (eshell/mkdir dir)
     (eshell/cd dir))
 
@@ -475,11 +475,11 @@
     (eshell/cd "~/dotfiles"))
 
   (defun my/eshell/ls (&rest args)
-    "ls to always list hidden files."
+    "ls command list hidden files by default."
     (eshell/ls "-a" args))
 
   (defun eshell/sl (&rest args)
-    "ls typo."
+    "Same as ls, used to avoid typos."
     (my/eshell/ls args))
 
   (defun eshell/o ()
@@ -491,7 +491,7 @@
     (pyvenv-deactivate))
 
   (defun eshell/activate (&optional env)
-    "Activate a python venv."
+    "Activate a python ENV."
     (if env
         (pyvenv-activate env)
       (pyvenv-activate "env")))
