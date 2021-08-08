@@ -20,7 +20,6 @@
   :config
   (delight
    '((yas-minor-mode " Y" yasnippet)
-     (git-gutter-mode " Gg" git-gutter)
      (dired-mode "δ" :major)
      (emacs-lisp-mode "ξ" :major)
      (python-mode "π" :major)
@@ -31,6 +30,8 @@
 
      ;; hidden minor-modes from modeline
      (company-mode nil company)
+     (git-gutter-mode nil git-gutter)
+     (highlight-indent-guides-mode nil highlight-indent-guides)
      (abbrev-mode nil abbrev)
      (better-jumper-mode nil better-jumper)
      (better-jumper-local-mode nil better-jumper)

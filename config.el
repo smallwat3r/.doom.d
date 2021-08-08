@@ -52,7 +52,7 @@
 (defvar my-monospace-font "Hack"
   "Monospace font")
 
-(defvar my-sans-serif-font "Geneva"
+(defvar my-sans-serif-font "Lucida Grande"
   "Sans serif font")
 
 (setq doom-font (font-spec :family my-monospace-font :size 13)
