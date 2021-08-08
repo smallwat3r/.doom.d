@@ -103,17 +103,15 @@
   (kill-this-buffer))
 
 ;;;###autoload
-(defun my/count-buffers (&optional display-anyway)
-  "Display or return the number of buffers."
+(defun my/count-buffers ()
+  "Display the current number of buffers."
   (interactive)
   (let ((buf-count (length (buffer-list))))
-    (if (or (interactive-p) display-anyway)
-        (message "%d buffers in total" buf-count))
-    buf-count))
+    (message "%d buffers in total" buf-count)))
 
 ;;;###autoload
 (defun my/add-scratch-buffer-header (text)
-  "Open scratch buffer with a header."
+  "Open scratch buffer with a TEXT header."
   (when scratch-buffer
     (save-excursion
       (goto-char (point-min))
@@ -142,17 +140,6 @@
   "Show where I'm at."
   (interactive)
   (message (kill-new (if (buffer-file-name) (buffer-file-name) (buffer-name)))))
-
-;;;###autoload
-(defun my/arrayify (start end quote)
-  "Turn strings on newlines into a comma-separated one-liner."
-  (interactive "r\nMQuote: ")
-  (let ((insertion
-         (mapconcat
-          (lambda (x) (format "%s%s%s" quote x quote))
-          (split-string (buffer-substring start end)) ", ")))
-    (delete-region start end)
-    (insert insertion)))
 
 ;;;###autoload
 (defun my/vterm/toggle-current-buffer ()
