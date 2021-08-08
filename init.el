@@ -17,6 +17,7 @@
        doom-dashboard
        (emoji +unicode)
        hl-todo
+       indent-guides
        ophints
        (popup +defaults)
        treemacs

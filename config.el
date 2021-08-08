@@ -96,7 +96,7 @@
 ;; doc: https://github.com/emacsorphanage/git-gutter-fringe
 
 (after! git-gutter-fringe
-  (fringe-mode 1))
+  (fringe-mode 2))
 
 ;; Disable hl-line
 (remove-hook! 'doom-first-buffer-hook #'global-hl-line-mode)

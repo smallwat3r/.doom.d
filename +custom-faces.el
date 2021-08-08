@@ -13,12 +13,15 @@
      flycheck-warning)
     :background unspecified)
 
-  '(font-lock-comment-face :slant normal)
-  '(font-lock-comment-delimiter-face :slant normal :weight bold)
+  '(font-lock-comment-delimiter-face :weight bold)
 
   '(diff-refine-added :inherit magit-diff-added-highlight :inverse-video nil :weight bold)
   '(diff-refine-removed :inherit magit-diff-removed-highlight :inverse-video nil :weight bold)
   '(diff-refine-changed :inverse-video nil :weight bold)
+
+  '(git-gutter-fr:added :inherit diff-added)
+  '(git-gutter-fr:modified :inherit diff-changed)
+  '(git-gutter-fr:deleted :inherit diff-removed)
 
   '((show-paren-match show-paren-match-expression) :background "grey83")
 
