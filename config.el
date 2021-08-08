@@ -89,7 +89,7 @@
 ;; doc: https://github.com/Alexander-Miller/treemacs
 
 (after! treemacs
-  (setq doom-themes-treemacs-enable-variable-pitch nil
+  (setq doom-themes-treemacs-enable-variable-pitch t
         doom-themes-treemacs-line-spacing 0
         doom-themes-treemacs-theme "doom-colors"
         treemacs-width 35)
@@ -131,8 +131,7 @@
 
 (after! evil-goggles
   (setq evil-goggles-duration 0.25)
-  (evil-goggles-use-diff-faces))
-
+  (evil-goggles-use-magit-faces))
 
 ;;
 ;;; Custom templates
