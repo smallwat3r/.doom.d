@@ -25,6 +25,8 @@
 
   '((show-paren-match show-paren-match-expression) :background "grey83")
 
+  '((mode-line mode-line-inactive) :inherit variable-pitch)
+
   '((lazy-highlight
      lsp-face-highlight-read
      lsp-face-highlight-textual
