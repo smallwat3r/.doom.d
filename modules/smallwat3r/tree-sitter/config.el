@@ -10,7 +10,7 @@
 (use-package! tree-sitter-langs
   :after tree-sitter
   :config
-  ;; Deactivate theming on some nodes
+  ;; Deactivate theming on some nodes, as I find this makes the buffer too busy.
   (add-function :before-while tree-sitter-hl-face-mapping-function
                 (lambda (capture-name)
                   (not (string= capture-name "property"))))

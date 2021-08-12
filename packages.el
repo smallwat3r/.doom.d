@@ -6,8 +6,7 @@
  lsp-python-ms
  company-anaconda
  anaconda-mode
- pipenv
- solaire-mode)
+ pipenv)
 
 (package! dired-narrow)
 (package! dired-subtree)
@@ -18,6 +17,7 @@
 (package! applescript-mode)
 (package! nginx-mode)
 (package! tubestatus)
+(package! color-theme-sanityinc-tomorrow)
 
 (package! untappd :recipe
   (:host github
