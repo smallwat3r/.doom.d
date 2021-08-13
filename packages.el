@@ -6,7 +6,8 @@
  lsp-python-ms
  company-anaconda
  anaconda-mode
- pipenv)
+ pipenv
+ solaire-mode)
 
 (package! dired-narrow)
 (package! dired-subtree)
