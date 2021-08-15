@@ -18,8 +18,4 @@
 (package! applescript-mode)
 (package! nginx-mode)
 (package! tubestatus)
-(package! color-theme-sanityinc-tomorrow)
-
-(package! untappd :recipe
-  (:host github
-   :repo "smallwat3r/untappd.el"))
+(package! untappd)
