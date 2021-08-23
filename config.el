@@ -52,7 +52,7 @@
 
 (setq ns-use-thin-smoothing t)
 
-(defvar my-monospace-font "Hack"
+(defvar my-monospace-font "Menlo"
   "Monospace font")
 
 (defvar my-sans-serif-font "Lucida Grande"

@@ -2,9 +2,16 @@
 
 ;; Lets use a default theme as a base and override some faces to my liking
 
-(setq doom-theme 'modus-vivendi
-      doom-themes-enable-bold nil
-      doom-themes-enable-italic nil)
+(setq doom-theme 'modus-vivendi)
+
+(setq modus-themes-slanted-constructs nil
+      modus-themes-bold-constructs nil
+      modus-themes-syntax 'faint-yellow-comments
+      modus-themes-region 'bg-only
+      modus-themes-mode-line '3d
+      modus-themes-org-blocks 'tinted-background
+      modus-themes-completions 'opinionated
+      modus-themes-paren-match 'intense-bold)
 
 (custom-set-faces!
   '((term
@@ -20,15 +27,6 @@
   '(git-gutter-fr:added :inherit diff-added)
   '(git-gutter-fr:modified :inherit diff-changed)
   '(git-gutter-fr:deleted :inherit diff-removed)
-
-  '((show-paren-match show-paren-match-expression) :background "grey83")
-
-  ;; '((lazy-highlight
-  ;;    lsp-face-highlight-read
-  ;;    lsp-face-highlight-textual
-  ;;    lsp-face-highlight-write
-  ;;    magit-header-line)
-  ;;   :foreground "gray64")
 
   '(slack-preview-face :background unspecified)
   '((slack-mrkdwn-code-face slack-mrkdwn-code-block-face)
