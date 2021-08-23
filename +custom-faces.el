@@ -2,7 +2,7 @@
 
 ;; Lets use a default theme as a base and override some faces to my liking
 
-(setq doom-theme 'doom-solarized-dark-high-contrast
+(setq doom-theme 'modus-vivendi
       doom-themes-enable-bold nil
       doom-themes-enable-italic nil)
 
@@ -23,12 +23,12 @@
 
   '((show-paren-match show-paren-match-expression) :background "grey83")
 
-  '((lazy-highlight
-     lsp-face-highlight-read
-     lsp-face-highlight-textual
-     lsp-face-highlight-write
-     magit-header-line)
-    :foreground "gray64")
+  ;; '((lazy-highlight
+  ;;    lsp-face-highlight-read
+  ;;    lsp-face-highlight-textual
+  ;;    lsp-face-highlight-write
+  ;;    magit-header-line)
+  ;;   :foreground "gray64")
 
   '(slack-preview-face :background unspecified)
   '((slack-mrkdwn-code-face slack-mrkdwn-code-block-face)
