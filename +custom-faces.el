@@ -7,11 +7,19 @@
 (setq modus-themes-slanted-constructs nil
       modus-themes-bold-constructs nil
       modus-themes-syntax 'faint-yellow-comments
-      modus-themes-region 'bg-only
       modus-themes-mode-line '3d
-      modus-themes-org-blocks 'tinted-background
       modus-themes-completions 'opinionated
-      modus-themes-paren-match 'intense-bold)
+      modus-themes-org-blocks 'tinted-background)
+
+(setq modus-themes-vivendi-color-overrides
+      '((fg-main . "grey88")
+        (fg-comment-yellow . "#00bab6")
+        (magenta . "#b5b600")
+        (magenta-alt . "#b5b600")
+        (magenta-alt-faint . "#b5b600")
+        (magenta-faint . "#b5b600")
+        (blue-faint . "#ad7fa8")
+        (blue-alt-faint . "#ad7fa8")))
 
 (custom-set-faces!
   '((term

@@ -10,7 +10,8 @@
 (use-package! tree-sitter-langs
   :after tree-sitter
   :config
-  ;; Deactivate theming on some nodes, as I find this makes the buffer too busy.
+  ;; Deactivate faces on some specific programming nodes, as I find this
+  ;; makes the buffer too busy and difficult to read.
   (add-function :before-while tree-sitter-hl-face-mapping-function
                 (lambda (capture-name)
                   (not (string= capture-name "property"))))
@@ -22,4 +23,8 @@
                   (not (string= capture-name "function.call"))))
   (add-function :before-while tree-sitter-hl-face-mapping-function
                 (lambda (capture-name)
-                  (not (string= capture-name "label")))))
+                  (not (string= capture-name "label"))))
+
+  (tree-sitter-hl-add-patterns 'python
+    [((string) @doc
+      (.match? @doc "^(\"\"\"|r\"\"\")"))]))
